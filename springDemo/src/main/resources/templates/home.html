@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/bootstrap.css" th:href="@{/bootstrap.css}"/>
+</head>
+<body>
+Home ...
+
+<form th:object="${student}" th:action="@{/}" th:method="post">
+    <input type="text" th:field="*{name}"/>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+1) inteligent IDEA work with spring Boot update version
+2) Basice concept
+	* DI (Dependency ingection)
+	* IOC
+	* Autowirs
+	* Aop
+3) knowage generate spring.io warien videos
+
+4) spring data{spring data jpa(relational data) / spring data mongoDB (no sql) / spring data nee4j} = jpa + hibernet  
+5) spring rest docs = swiager
+6) spring amqp = massing java soket programing
+7) spring mobile = responsive mode
+8) spring for androide = rest api server + android client 
+8) spring web flow = mvc 
+9) spring wed services = rest Api comes from web services
+10) spring LDAP = 
+11) spring session = user access resord 
+12) spring SHHELL = command line application
+13) spring Flo
+14) spring kafka = apachie kafka
+15) spring io platfrom = file base work
+
+
+we can learn the about things
+*spring Boot  * spring farmework * spring data JPA  * spring security * spring oauth 2  * thym leaf * spring REST * spring socile * spring android * spring MVC
+
+
+comand line comand 
+
+1 > mvn -version  (maven check)
+2 > mvn spring-boot:run ()
+3 > clean install
+
+install mvaven
+
+suarch > eniverment variable > eniverment variable > new > MavenHome > C:\apache-maven-3.6.1 > ok > 
+
+>>>>>?Maven > is a project mamagement tools 
+	* war > deploy to tomact
+	* jar > executable jar
+	* pom > project object model  prom project anouther project can be used a module
+	        prom can contain the dependency of the hole project
+	
+	mataData extra information

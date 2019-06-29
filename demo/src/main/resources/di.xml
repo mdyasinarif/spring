@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="al" class="com.example.demo.diSetter.Address">
+        <constructor-arg value="Gandaria"></constructor-arg>
+        <constructor-arg value="Dhaka"></constructor-arg>
+        <constructor-arg value="Bangladesh"></constructor-arg>
+    </bean>
+    <bean id="e" class="com.example.demo.diSetter.Employee">
+        <constructor-arg value="101"></constructor-arg>
+        <constructor-arg value="Md Yasin Arif"></constructor-arg>
+        <constructor-arg>
+            <ref bean="al"/>
+        </constructor-arg>
+    </bean>
+</beans>

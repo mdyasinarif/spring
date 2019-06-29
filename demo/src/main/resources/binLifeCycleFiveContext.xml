@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="employee1" class="com.example.demo.binLifeCycle.five.Employee"/>
+    <bean name="employee2" class="com.example.demo.binLifeCycle.five.Employee"/>
+    <bean name="employee3" class="com.example.demo.binLifeCycle.five.Employee"/>
+    <bean name="employee4" class="com.example.demo.binLifeCycle.five.Employee"/>
+    <bean name="myAwareService" class="com.example.demo.binLifeCycle.five.MyAwareService"/>
+
+</beans>
+
+
