@@ -9,16 +9,26 @@
 <span style="color: red" th:text="${errMsg}"></span>
 <span style="color: green" th:text="${successMsg}"></span>
 <form th:object="${department}" th:action="@{/}", th:method="POST">
-    <input type="text" th:field="*{name}"/>
-    <button type="submit" >Save</button>
+    <table>
+        <tr>
+            <td>Department Name</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" >Save</button></td>
+        </tr>
+    </table>
+
+
 </form>
 <hr/>
-<table>
+<table style="width: 100%">
     <tr>
         <th>Id</th>
         <th>Department Name</th>
     </tr>
-    <tr th:each="d : ${list}">
+    <tr th:each="d : ${list}" style="text-align: center">
         <td th:text="${d.id}"></td>
         <td th:text="${d.name}"></td>
     </tr>

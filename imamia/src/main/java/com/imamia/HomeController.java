@@ -7,33 +7,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping(value = "/")
-    public String displayIndex(){return "index";}
+    public String displayIndex(){return "/user/index";}
 
     @GetMapping(value = "/home")
-    public String displayhome(){return "index";}
+    public String displayhome(){return "/user/index";}
 
     @GetMapping(value = "/about")
-    public String displayabout(){return "about";}
+    public String displayabout(){return "/user/about";}
 
     @GetMapping(value = "/blog")
-    public String displayblog(){return "blog";}
+    public String displayblog(){return "/user/blog";}
 
     @GetMapping(value = "/blog-detail")
-    public String displayblogdetail(){return "blog-detail";}
+    public String displayblogdetail(){return "/user/blog-detail";}
 
     @GetMapping(value = "/contact")
-    public String displaycontact(){return "contact";}
+    public String displaycontact(){return "/user/contact";}
 
     @GetMapping(value = "/gallery")
-    public String displaygallery(){return "gallery";}
+    public String displaygallery(){return "/user/gallery";}
 
 
     @GetMapping(value = "/menu")
-    public String displaymenu(){return "menu";}
+    public String displaymenu(){return "/user/menu";}
 
 
     @GetMapping(value = "/reservation")
-    public String displayreservation(){return "reservation";}
+    public String displayreservation(){return "/user/reservation";}
 
 
 }

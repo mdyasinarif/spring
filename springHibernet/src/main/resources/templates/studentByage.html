@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+<h1>Student List By Department and Gender</h1>
+<form th:action="@{/studentByage}" th:method="get">
+    <input type="text" name="age">
+    <button type="submit">Show</button>
+
+</form>
+<hr/>
+<table style="width: 100%">
+    <tr>
+        <th>Id</th>
+        <th>Student Name</th>
+        <th>Student Email</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Departmetn Name</th>
+    </tr>
+    <tr th:each="s : ${slist}" style="text-align: center">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.age}"></td>
+        <td th:text="${s.gender}"></td>
+        <td th:text="${s.email}"></td>
+        <td th:text="${s.department.name}"></td>
+    </tr>
+
+</table>
+</body>
+</html>

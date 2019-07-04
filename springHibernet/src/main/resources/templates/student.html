@@ -10,25 +10,54 @@
 <span style="color: red" th:text="${errMsg}"></span>
 <span style="color: green" th:text="${successMsg}"></span>
 <form th:object="${student}" th:action="@{/student}", th:method="POST">
-    <input type="text" th:field="*{name}"/>
-    <input type="text" th:field="*{email}"/>
-    <select th:field = "*{department}">
-        <option th:each="dep :${deplist}" th:value="${dep.id}"><span th:text="${dep.name}"></span></option>
-    </select>
-    <button type="submit" >Save</button>
+    <table>
+
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td><input type="radio" value="Male" th:field="*{gender}"/>Male
+                <input type="radio" value="FeMale" th:field="*{gender}"/>FeMale</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="number" th:field="*{age}"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td> <input type="text" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td><select th:field = "*{department}">
+                <option th:each="dep :${deplist}" th:value="${dep.id}"><span th:text="${dep.name}"></span></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <button type="submit" >Save</button></td>
+        </tr>
+
+    </table>
 </form>
 <hr/>
-<table class="table table-striped">
+<table style="width: 100%">
     <tr>
         <th>Id</th>
         <th>Student Name</th>
         <th>Student Email</th>
+        <th>Gender</th>
+        <th>Age</th>
         <th>Departmetn Name</th>
     </tr>
-    <tr th:each="s : ${list}">
+    <tr th:each="s : ${list}" style="text-align: center">
         <td th:text="${s.id}"></td>
         <td th:text="${s.name}"></td>
         <td th:text="${s.email}"></td>
+        <td th:text="${s.gender}"></td>
+        <td th:text="${s.age}"></td>
         <td th:text="${s.department.name}"></td>
     </tr>
 </table>
