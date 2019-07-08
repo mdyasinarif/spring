@@ -3,12 +3,16 @@ package com.dawntechbd.simpleThymeleafTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +22,13 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
+
+
+
+    @Autowired
+    private ImageOptimizer imageOptimizer;
 
     @GetMapping(value = "list")
     public String getList(Model model) {
@@ -68,4 +79,49 @@ public class UserController {
         this.userRepository.deleteById(id);
         return "redirect:/user/list";
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView index() throws IOException {
+        ModelAndView mv=new ModelAndView();
+
+        mv.addObject("list", userRepository.findAll());
+        mv.setViewName("index");
+        return mv;
+    }
+
+    @PostMapping("/upload") // //new annotation since 4.3
+    public String singleFileUpload(@RequestParam("file") MultipartFile file,
+                                   RedirectAttributes redirectAttributes) throws IOException {
+
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+
+            return "redirect:index";
+        }
+
+        try {
+
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+
+            Files.write(path, bytes);
+            User user = new User();
+
+            user.setPhoto(file.getBytes());
+            userRepository.save(user);
+            System.out.println("=============== save success ============");
+            redirectAttributes.addFlashAttribute("message",
+                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
+            imageOptimizer.optimizeImage(UPLOADED_FOLDER,file,0.8f,200,250);
+            //            // Get the file and save it somewhere
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "redirect:index";
+
+    }
 }
+

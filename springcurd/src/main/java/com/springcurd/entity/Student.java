@@ -11,21 +11,15 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     @Column(unique = true)
     private String userName;
-    @Column(unique = true)
+
     private String password;
-    @Lob
-    private byte[] photo;
+
+    private String photo;
 
     public Student() {
-    }
-
-    public Student(String name, String userName, String password, byte[] photo) {
-        this.name = name;
-        this.userName = userName;
-        this.password = password;
-        this.photo = photo;
     }
 
     public Long getId() {
@@ -60,11 +54,11 @@ public class Student {
         this.password = password;
     }
 
-    public byte[] getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(byte[] photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 }
