@@ -52,27 +52,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                       "/static/**",
                         "/**"
 
-                ).permitAll();
-//                .antMatchers(
-//                        "/**"
-//                       ).hasRole("ADMIN")
-//                .antMatchers("/port/**").hasRole("USER")
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login.do")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .invalidateHttpSession(true)
-//                .clearAuthentication(true)
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/login.do?logout")
-//                .permitAll()
-//                .and()
-//                .exceptionHandling()
-//                .accessDeniedHandler(accessDeniedHandler);
+                ).permitAll()
+                .antMatchers(
+                        "/**"
+                       ).hasRole("ADMIN")
+                .antMatchers("/port/**").hasRole("USER")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login.do")
+                .permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login.do?logout")
+                .permitAll()
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);
     }
 
 

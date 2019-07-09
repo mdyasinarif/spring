@@ -27,5 +27,6 @@ public class RoleController {
     public String saveRole(@Valid Role role, BindingResult bindingResult){
         this.repo.save(role);
         return "rolePage";
+
     }
 }
