@@ -16,9 +16,11 @@ public class TestController {
     @Autowired
     private UserRepo repo;
 
-    @ResponseBody
-    @GetMapping(value = "/test")
-    public Optional<User> display(){
-        return repo.findByUserNameOrEmail("jobayerccc","");
-    }
+//    @ResponseBody
+//    @GetMapping(value = "/test")
+//    public Optional<User> display(){
+//        return repo.findByUserNameOrEmail("jobayerccc","");
+//    }
+
+
 }

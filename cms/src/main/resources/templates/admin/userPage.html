@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<body>
+<span th:text="${successMsg}" style="color: green"></span>
+<span th:text="${errMsg}"  style="color: red"></span>
+<div class="content-wrapper" layout:fragment="custom-content">
+
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <h2>Create User</h2>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form name="f" th:object="${user}" th:action="@{/user}" th:method="post">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control input_user" th:field="*{name}"
+                                   autofocus="autofocus" required="required" placeholder="Enter Your Full Name">
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control input_user" th:field="*{userName}"
+                                   autofocus="autofocus" required="required" placeholder="Enter User Name">
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="password" class="form-control input_user" th:field="*{password}"
+                                   autofocus="autofocus" required="required" placeholder="Enter Password">
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="email" class="form-control input_user" th:field="*{email}"
+                                   autofocus="autofocus" required="required" placeholder="Enter email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label>Role</label>
+                        </div>
+                        <div class="input-group mb-3">
+
+                            <select th:field="*{roles}" multiple>
+                                <option th:each="role : ${rolelist}" th:value="${role.id}">
+                                    <span th:text="${role.roleName}"></span>
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" name="button" class="btn btn-facebook">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -6,7 +6,11 @@ import com.cms.entity.Role;
 import com.cms.repo.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class RoleController {
@@ -14,20 +18,17 @@ public class RoleController {
     @Autowired
     private RoleRepo repo;
 
-    @GetMapping(value = "/role-save")
-    public String saveRole(){
-        Role role=new Role();
-        role.setRoleName("SUPERADMIN");
-        repo.save(role);
-
-        Role role2=new Role();
-        role2.setRoleName("ADMIN");
-        repo.save(role2);
-
-        Role role3=new Role();
-        role3.setRoleName("USER");
-        repo.save(role3);
-
-       return "success";
+    @GetMapping(value = "/role")
+    public String displayinsert(Model model){
+        model.addAttribute("role",new Role());
+        return "admin/rolePage";
     }
+
+    @PostMapping(value = "/role")
+    public String insertData(Model model,@Valid Role role){
+        this.repo.save(role);
+        return "admin/rolePage";
+    }
+
+
 }

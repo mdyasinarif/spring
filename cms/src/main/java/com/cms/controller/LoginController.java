@@ -20,7 +20,7 @@ public class LoginController {
             /* The user is logged in :) */
             return "redirect:/se";
         }
-        return "public/login";
+        return "login";
     }
 
     @GetMapping("/access-denied")
