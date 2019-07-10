@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<body>
+<span th:text="${successMsg}" style="color: green"></span>
+<span th:text="${errMsg}"  style="color: red"></span>
+<div class="content-wrapper" layout:fragment="custom-content">
+    <h2>Create User</h2>
+    <form th:object="${user}" th:action="@{/singUp}" th:method="post" enctype="multipart/form-data">
+
+        <table>
+
+            <tr>
+                <td><label>UserName</label></td>
+                <td><input type="text" required th:field="*{userName}"/></td>
+            </tr>
+
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="password" required th:field="*{password}"/></td>
+            </tr>
+
+            <tr>
+                <td><label>firstName</label></td>
+                <td> <input type="text" required th:field="*{firstName}"/></td>
+            </tr>
+
+            <tr>
+                <td><label>LastName</label></td>
+                <td> <input type="text" required th:field="*{lastName}"/></td>
+            </tr>
+
+            <tr>
+                <td><label>email</label></td>
+                <td>  <input type="email" required th:field="*{email}"/></td>
+            </tr>
+
+            <tr>
+                <td><label>mobile</label></td>
+                <td>  <input type="text" required th:field="*{mobile}"/></td>
+            </tr>
+
+
+
+            <tr>
+                <td><label>Role</label></td>
+                <td>
+                    <select th:field="*{roles}" >
+                        <option th:each="role : ${rolelist}" th:value="${role.id}">
+                            <span th:text="${role.rolename}"></span>
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Photo</label></td>
+                <td><input type="file" name="photo" required="required"> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <button type="submit">Save</button></td>
+            </tr>
+        </table>
+
+    </form>
+</div>
+
+</body>
+</html>
