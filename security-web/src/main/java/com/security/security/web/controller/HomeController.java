@@ -31,16 +31,19 @@ public class HomeController {
     public String displaylogin(){
         return "login";
     }
+
     @GetMapping(value = "/insert")
     public String displayinsert(Model model){
      model.addAttribute("student",new Student());
         return "insert";
     }
+
     @PostMapping(value = "/insert")
     public String insertData(Model model,@Valid Student student){
      this.repo.save(student);
      return "insert";
     }
+
     @GetMapping(value = "/userlist")
     public String displayuserlist(Model model){
      model.addAttribute("list",this.repo.findAll());
