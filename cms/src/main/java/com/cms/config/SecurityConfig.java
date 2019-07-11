@@ -53,13 +53,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/public/**","/login","/","/about"
                 ).permitAll()
                 .antMatchers(
-                       "/postevent/**","/rolePage","/userPage","/uploadaudio","/uplodpdf"
+                       "/postevent/","/rolePage","/userPage","/uploadaudio","/uplodpdf"
                         ).hasRole("SUPERADMIN")
-                .antMatchers("/uploadaudio/**","/uplodpdf","/postevent").hasRole(
+                .antMatchers("/uploadaudio/","/uplodpdf","/postevent").hasRole(
                         "ADMIN")
                 .antMatchers("/uploadaudio/**","/uplodpdf").hasRole(
                 "USER")
-                .antMatchers("/se/**").hasAnyRole(
+                .antMatchers("/postevent/","/rolePage","/userPage","/uploadaudio","/uplodpdf").hasAnyRole(
                 "ADMIN","USER","SUPERADMIN")
                 .anyRequest()
                 .authenticated()
