@@ -14,8 +14,7 @@ public class Permission {
     private long id;
     private String url;
 
-    List<User> users = new ArrayList<>();
-    List<Role> roles = new ArrayList<>();
+
 
     public Permission() {
     }
@@ -36,19 +35,5 @@ public class Permission {
         this.url = url;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 }

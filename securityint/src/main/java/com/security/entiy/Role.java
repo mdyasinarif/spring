@@ -1,6 +1,7 @@
 package com.security.entiy;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Role {
@@ -10,6 +11,15 @@ public class Role {
 
     @Column(nullable = false)
     private String rolename;
+
+    @ManyToMany
+    @JoinTable(
+            name = "per_role",
+            joinColumns = @JoinColumn(name = "per_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    List<Permission> permissionList;
+    public Role() {
+    }
 
     public long getId() {
         return id;
@@ -27,6 +37,11 @@ public class Role {
         this.rolename = rolename;
     }
 
-    public Role() {
+    public List<Permission> getPermissionList() {
+        return permissionList;
+    }
+
+    public void setPermissionList(List<Permission> permissionList) {
+        this.permissionList = permissionList;
     }
 }
