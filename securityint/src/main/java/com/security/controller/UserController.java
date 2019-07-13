@@ -42,9 +42,12 @@ private PasswordEncoder passwordEncoder;
     public String add(Model model, @Valid User user) {
         if (user == null) {
             model.addAttribute("errorMsg", "Something Wrong!");
+            model.addAttribute("rolelist", roleRepo.findAll());
+            return "admin/user";
         } else {
             this.repo.save(user);
             model.addAttribute("successMsg", "User Save Successfully");
+            model.addAttribute("rolelist", roleRepo.findAll());
 
         }
         return "admin/user";

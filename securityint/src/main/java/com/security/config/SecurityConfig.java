@@ -49,34 +49,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers(
-                        "/index","/login","/**"
-                ).permitAll();
-//                .antMatchers(
-//                       "/addmin/**"
-//                        ).hasRole("SUPERADMIN")
-//                .antMatchers("/adm/**").hasRole(
-//                        "ADMIN")
-//                .antMatchers("/u/**","/test").hasRole(
-//                "USER")
-//                .antMatchers("/se/**").hasAnyRole(
-//                "ADMIN","USER","SUPERADMIN")
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .invalidateHttpSession(true)
-//                .clearAuthentication(true)
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/login?logout")
-//                .permitAll()
-//                .and()
-//                .exceptionHandling()
-//                .accessDeniedHandler(loggingAccessDeniedHandler);
+                .antMatchers("/index","/login").permitAll()
+                .antMatchers("/permission/**","/role/**","/user/**").hasRole("ADMIN")
+                .antMatchers("/audio/**","/image/**","/pdf/**","/video/**").hasRole("MANAGER")
+                .antMatchers("/public/**").hasRole("USER")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(loggingAccessDeniedHandler);
     }
 
 

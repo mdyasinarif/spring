@@ -20,7 +20,7 @@ public class User {
     @Column(nullable = false)
     private String password;
     private String email;
-    private int active;
+    private String active;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
@@ -81,11 +81,11 @@ public class User {
         this.email = email;
     }
 
-    public int getActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(String active) {
         this.active = active;
     }
 
