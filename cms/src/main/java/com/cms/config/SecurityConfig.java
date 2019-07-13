@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/public/**", "/login", "/", "/about"
                 ).permitAll()
                 .antMatchers(
+<<<<<<< HEAD
                         "/postevent/**", "/rolePage", "/userPage", "/uploadaudio", "/uplodpdf"
                 ).hasRole("SUPERADMIN")
                 .antMatchers("/uploadaudio/**", "/uplodpdf", "/postevent").hasRole(
@@ -61,6 +62,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "USER")
                 .antMatchers("/se/**").hasAnyRole(
                 "ADMIN", "USER", "SUPERADMIN")
+=======
+                       "/postevent/","/rolePage","/userPage","/uploadaudio","/uplodpdf"
+                        ).hasRole("SUPERADMIN")
+                .antMatchers("/uploadaudio/","/uplodpdf","/postevent").hasRole(
+                        "ADMIN")
+                .antMatchers("/uploadaudio/**","/uplodpdf").hasRole(
+                "USER")
+                .antMatchers("/postevent/","/rolePage","/userPage","/uploadaudio","/uplodpdf").hasAnyRole(
+                "ADMIN","USER","SUPERADMIN")
+>>>>>>> 9e6e41ccdd1600ed69b3ca963decd21d5175bf9b
                 .anyRequest()
                 .authenticated()
                 .and()

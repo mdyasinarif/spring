@@ -17,7 +17,7 @@ public class HomeController {
     @Autowired
     private UserRepo repo;
 
-    @GetMapping(value = "/adm")
+    @GetMapping(value = "/postevent")
     public String adminView() {
         return "admin/admin";
     }
