@@ -6,7 +6,6 @@
 package basic;
 
 /**
- *
  * @author hp
  */
 public class Hello {
@@ -19,5 +18,5 @@ public class Hello {
     public void setMsg(String msg) {
         this.msg = msg;
     }
-    
+
 }

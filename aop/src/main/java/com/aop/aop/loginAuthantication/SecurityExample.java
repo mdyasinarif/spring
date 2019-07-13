@@ -8,27 +8,27 @@ public class SecurityExample {
 
         SecureBean bean = getSeureBean();
 
-        mgr.login("Yasin","pwd");
+        mgr.login("Yasin", "pwd");
         bean.writeSecureMessage();
         mgr.logout();
 
         try {
-            mgr.login("arif","pwd");
+            mgr.login("arif", "pwd");
             bean.writeSecureMessage();
-        }catch (SecurityException ex){
-            System.out.println("Exception Caught: "+ex.getMessage());
-        }finally {
+        } catch (SecurityException ex) {
+            System.out.println("Exception Caught: " + ex.getMessage());
+        } finally {
             mgr.logout();
         }
 
         try {
             bean.writeSecureMessage();
-        }catch (SecurityException ex){
-            System.out.println("Exception Caught: "+ex.getMessage());
+        } catch (SecurityException ex) {
+            System.out.println("Exception Caught: " + ex.getMessage());
         }
     }
 
-    private static SecureBean getSeureBean(){
+    private static SecureBean getSeureBean() {
         SecureBean target = new SecureBean();
 
         SecutityAdvice advice = new SecutityAdvice();

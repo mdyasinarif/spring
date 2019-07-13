@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(Long id) {
-repo.deleteById(id);
+        repo.deleteById(id);
     }
 
     @Override
@@ -38,7 +38,7 @@ repo.deleteById(id);
 
     @Override
     public Page<User> getAllUsers(int page, int perPageRow) {
-        return repo.findAll(PageRequest.of(page,perPageRow));
+        return repo.findAll(PageRequest.of(page, perPageRow));
     }
 
     @Override
@@ -58,7 +58,7 @@ repo.deleteById(id);
 
     @Override
     public User findByUserNameAndPassword(String userName, String password) {
-        return repo.findByUserNameAndPassword(userName,password);
+        return repo.findByUserNameAndPassword(userName, password);
     }
 
 

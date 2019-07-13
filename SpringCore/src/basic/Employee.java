@@ -6,7 +6,6 @@
 package basic;
 
 /**
- *
  * @author hp
  */
 public class Employee {
@@ -19,9 +18,9 @@ public class Employee {
         this.name = name;
         this.address = address;
     }
-    
-   public void show(){
-       System.out.println(id+": "+name);
-       System.out.println(address);
-   }
+
+    public void show() {
+        System.out.println(id + ": " + name);
+        System.out.println(address);
+    }
 }

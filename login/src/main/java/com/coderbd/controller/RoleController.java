@@ -13,19 +13,19 @@ public class RoleController {
     private RoleRepo repo;
 
     @GetMapping(value = "/role-save")
-    public String saveRole(){
-        Role role=new Role();
+    public String saveRole() {
+        Role role = new Role();
         role.setRoleName("SUPERADMIN");
         repo.save(role);
 
-        Role role2=new Role();
+        Role role2 = new Role();
         role2.setRoleName("ADMIN");
         repo.save(role2);
 
-        Role role3=new Role();
+        Role role3 = new Role();
         role3.setRoleName("USER");
         repo.save(role3);
 
-       return "success";
+        return "success";
     }
 }

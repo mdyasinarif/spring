@@ -6,13 +6,12 @@
 package basic;
 
 /**
- *
  * @author hp
  */
 public class Address {
-   
+
     private String state;
-     private String city;
+    private String city;
     private String country;
 
     public Address(String state, String city, String country) {
@@ -23,7 +22,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return  state + " " + city + " " + country ;
+        return state + " " + city + " " + country;
     }
-    
+
 }

@@ -19,18 +19,18 @@ public class DepartmentController {
     @GetMapping(value = "/")
     public String displayIndex(Model model) {
         model.addAttribute("department", new Department());
-        model.addAttribute("list",  this.repo.findAll());
+        model.addAttribute("list", this.repo.findAll());
         return "index";
     }
 
     @PostMapping(value = "/")
     public String save(Model model, @Valid Department dep, BindingResult result) {
-        if (result.hasErrors()){
-            model.addAttribute("errMsg","Something Wrong");
-        }else {
+        if (result.hasErrors()) {
+            model.addAttribute("errMsg", "Something Wrong");
+        } else {
             this.repo.save(dep);
-            model.addAttribute("successMsg","Data save Successfully");
-            model.addAttribute("list",  this.repo.findAll());
+            model.addAttribute("successMsg", "Data save Successfully");
+            model.addAttribute("list", this.repo.findAll());
         }
         return "index";
     }

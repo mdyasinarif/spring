@@ -16,42 +16,43 @@ import java.util.UUID;
 public class HomeController {
     @Autowired
     private StudentRepo repo;
- @GetMapping(value = "/home")
-    public String displayHome(){
+
+    @GetMapping(value = "/home")
+    public String displayHome() {
         return "home";
     }
 
 
     @GetMapping(value = "/")
-    public String displayindex(){
+    public String displayindex() {
         return "index";
     }
 
     @GetMapping(value = "/login")
-    public String displaylogin(){
+    public String displaylogin() {
         return "login";
     }
 
     @GetMapping(value = "/insert")
-    public String displayinsert(Model model){
-     model.addAttribute("student",new Student());
+    public String displayinsert(Model model) {
+        model.addAttribute("student", new Student());
         return "insert";
     }
 
     @PostMapping(value = "/insert")
-    public String insertData(Model model,@Valid Student student){
-     this.repo.save(student);
-     return "insert";
+    public String insertData(Model model, @Valid Student student) {
+        this.repo.save(student);
+        return "insert";
     }
 
     @GetMapping(value = "/userlist")
-    public String displayuserlist(Model model){
-     model.addAttribute("list",this.repo.findAll());
-     return "userlist";
+    public String displayuserlist(Model model) {
+        model.addAttribute("list", this.repo.findAll());
+        return "userlist";
     }
 
     @GetMapping(value = "/createuser")
-    public String displayucreateuser(){
+    public String displayucreateuser() {
         return "createuser";
     }
 

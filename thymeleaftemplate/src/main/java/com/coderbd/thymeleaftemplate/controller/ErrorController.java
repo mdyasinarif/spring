@@ -17,7 +17,7 @@ public class ErrorController {
     @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String renderErrorPage(HttpServletRequest request, HttpServletResponse response, Model model) {
         int code = response.getStatus();
-       // System.out.println("code::::: "+code);
+        // System.out.println("code::::: "+code);
         String message = HttpStatus.valueOf(code).getReasonPhrase();
         model.addAttribute("code", code);
         model.addAttribute("message", message);

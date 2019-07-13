@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Department</title>
@@ -8,7 +8,7 @@
 <h1>Add Department</h1>
 <span style="color: red" th:text="${errMsg}"></span>
 <span style="color: green" th:text="${successMsg}"></span>
-<form th:object="${department}" th:action="@{/}", th:method="POST">
+<form th:object="${department}" th:action="@{/}" , th:method="POST">
     <table>
         <tr>
             <td>Department Name</td>
@@ -16,7 +16,9 @@
         </tr>
         <tr>
             <td></td>
-            <td><button type="submit" >Save</button></td>
+            <td>
+                <button type="submit">Save</button>
+            </td>
         </tr>
     </table>
 

@@ -24,7 +24,6 @@ public class HomeController {
     private RoleRepo roleRepo;
 
 
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 

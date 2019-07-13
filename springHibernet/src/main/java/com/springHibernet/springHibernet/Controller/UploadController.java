@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 @Controller
 public class UploadController {
 
-    private static  String  UPLOADE_FOLDER = "src/main/resources/static/images/";
+    private static String UPLOADE_FOLDER = "src/main/resources/static/images/";
 
     @Autowired
     private UserRepo repo;
@@ -27,18 +27,19 @@ public class UploadController {
     private ImageOptimizer imageOptimizer;
 
     @ResponseBody
-    @RequestMapping(value = "/uplode",method = RequestMethod.GET)
-    public ModelAndView userView() throws IOException{
+    @RequestMapping(value = "/uplode", method = RequestMethod.GET)
+    public ModelAndView userView() throws IOException {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("userList",repo.findAll());
+        mv.addObject("userList", repo.findAll());
         mv.setViewName("userView");
         return mv;
     }
+
     @PostMapping("/uplode")
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) throws IOException{
-        if (file.isEmpty()){
-            redirectAttributes.addFlashAttribute("message","Please select a file to Upload");
+                                   RedirectAttributes redirectAttributes) throws IOException {
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please select a file to Upload");
             return "redirect:uploadStatus";
         }
         try {
@@ -47,16 +48,16 @@ public class UploadController {
 
             Files.write(path, bytes);
             User user = new User();
-            user.setUserName("new-"+file.getOriginalFilename());
+            user.setUserName("new-" + file.getOriginalFilename());
             user.setFileSize(file.getSize());
             user.setFile(file.getBytes());
-            user.setFilePath("images/"+"new-"+file.getOriginalFilename());
+            user.setFilePath("images/" + "new-" + file.getOriginalFilename());
             user.setFileExtension(file.getContentType());
             repo.save(user);
             System.out.println("=============== save success ============");
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
-            imageOptimizer.optimizeImage(UPLOADE_FOLDER,file,0.8f,200,250);
+            imageOptimizer.optimizeImage(UPLOADE_FOLDER, file, 0.8f, 200, 250);
             //            // Get the file and save it somewhere
 
         } catch (IOException e) {
@@ -64,7 +65,7 @@ public class UploadController {
         }
 
         return "redirect:/uploadStatus";
-        }
+    }
 
     @GetMapping("/uploadStatus")
     public String uploadStatus() {

@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+    <title>Create Permission</title>
+</head>
+<body>
+<div class="container">
+    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:24px;padding: 24px;">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-user"></i> Create Permission
+            </div>
+            <div class="card-block" style="padding: 24px;">
+                <form name="f" th:action="@{/permission}" method="post">
+                    <fieldset>
+                        <!-- Thymeleaf + Spring Security error display -->
+
+
+                        <!-- User Controls -->
+                        <div class="form-group">
+                            <label>Permission Name</label>
+                            <input type="text" class="form-control" id="permission" name="permission"
+                                   placeholder="Permission Name">
+                        </div>
+
+
+
+
+                        <!-- Login Button -->
+                        <div class="form-actions" style="margin-top: 12px;">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

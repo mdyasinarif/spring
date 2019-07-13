@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Student</title>
@@ -10,13 +10,13 @@
 <form th:action="@{/deptandGender}" th:method="get">
     <select name="depid">
         <option th:each="s: ${deplist}" th:value="${s.id}">
-            <span  th:text="${s.name}"></span>
+            <span th:text="${s.name}"></span>
         </option>
     </select>
 
     <select name="gender">
-       <option th:value="Male">Male</option>
-       <option th:value="FeMale">FeMale</option>
+        <option th:value="Male">Male</option>
+        <option th:value="FeMale">FeMale</option>
     </select>
     <tr th:text="${countDept}"></tr>
     <button type="submit">Show</button>

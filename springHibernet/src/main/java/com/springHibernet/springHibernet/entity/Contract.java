@@ -22,7 +22,7 @@ public class Contract {
     @Temporal(TemporalType.TIMESTAMP) // only data DATE only TIME,TIMESTAMP date time both
     private Date birthDate;
 
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String mobileNo;
 
     @OneToMany(mappedBy = "contract")

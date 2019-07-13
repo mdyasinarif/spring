@@ -31,14 +31,16 @@ public class Employee {
                 '}';
 
 
-}
-@PostConstruct
-    public void inIt() throws Exception{
-    System.out.println("InIt method after proparty are set : "+id+" "+position);
-}
-@PreDestroy
-public void cleanUp()throws  Exception{
-    System.out.println("Spring cleanUp ! Employee is clean up");
-}
+    }
+
+    @PostConstruct
+    public void inIt() throws Exception {
+        System.out.println("InIt method after proparty are set : " + id + " " + position);
+    }
+
+    @PreDestroy
+    public void cleanUp() throws Exception {
+        System.out.println("Spring cleanUp ! Employee is clean up");
+    }
 }
 

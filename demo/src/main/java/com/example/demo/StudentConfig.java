@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class StudentConfig {
 
     @Bean
-    public StudentAnnotation studentBean(){
+    public StudentAnnotation studentBean() {
         return new StudentAnnotation();
     }
 }

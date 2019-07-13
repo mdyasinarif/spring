@@ -1,7 +1,7 @@
 package com.example.demo;
 
 public class Student {
-    private  String  name;
+    private String name;
 
     public String getName() {
         return name;
@@ -10,7 +10,8 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
-    public void displayInfo(){
-        System.out.println("Hello : "+ name);
+
+    public void displayInfo() {
+        System.out.println("Hello : " + name);
     }
 }

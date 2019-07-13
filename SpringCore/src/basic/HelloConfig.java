@@ -10,13 +10,12 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 /**
- *
  * @author hp
  */
 @Configuration
 public class HelloConfig {
     @Bean
-    public Hello hello(){
-    return new Hello();
+    public Hello hello() {
+        return new Hello();
     }
 }

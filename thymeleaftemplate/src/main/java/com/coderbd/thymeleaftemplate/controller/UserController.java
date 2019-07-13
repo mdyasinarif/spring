@@ -30,7 +30,6 @@ public class UserController {
     RoleRepo roleRepo;
 
 
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -56,7 +55,7 @@ public class UserController {
             roles.add(role);
         }
         user.setRoles(roles);
-       user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setJoiningDate(new Date());
         user.setActivated(true);
         ModelAndView modelAndView = new ModelAndView();
@@ -64,15 +63,15 @@ public class UserController {
         User emailExit = service.isEmailAlreadyExist(user.getEmail());
         User mobileExit = service.isMobileAlreadyExist(user.getMobile());
         System.out.println("===== " + user.getRoles().toString());
-        if (userNameExit != null  && user.getId() == null) {
+        if (userNameExit != null && user.getId() == null) {
             bindingResult.rejectValue("userName", "error.user", "This User Name already Exist!");
             modelAndView.addObject("users", service.getAllUsers(page, perPage));
             modelAndView.addObject("allRoles", roleRepo.findAll());
-        }else if (emailExit != null  && user.getId() == null) {
+        } else if (emailExit != null && user.getId() == null) {
             bindingResult.rejectValue("email", "error.user", "This Email already Exist!");
             modelAndView.addObject("users", service.getAllUsers(page, perPage));
             modelAndView.addObject("allRoles", roleRepo.findAll());
-        }else if (mobileExit != null  && user.getId() == null) {
+        } else if (mobileExit != null && user.getId() == null) {
             bindingResult.rejectValue("mobile", "error.user", "This Mobile Number already Exist!");
             modelAndView.addObject("users", service.getAllUsers(page, perPage));
             modelAndView.addObject("allRoles", roleRepo.findAll());
@@ -124,7 +123,6 @@ public class UserController {
         modelAndView.addObject("allRoles", roleRepo.findAll());
         return "redirect:/user/create";
     }
-
 
 
 }

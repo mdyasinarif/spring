@@ -14,8 +14,9 @@ public class Role {
 
     public Role() {
     }
+
     public Role(Long id) {
-        this.id=id;
+        this.id = id;
     }
 
     public Long getId() {

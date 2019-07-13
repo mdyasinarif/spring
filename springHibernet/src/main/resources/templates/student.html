@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Student</title>
@@ -9,7 +9,7 @@
 <h1>Add Student</h1>
 <span style="color: red" th:text="${errMsg}"></span>
 <span style="color: green" th:text="${successMsg}"></span>
-<form th:object="${student}" th:action="@{/student}", th:method="POST">
+<form th:object="${student}" th:action="@{/student}" , th:method="POST">
     <table>
 
         <tr>
@@ -19,7 +19,8 @@
         <tr>
             <td>Gender</td>
             <td><input type="radio" value="Male" th:field="*{gender}"/>Male
-                <input type="radio" value="FeMale" th:field="*{gender}"/>FeMale</td>
+                <input type="radio" value="FeMale" th:field="*{gender}"/>FeMale
+            </td>
         </tr>
         <tr>
             <td>Age</td>
@@ -27,17 +28,19 @@
         </tr>
         <tr>
             <td>Email</td>
-            <td> <input type="text" th:field="*{email}"/></td>
+            <td><input type="text" th:field="*{email}"/></td>
         </tr>
         <tr>
             <td>Department</td>
-            <td><select th:field = "*{department}">
+            <td><select th:field="*{department}">
                 <option th:each="dep :${deplist}" th:value="${dep.id}"><span th:text="${dep.name}"></span></option>
             </select></td>
         </tr>
         <tr>
             <td></td>
-            <td> <button type="submit" >Save</button></td>
+            <td>
+                <button type="submit">Save</button>
+            </td>
         </tr>
 
     </table>

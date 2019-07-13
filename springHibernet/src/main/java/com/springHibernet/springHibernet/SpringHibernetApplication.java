@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringHibernetApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringHibernetApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringHibernetApplication.class, args);
+    }
 
 }

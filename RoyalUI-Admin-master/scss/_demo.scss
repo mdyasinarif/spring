@@ -7,7 +7,7 @@
   }
 
   > .btn-group,
-  >  .btn-group-vertical {
+  > .btn-group-vertical {
     @extend .mt-2;
     @extend .mr-2;
   }
@@ -17,10 +17,10 @@
   }
 
   > h2,
-   > h3,
-   > h4,
-   > h5,
-   > h6,
+  > h3,
+  > h4,
+  > h5,
+  > h6,
   > h1 {
     border-top: 1px solid $border-color;
     padding: 0.5rem 0 0;
@@ -42,9 +42,11 @@
     @include align-items(flex-end);
     @include flex-direction(column);
     @include flex-wrap(wrap);
+
     li {
       @include display-flex;
       @include align-items(center);
+
       span {
         width: 2.25rem;
         height: 1rem;
@@ -54,12 +56,15 @@
       }
     }
   }
+
   .rtl & {
     ul {
       padding-right: 0;
+
       li {
         margin-right: 0;
         margin-left: 8%;
+
         span {
           margin-right: 0;
           margin-left: 1rem;
@@ -67,6 +72,7 @@
       }
     }
   }
+
   &.analytics-legend {
     ul {
       padding-left: 0;
@@ -77,6 +83,7 @@
 .documentation {
   padding-top: 0;
   max-width: 100%;
+
   .content-wrapper {
     padding-top: 0;
     min-height: calc(100vh - #{$footer-height});

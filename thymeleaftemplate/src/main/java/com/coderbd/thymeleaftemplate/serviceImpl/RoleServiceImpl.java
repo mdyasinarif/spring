@@ -17,7 +17,6 @@ public class RoleServiceImpl implements RoleService {
     private RoleRepo repo;
 
 
-
     @Override
     public Role save(Role role) {
         return repo.saveAndFlush(role);
@@ -30,7 +29,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void delete(Long id) {
-repo.deleteById(id);
+        repo.deleteById(id);
     }
 
     @Override
@@ -40,7 +39,7 @@ repo.deleteById(id);
 
     @Override
     public Page<Role> getAllRole(int page, int perPageRow) {
-       return repo.findAll(PageRequest.of(page,perPageRow));
+        return repo.findAll(PageRequest.of(page, perPageRow));
     }
 
     @Override

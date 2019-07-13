@@ -1,7 +1,6 @@
 package com.dawntechbd.classDemoTemplate.entity;
 
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
@@ -13,7 +12,7 @@ public class Role {
     private Long id;
 
     @Column(name = "rolename", unique = true)
-    @NotEmpty(message =  "Please Enter RoleName")
+    @NotEmpty(message = "Please Enter RoleName")
     private String rolename;
 
     public Role() {

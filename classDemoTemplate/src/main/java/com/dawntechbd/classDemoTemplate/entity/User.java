@@ -16,14 +16,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty(message =  "Please Enter RoleName")
+    @NotEmpty(message = "Please Enter RoleName")
     @Column(name = "username", unique = true)
     private String userName;
 
-    @NotEmpty(message =  "Please Enter Password")
+    @NotEmpty(message = "Please Enter Password")
 
     @Size(min = 8, message = "At least 8 Characters")
-    private  String password;
+    private String password;
 
 
     private String firstName;
@@ -57,7 +57,7 @@ public class User {
         this.lastName = user.lastName;
         this.email = user.email;
         this.mobile = user.mobile;
-       this.photoPath= user.photoPath;
+        this.photoPath = user.photoPath;
         this.roles = user.roles;
     }
 

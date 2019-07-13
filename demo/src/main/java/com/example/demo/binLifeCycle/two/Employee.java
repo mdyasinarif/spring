@@ -6,7 +6,7 @@ import org.springframework.beans.factory.InitializingBean;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class Employee implements InitializingBean , DisposableBean {
+public class Employee implements InitializingBean, DisposableBean {
     private Long id;
     private String position;
 

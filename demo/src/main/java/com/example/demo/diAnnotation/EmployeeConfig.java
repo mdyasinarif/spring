@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EmployeeConfig {
     @Bean
-    public Employee employeeBean(){
-        Employee employee = new Employee(101,"Md Yasin",
-                new Address("Dhaka","Dhaka","Bangladesh"));
+    public Employee employeeBean() {
+        Employee employee = new Employee(101, "Md Yasin",
+                new Address("Dhaka", "Dhaka", "Bangladesh"));
         return employee;
     }
 

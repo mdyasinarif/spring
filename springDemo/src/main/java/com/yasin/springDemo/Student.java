@@ -4,7 +4,7 @@ package com.yasin.springDemo;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="stu")
+@Table(name = "stu")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

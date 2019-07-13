@@ -34,13 +34,13 @@ public class User {
         this.roles = roles;
     }
 
-    public User(User user){
-        this.name=user.name;
-        this.userName=user.userName;
-        this.password=user.password;
-        this.email=user.email;
-        this.status=user.status;
-        this.roles=user.roles;
+    public User(User user) {
+        this.name = user.name;
+        this.userName = user.userName;
+        this.password = user.password;
+        this.email = user.email;
+        this.status = user.status;
+        this.roles = user.roles;
     }
 
     public Long getId() {

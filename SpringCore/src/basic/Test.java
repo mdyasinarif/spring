@@ -10,7 +10,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- *
  * @author hp
  */
 public class Test {
@@ -19,9 +18,9 @@ public class Test {
         Hello hello = (Hello) context.getBean("hello");
         hello.setMsg("Hello Spring");
         System.out.println(hello.getMsg());
-        
+
         Hello hello2 = (Hello) context.getBean("hello");
         System.out.println(hello2.getMsg());
-        
+
     }
 }

@@ -50,17 +50,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
                 .antMatchers(
-                        "/public/**","/login","/","/user-save","/role-save"
+                        "/public/**", "/login", "/", "/user-save", "/role-save"
                 ).permitAll()
                 .antMatchers(
-                       "/sa/**"
-                        ).hasRole("SUPERADMIN")
+                        "/sa/**"
+                ).hasRole("SUPERADMIN")
                 .antMatchers("/adm/**").hasRole(
-                        "ADMIN")
-                .antMatchers("/u/**","/test").hasRole(
+                "ADMIN")
+                .antMatchers("/u/**", "/test").hasRole(
                 "USER")
                 .antMatchers("/se/**").hasAnyRole(
-                "ADMIN","USER","SUPERADMIN")
+                "ADMIN", "USER", "SUPERADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

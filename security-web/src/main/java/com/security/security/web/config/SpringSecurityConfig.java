@@ -13,12 +13,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
-    protected  void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/home","/createuser").permitAll()
+                .antMatchers("/", "/home", "/createuser").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -31,15 +31,16 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
     }
+
     @Bean
     @Override
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         UserDetails user = User
                 .withDefaultPasswordEncoder()
                 .username("yasin")
                 .password("1234")
                 .roles("ADMIN")
                 .build();
-        return  new InMemoryUserDetailsManager(user);
+        return new InMemoryUserDetailsManager(user);
     }
 }

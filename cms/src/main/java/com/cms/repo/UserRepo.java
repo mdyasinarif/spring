@@ -12,9 +12,13 @@ import java.util.Set;
 @Repository
 public interface UserRepo extends JpaRepository<User, Long> {
     Optional<User> findByUserNameOrEmail(String userName, String email);
+
     User findByUserName(String username);
+
     /////////////////
     User findByUserNameOrName(String username, String name);
+
     User findByUserNameAndName(String username, String name);
+
     List<User> findAllByRoles(Set<Role> roles);
 }

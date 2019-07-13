@@ -15,16 +15,17 @@ import javax.validation.Valid;
 public class RoleController {
     @Autowired
     private RoleRepo repo;
-    @RequestMapping(value = "/role/create",method = RequestMethod.GET)
-    public ModelAndView getRole(){
+
+    @RequestMapping(value = "/role/create", method = RequestMethod.GET)
+    public ModelAndView getRole() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("role", new Role());
         modelAndView.setViewName("rolePage");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/role/create",method = RequestMethod.POST)
-    public String saveRole(@Valid Role role, BindingResult bindingResult){
+    @RequestMapping(value = "/role/create", method = RequestMethod.POST)
+    public String saveRole(@Valid Role role, BindingResult bindingResult) {
         this.repo.save(role);
         return "rolePage";
 

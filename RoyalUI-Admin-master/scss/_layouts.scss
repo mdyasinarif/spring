@@ -6,35 +6,43 @@
     .navbar {
       .navbar-brand-wrapper {
         width: $sidebar-width-icon;
+
         .brand-logo {
           display: none;
         }
+
         .brand-logo-mini {
           display: inline-block;
         }
       }
+
       .navbar-menu-wrapper {
         width: calc(100% - #{$sidebar-width-icon});
       }
     }
     .sidebar {
       width: $sidebar-width-icon;
+
       .nav {
         overflow: visible;
         margin-left: 0;
         margin-right: 0;
+
         .nav-item {
           position: relative;
+
           .nav-link {
             display: block;
             padding-left: .5rem;
-            padding-right: .5rem;            
+            padding-right: .5rem;
             text-align: center;
             position: static;
+
             .menu-title,
-            .badge,.menu-sub-title {
+            .badge, .menu-sub-title {
               display: none;
             }
+
             .menu-title {
               @include border-radius(0 5px 5px 0px);
               background: $sidebar-light-menu-hover-bg;
@@ -43,16 +51,19 @@
                 @include border-radius(5px 0 0 5px);
               }
             }
+
             i {
               &.menu-icon {
                 margin-right: 0;
                 margin-left: 0;
                 margin-bottom: 0;
               }
+
               &.menu-arrow {
                 display: none;
               }
             }
+
             &[aria-expanded] {
               .menu-title {
                 @include border-radius(0 5px 0 0px);
@@ -62,9 +73,11 @@
               }
             }
           }
+
           .collapse {
             display: none;
           }
+
           &.hover-open {
             .nav-link {
               .menu-title {
@@ -81,24 +94,26 @@
                 z-index: 1;
                 line-height: 1.8;
                 -webkit-box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);
-                        box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);              
+                box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);
                 @at-root #{selector-append(".rtl", &)} {
                   left: auto;
                   right: $sidebar-width-icon;
                   text-align: left;
                   -webkit-box-shadow: -4px 0px 7px 0px rgba(182, 185, 189, 0.25);
-                          box-shadow: -4px 0px 7px 0px rgba(182, 185, 189, 0.25);                                
+                  box-shadow: -4px 0px 7px 0px rgba(182, 185, 189, 0.25);
                 }
                 &:after {
                   display: none;
                 }
               }
+
               &:hover {
                 .menu-title {
                   background: $sidebar-light-menu-hover-bg;
                 }
               }
             }
+
             .collapse,
             .collapsing {
               display: block;
@@ -108,22 +123,24 @@
               left: $sidebar-width-icon;
               width: $icon-only-collapse-width;
               -webkit-box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
-                      box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
+              box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
               @at-root #{selector-append(".rtl", &)} {
-                  left: auto;
-                  right:$sidebar-width-icon;
-                  @include border-radius(0 0 0 5px);
-                  -webkit-box-shadow: -4px 4px 7px 0px rgba(182, 185, 189, 0.25);
-                          box-shadow: -4px 4px 7px 0px rgba(182, 185, 189, 0.25);
+                left: auto;
+                right: $sidebar-width-icon;
+                @include border-radius(0 0 0 5px);
+                -webkit-box-shadow: -4px 4px 7px 0px rgba(182, 185, 189, 0.25);
+                box-shadow: -4px 4px 7px 0px rgba(182, 185, 189, 0.25);
               }
             }
           }
         }
+
         &:not(.sub-menu) {
           .nav-item {
             &.active {
               border-radius: 0;
             }
+
             &:hover {
               .nav-link {
                 border-radius: 0;
@@ -131,8 +148,10 @@
             }
           }
         }
+
         &.sub-menu {
           padding: $sidebar-icon-only-submenu-padding;
+
           .nav-item {
             .nav-link {
               text-align: left;
@@ -157,6 +176,7 @@
   .sidebar {
     .nav {
       padding-right: 0;
+
       &.sub-menu {
         padding: $rtl-sidebar-submenu-padding;
         @at-root #{selector-append(".sidebar-icon-only", &)} {
@@ -165,6 +185,7 @@
             .nav-link {
               padding-right: 3rem;
               text-align: right;
+
               &:before {
                 right: 1.75rem;
               }
@@ -185,8 +206,8 @@
     }
 
     &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-              box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
 
     &::-webkit-scrollbar-thumb {

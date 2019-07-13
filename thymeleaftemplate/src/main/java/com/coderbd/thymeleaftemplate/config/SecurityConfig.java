@@ -49,13 +49,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers(
-                      "/static/**",
+                        "/static/**",
                         "/**"
 
                 ).permitAll()
                 .antMatchers(
                         "/**"
-                       ).hasRole("ADMIN")
+                ).hasRole("ADMIN")
                 .antMatchers("/port/**").hasRole("USER")
                 .anyRequest()
                 .authenticated()

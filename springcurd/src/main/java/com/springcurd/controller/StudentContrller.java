@@ -39,14 +39,14 @@ public class StudentContrller {
         if (student == null) {
             model.addAttribute("errorMsg", "SomeThing Wrong!!!");
         } else {
-            student.setPhoto("/images/new-"+file.getOriginalFilename());
+            student.setPhoto("/images/new-" + file.getOriginalFilename());
             //file upload
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
             // file upload end
             this.studentRepo.save(student);
-            imageOptimizer.optimizeImage(UPLOADED_FOLDER,file,0.8f,100,120);
+            imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 100, 120);
             model.addAttribute("successMsg", "Student Save Successfully");
         }
         return "add";

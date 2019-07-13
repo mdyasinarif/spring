@@ -18,11 +18,11 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 
-
 @Controller
 public class RoleController {
     @Autowired
     private RoleRepo repo;
+
     @RequestMapping(value = "/role/create", method = RequestMethod.GET)
     public ModelAndView getRole() {
         ModelAndView modelAndView = new ModelAndView();

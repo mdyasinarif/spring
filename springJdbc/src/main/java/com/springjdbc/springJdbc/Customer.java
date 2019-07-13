@@ -2,8 +2,7 @@ package com.springjdbc.springJdbc;
 
 public class Customer {
     private long id;
-    private String firstName,lastName;
-
+    private String firstName, lastName;
 
 
     public Customer(long id, String firstName, String lastName) {

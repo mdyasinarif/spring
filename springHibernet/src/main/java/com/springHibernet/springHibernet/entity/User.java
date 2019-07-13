@@ -9,12 +9,11 @@ public class User {
     private Long id;
 
     private String userName;
-    private long  fileSize;
+    private long fileSize;
     @Lob
     private byte[] file;
-    private String  filePath;
+    private String filePath;
     private String fileExtension;
-
 
 
     public Long getId() {

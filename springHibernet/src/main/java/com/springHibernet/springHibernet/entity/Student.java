@@ -13,7 +13,7 @@ public class Student {
     private String gender;
     private int age;
     @ManyToOne
-    @JoinColumn(name = "dep_id",nullable = false)
+    @JoinColumn(name = "dep_id", nullable = false)
     private Department department;
 
 //    @ManyToOne

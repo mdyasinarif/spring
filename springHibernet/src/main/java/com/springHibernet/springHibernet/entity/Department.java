@@ -9,7 +9,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "dep_name",nullable = false,unique = true)
+    @Column(name = "dep_name", nullable = false, unique = true)
     @Size(min = 3, max = 20)
     private String name;
 

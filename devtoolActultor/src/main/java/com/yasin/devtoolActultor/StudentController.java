@@ -14,13 +14,14 @@ public class StudentController {
     private StudentRepositiry repositiry;
 
     @GetMapping(value = "/save")
-    public void saveStudent(){
+    public void saveStudent() {
         Student student = new Student(UUID.randomUUID().toString());
         this.repositiry.save(student);
         System.out.println("Save SuccessFully");
     }
+
     @GetMapping(value = "/students")
-    public List<Student> getStudentList(){
+    public List<Student> getStudentList() {
         List<Student> list = new ArrayList<>();
         list = this.repositiry.findAll();
         return list;

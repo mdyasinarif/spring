@@ -1,8 +1,6 @@
 package com.coderbd.thymeleaftemplate.config;
 
 
-
-
 import com.coderbd.thymeleaftemplate.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,7 +12,7 @@ import java.util.stream.Collectors;
 public class CustomUserDetails extends User implements UserDetails {
 
     public CustomUserDetails(final User user) {
-       super(user);
+        super(user);
     }
 
     @Override

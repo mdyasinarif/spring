@@ -30,12 +30,13 @@ public class Employee {
                 '}';
 
 
-}
-
-    public void inIt() throws Exception{
-        System.out.println("InIt method after proparty are set : "+id+" "+position);
     }
-    public void cleanUp()throws  Exception{
+
+    public void inIt() throws Exception {
+        System.out.println("InIt method after proparty are set : " + id + " " + position);
+    }
+
+    public void cleanUp() throws Exception {
         System.out.println("Spring cleanUp ! Employee is clean up");
     }
 }

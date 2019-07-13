@@ -12,10 +12,12 @@
   font-family: $type;
   font-weight: 400;
   border-top: 1px solid rgba($black, .06);
+
   a {
     color: theme-color(primary);
     font-size: inherit;
   }
+
   @media (max-width: 991px) {
     margin-left: 0;
     width: 100%;

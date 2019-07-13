@@ -17,7 +17,7 @@ public class TestController {
 
     @ResponseBody
     @GetMapping(value = "/test")
-    public Optional<User> display(){
-        return repo.findByUserNameOrEmail("jobayerccc","");
+    public Optional<User> display() {
+        return repo.findByUserNameOrEmail("jobayerccc", "");
     }
 }

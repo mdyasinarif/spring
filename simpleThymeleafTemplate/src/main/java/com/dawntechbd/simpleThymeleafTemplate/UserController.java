@@ -26,7 +26,6 @@ public class UserController {
     private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
 
 
-
     @Autowired
     private ImageOptimizer imageOptimizer;
 
@@ -59,16 +58,17 @@ public class UserController {
 
 
     @GetMapping(value = "edit/{id}")
-    public String editView(@PathVariable Long id,Model model) {
-        model.addAttribute("user",this.userRepository.getOne(id));
+    public String editView(@PathVariable Long id, Model model) {
+        model.addAttribute("user", this.userRepository.getOne(id));
         return "users/edit";
     }
+
     @PostMapping(value = "edit/{id}")
-    public String edit(Model model, @Valid User user,@PathVariable Long id) {
+    public String edit(Model model, @Valid User user, @PathVariable Long id) {
         user.setId(id);
-        if (user == null){
-            model.addAttribute("errorMsg","Something Wrong!");
-        }else {
+        if (user == null) {
+            model.addAttribute("errorMsg", "Something Wrong!");
+        } else {
             this.userRepository.save(user);
         }
         return "redirect:/user/list";
@@ -84,7 +84,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() throws IOException {
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv = new ModelAndView();
 
         mv.addObject("list", userRepository.findAll());
         mv.setViewName("index");
@@ -114,7 +114,7 @@ public class UserController {
             System.out.println("=============== save success ============");
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
-            imageOptimizer.optimizeImage(UPLOADED_FOLDER,file,0.8f,200,250);
+            imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 200, 250);
             //            // Get the file and save it somewhere
 
         } catch (IOException e) {

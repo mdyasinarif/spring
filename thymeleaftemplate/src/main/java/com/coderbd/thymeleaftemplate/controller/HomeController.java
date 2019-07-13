@@ -91,7 +91,7 @@ public class HomeController {
     }
 
 
- @RequestMapping(value = "/insert.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/insert.do", method = RequestMethod.GET)
     public void insertdata() {
         Role role = new Role();
         role.setRolename("ADMIN");
@@ -115,7 +115,7 @@ public class HomeController {
 
 
     @GetMapping(value = "/about")
-    public String DisplayAbout(){
+    public String DisplayAbout() {
         return "about";
     }
 

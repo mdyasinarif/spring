@@ -16,15 +16,15 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
-@GetMapping(value = "/")
-    public String DisplayIndex(){
+    @GetMapping(value = "/")
+    public String DisplayIndex() {
         return "index";
     }
-@GetMapping(value = "/about")
-    public String DisplayAbout(){
+
+    @GetMapping(value = "/about")
+    public String DisplayAbout() {
         return "about";
     }
-
 
 
 }
