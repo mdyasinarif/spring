@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67c0cb8f-bc1e-4bfa-a123-162b75959e27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/java/com/dawntechbd/simpleThymeleafTemplate/ImageOptimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../imamia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../imamia/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/java/com/dawntechbd/simpleThymeleafTemplate/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/java/com/dawntechbd/simpleThymeleafTemplate/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/java/com/dawntechbd/simpleThymeleafTemplate/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/java/com/dawntechbd/simpleThymeleafTemplate/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/java/com/dawntechbd/simpleThymeleafTemplate/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/java/com/dawntechbd/simpleThymeleafTemplate/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/resources/templates/users/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/resources/templates/users/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/resources/templates/users/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../simpleThymeleafTemplate/src/main/resources/templates/users/list.html" afterDir="false" />
-    </list>
+    <list default="true" id="67c0cb8f-bc1e-4bfa-a123-162b75959e27" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +9,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2142" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -37,10 +39,46 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="RoyalUI-Admin-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoyalUI-Admin-master" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoyalUI-Admin-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoyalUI-Admin-master" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoyalUI-Admin-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoyalUI-Admin-master" type="462c0819:PsiDirectoryNode" />
+              <item name="documentation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoyalUI-Admin-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoyalUI-Admin-master" type="462c0819:PsiDirectoryNode" />
+              <item name="fonts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoyalUI-Admin-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoyalUI-Admin-master" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoyalUI-Admin-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoyalUI-Admin-master" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -71,16 +109,17 @@
       <updated>1562492434459</updated>
       <workItem from="1562492438018" duration="87000" />
       <workItem from="1562492539275" duration="72000" />
+      <workItem from="1563048236083" duration="61000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159000" />
+    <option name="totallyTimeSpent" value="220000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -112,5 +151,12 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2142" />
+      </provider>
+    </entry>
   </component>
 </project>

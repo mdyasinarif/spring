@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/admin/layout"
+      layout:decorate="~{admin/layout.html}">
+<head>
+    <title>Create Role</title>
+</head>
+<body>
+
+<div class="container" layout:fragment="cus-content">
+    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:24px;padding: 24px;">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-user"></i> Create Role
+            </div>
+            <span th:text="${errorMsg}"></span>
+            <span th:text="${successMsg}"></span>
+            <div class="card-block" style="padding: 24px;">
+                <form name="f" th:object="${role}" th:action="@{/role/add}" method="post">
+                    <fieldset>
+                        <!-- Thymeleaf + Spring Security error display -->
+
+
+                        <!-- User Controls -->
+                        <div class="form-group">
+                            <label>Role Name</label>
+                            <input type="text" class="form-control"  th:field="*{roleName}"
+                                   placeholder="Role Name">
+                        </div>
+
+                        <!-- Login Button -->
+                        <div class="form-actions" style="margin-top: 12px;">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
