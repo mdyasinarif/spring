@@ -6,33 +6,41 @@
 </head>
 <body>
 <div class="container" layout:fragment="custom-container">
-    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:24px;padding: 24px;">
+    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:120px;padding: 24px;">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-user"></i> Create Role
+                <i class="fa fa-user"></i> Edit Role
             </div>
             <span th:text="${existMsg}"></span>
             <span th:text="${successMsg}"></span>
             <div class="card-block" style="padding: 24px;">
-                <form  th:action="@{/edit/}+${id}" th:object="${role}" method="post" >
-                    <table>
-                        <input type="hidden" th:field="*{id}" />
-                        <tr>
-                            <td>Name:</td>
-                            <td><input type="text" th:field="*{roleName}" /></td>
-                            <td th:class="err" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Name Error</td>
-                            <span th:class="err" th:text="${existMsg}"></span>
-                        </tr>
+                <form th:action="@{/role/edit/}+${id}" th:object="${role}" method="post">
+                    <fieldset>
+                        <!-- Thymeleaf + Spring Security error display -->
 
-                        <tr>
-                            <td><button type="submit" >Save</button></td>
-                        </tr>
-                    </table>
+
+                        <!-- User Controls -->
+                        <div class="form-group">
+                            <input type="hidden" th:field="*{id}"/>
+                            <label>Role Name</label>
+                            <input type="text" class="form-control" th:field="*{roleName}"
+                                   placeholder="Role Name">
+                            <td th:class="err" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Name
+                                Error
+                            </td>
+                            <span th:class="err" th:text="${existMsg}"></span>
+                        </div>
+
+                        <!-- Login Button -->
+                        <div class="form-actions" style="margin-top: 12px;">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </fieldset>
                 </form>
-            </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

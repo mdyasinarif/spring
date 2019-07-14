@@ -6,15 +6,15 @@
 </head>
 <body>
 <div class="container" layout:fragment="custom-container">
-    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:24px;padding: 24px;">
+    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:120px;padding: 24px;">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-user"></i> Create User
+                <i class="fa fa-user"></i>User Regestation
             </div>
             <div class="card-block" style="padding: 24px;">
                 <span th:text="${errorMsg}"></span>
                 <span th:text="${successMsg}"></span>
-                <form name="f" th:object="${user}" th:action="@{/user}" method="post">
+                <form name="f" th:object="${user}" th:action="@{/user/add}" method="post">
                     <fieldset>
                         <!-- Thymeleaf + Spring Security error display -->
 
@@ -22,43 +22,61 @@
                         <!-- User Controls -->
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control"  th:field="*{name}"
+                            <input type="text" class="form-control" th:field="*{name}"
                                    placeholder="Name">
                         </div>
 
                         <div class="form-group">
-                            <label >Username</label>
-                            <input type="text" class="form-control"  th:field="*{userName}"
-                                   placeholder="Username">
+                            <label>Age</label>
+                            <input type="text" class="form-control" th:field="*{age}"
+                                   placeholder="Age">
                         </div>
 
                         <div class="form-group">
-                            <label >Password</label>
-                            <input type="password" class="form-control" th:field="*{password}"
+                            <label>E-Mail</label>
+                            <input type="email" class="form-control" th:field="*{email}"
                                    placeholder="Password">
                         </div>
 
-                         <div class="form-group">
-                            <label >E-Mail</label>
-                            <input type="text" class="form-control" th:field="*{email}"
-                                   placeholder="E-Mail">
-                        </div>
-
                         <div class="form-group">
-                            <label>Status</label>
-                            <select th:field="*{active}">
-                                <option th:value="Active" >Active</option>
-                                <option th:value="InActive">InActive</option>
+                            <label>Education</label>
+                            <select th:field="*{education}">
+                                <option th:value="UnEducated">UnEducated</option>
+                                <option th:value="PSC">PSC</option>
+                                <option th:value="JSC">JSC</option>
+                                <option th:value="SSC">SSC</option>
+                                <option th:value="HSC">HSC</option>
+                                <option th:value="Graduate">Graduate</option>
+                                <option th:value="PostGraduate">Post-Graduate</option>
                             </select>
                         </div>
 
 
                         <div class="form-group">
-                            <label>Roles</label>
-                            <select>
-                                <option th:each="role : ${rolelist}" th:text="${role.rolename}"></option>
-                            </select>
+                            <label>Gender</label>
+                            <input-group th:field="*{gender}">
+                                <input type="radio" th:value="Male"/>Male
+                                <input type="radio" th:value="FeMale"/>FeMale
+                                <input type="radio" th:value="Outhers"/>Outhers
+                            </input-group>
+
                         </div>
+
+                        <div class="form-group">
+                            <label>Date Of Birth</label>
+                            <input type="date" class="form-control" th:field="*{birthDate}">
+                        </div>
+                        <div class="form-group">
+                            <label>Photo</label>
+                            <input type="file" class="form-control" th:field="*{filePath}">
+                        </div>
+
+<!--                        <div class="form-group">-->
+<!--                            <label>Roles</label>-->
+<!--                            <select>-->
+<!--                                <option th:each="role : ${rolelist}" th:text="${role.rolename}"></option>-->
+<!--                            </select>-->
+<!--                        </div>-->
 
 
                         <!-- Login Button -->

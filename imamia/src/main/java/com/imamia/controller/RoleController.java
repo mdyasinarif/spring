@@ -53,29 +53,29 @@ public class RoleController {
 
     }
 
-    @PostMapping(value = "/edit/{id}")
+    @PostMapping(value = "edit/{id}")
     public String editRole(@Valid Role role, BindingResult result,@PathVariable("id") Long id, Model model){
         if(result.hasErrors()){
-            return "admin/edit";
+            return "admin/roleedit";
         }else{
             if(role != null){
                 Role role1=this.repo.findByRoleName(role.getRoleName());
                 if(role1 != null ){
                     model.addAttribute("existMsg","RoleName is already exist");
-                    return "admin/edit";
+                    return "admin/roleedit";
                 }else{
                     this.repo.save(role);
                     model.addAttribute("role",new Role());
                     model.addAttribute("successMsg","Alread Success");
                 }           }
         }
-        return "redirect:/rolelist";
+        return "redirect:/role/rolelist";
     }
 
     @RequestMapping(value = "del/{id}",method = RequestMethod.GET)
     public String delRole(@PathVariable("id") Long id){
         this.repo.deleteById(id);
-        return "redirect:/rolelist";
+        return "redirect:/role/rolelist";
 
     }
 }

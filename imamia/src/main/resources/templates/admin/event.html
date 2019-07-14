@@ -1,0 +1,74 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Upload Event</title>
+</head>
+<body>
+<div layout:fragment="custom-container">
+    <div class="container">
+        <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:120px;padding: 24px;">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-user"></i> Upload Event
+                </div>
+                <span th:text="${existMsg}"></span>
+                <span th:text="${successMsg}"></span>
+                <div class="card-block" style="padding: 24px;">
+                    <div class="container-fluid">
+                        <form name="f" th:object="${event}" th:action="@{/event/add}" method="post">
+                            <fieldset>
+                                <!-- Thymeleaf + Spring Security error display -->
+
+
+                                <!-- User Controls -->
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" th:field="*{title}"
+                                           placeholder="Title">
+                                </div>
+
+                               <div class="form-group">
+                                    <label>Venu</label>
+                                    <input type="text" class="form-control" th:field="*{vanu}"
+                                           placeholder="Title">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Start Dtae</label>
+                                    <input type="Date" class="form-control" th:field="*{startDate}"
+                                           >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>End Dtae</label>
+                                    <input type="Date" class="form-control" th:field="*{endDate}"
+                                           >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea type="text" class="form-control" th:field="*{decription}"
+                                              placeholder="Description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo</label>
+                                    <input type="file" class="form-control" th:field="*{filepath}">
+                                </div>
+
+
+
+                                <!-- Login Button -->
+                                <div class="form-actions" style="margin-top: 12px;">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
