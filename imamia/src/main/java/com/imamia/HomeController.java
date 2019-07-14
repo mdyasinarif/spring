@@ -53,5 +53,10 @@ public class HomeController {
         return "/user/reservation";
     }
 
+    @GetMapping(value = "/login")
+    public String displaylogin() {
+        return "login";
+    }
+
 
 }

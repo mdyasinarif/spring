@@ -1,0 +1,75 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Create User</title>
+</head>
+<body>
+<div class="container" layout:fragment="custom-container">
+    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:24px;padding: 24px;">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-user"></i> Create User
+            </div>
+            <div class="card-block" style="padding: 24px;">
+                <span th:text="${errorMsg}"></span>
+                <span th:text="${successMsg}"></span>
+                <form name="f" th:object="${user}" th:action="@{/user}" method="post">
+                    <fieldset>
+                        <!-- Thymeleaf + Spring Security error display -->
+
+
+                        <!-- User Controls -->
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control"  th:field="*{name}"
+                                   placeholder="Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label >Username</label>
+                            <input type="text" class="form-control"  th:field="*{userName}"
+                                   placeholder="Username">
+                        </div>
+
+                        <div class="form-group">
+                            <label >Password</label>
+                            <input type="password" class="form-control" th:field="*{password}"
+                                   placeholder="Password">
+                        </div>
+
+                         <div class="form-group">
+                            <label >E-Mail</label>
+                            <input type="text" class="form-control" th:field="*{email}"
+                                   placeholder="E-Mail">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select th:field="*{active}">
+                                <option th:value="Active" >Active</option>
+                                <option th:value="InActive">InActive</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Roles</label>
+                            <select>
+                                <option th:each="role : ${rolelist}" th:text="${role.rolename}"></option>
+                            </select>
+                        </div>
+
+
+                        <!-- Login Button -->
+                        <div class="form-actions" style="margin-top: 12px;">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
