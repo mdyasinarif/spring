@@ -1,0 +1,8 @@
+package com.imamia.repo;
+
+import com.imamia.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoleRepo extends JpaRepository<Role,Long> {
+    Role findByRoleName(String roleName);
+}

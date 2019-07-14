@@ -18,7 +18,7 @@ public class LoginController {
 
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             /* The user is logged in :) */
-            return "redirect:/index";
+            return "redirect:/user/add";
         }
         return "login";
     }

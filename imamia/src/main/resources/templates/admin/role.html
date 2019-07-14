@@ -11,10 +11,10 @@
             <div class="card-header">
                 <i class="fa fa-user"></i> Create Role
             </div>
-            <span th:text="${errorMsg}"></span>
+            <span th:text="${existMsg}"></span>
             <span th:text="${successMsg}"></span>
             <div class="card-block" style="padding: 24px;">
-                <form name="f" th:object="${role}" th:action="@{/role}" method="post">
+                <form name="f" th:object="${role}" th:action="@{/role/add}" method="post">
                     <fieldset>
                         <!-- Thymeleaf + Spring Security error display -->
 
@@ -22,17 +22,9 @@
                         <!-- User Controls -->
                         <div class="form-group">
                             <label>Role Name</label>
-                            <input type="text" class="form-control"  th:field="*{rolename}"
+                            <input type="text" class="form-control"  th:field="*{roleName}"
                                    placeholder="Role Name">
                         </div>
-
-                        <div class="form-group">
-                            <label>Permissions</label>
-                            <select multiple>
-                                <option th:each="p : ${permissionlist}" th:text="${p.url}"></option>
-                            </select>
-                        </div>
-
 
                         <!-- Login Button -->
                         <div class="form-actions" style="margin-top: 12px;">

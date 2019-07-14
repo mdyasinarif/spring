@@ -30,24 +30,27 @@ private PasswordEncoder passwordEncoder;
     @Autowired
     private RoleRepo roleRepo;
 
-
+@Autowired
+private PasswordEncoder encoder;
 
     @GetMapping(value = "add")
     public String saveRole(Model model){
         model.addAttribute("user", new User());
-        model.addAttribute("rolelist", roleRepo.findAll());
+        model.addAttribute("roles", roleRepo.findAll());
         return "admin/user";
     }
     @PostMapping(value = "add")
     public String add(Model model, @Valid User user) {
         if (user == null) {
             model.addAttribute("errorMsg", "Something Wrong!");
-            model.addAttribute("rolelist", roleRepo.findAll());
+            model.addAttribute("roles", roleRepo.findAll());
             return "admin/user";
         } else {
+            user.setActive(true);
+            user.setPassword(encoder.encode(user.getPassword()));
             this.repo.save(user);
             model.addAttribute("successMsg", "User Save Successfully");
-            model.addAttribute("rolelist", roleRepo.findAll());
+            model.addAttribute("roles", roleRepo.findAll());
 
         }
         return "admin/user";

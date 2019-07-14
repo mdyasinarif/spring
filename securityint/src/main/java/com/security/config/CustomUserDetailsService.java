@@ -24,6 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         // Let Visitor login with either username or email
         Optional<User> optionalUser = Optional.ofNullable(userRepo.findByUserNameOrEmail(s, s));
+        System.out.println(optionalUser.get().getUserName()+" ::: "+optionalUser.get().getPassword());
         optionalUser
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
         return optionalUser

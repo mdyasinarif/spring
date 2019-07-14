@@ -1,4 +1,4 @@
-package com.imamia;
+package com.imamia.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

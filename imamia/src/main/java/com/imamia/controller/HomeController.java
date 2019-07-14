@@ -1,4 +1,4 @@
-package com.imamia;
+package com.imamia.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,55 +8,44 @@ public class HomeController {
 
     @GetMapping(value = "/")
     public String displayIndex() {
-        return "/user/index";
+        return "/index";
     }
 
     @GetMapping(value = "/home")
     public String displayhome() {
-        return "/user/index";
+        return "/index";
     }
 
     @GetMapping(value = "/about")
     public String displayabout() {
-        return "/user/about";
+        return "/about";
     }
 
-    @GetMapping(value = "/blog")
-    public String displayblog() {
-        return "/user/blog";
-    }
 
-    @GetMapping(value = "/blog-detail")
-    public String displayblogdetail() {
-        return "/user/blog-detail";
-    }
 
     @GetMapping(value = "/contact")
     public String displaycontact() {
-        return "/user/contact";
+        return "/contact";
     }
 
     @GetMapping(value = "/gallery")
     public String displaygallery() {
-        return "/user/gallery";
+        return "/gallery";
     }
 
 
     @GetMapping(value = "/menu")
     public String displaymenu() {
-        return "/user/menu";
+        return "/menu";
     }
 
 
     @GetMapping(value = "/reservation")
     public String displayreservation() {
-        return "/user/reservation";
+        return "/reservation";
     }
 
-    @GetMapping(value = "/login")
-    public String displaylogin() {
-        return "login";
-    }
+
 
 
 }

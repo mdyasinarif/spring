@@ -1,8 +1,6 @@
 package com.security.entiy;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -11,6 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false)
     private String name;
 
@@ -19,8 +18,11 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
     private String email;
-    private String active;
+
+    private boolean active;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
@@ -81,11 +83,11 @@ public class User {
         this.email = email;
     }
 
-    public String getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 

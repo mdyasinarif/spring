@@ -17,7 +17,6 @@
                         <img src="images/icons/logo.png" alt="IMG-LOGO" data-logofixed="images/icons/logo2.png">
                     </a>
                 </div>
-
                 <!-- Menu -->
                 <div class="wrap_menu p-l-45 p-l-0-xl">
                     <nav class="menu">
@@ -25,29 +24,25 @@
                             <li>
                                 <a th:href="@{/home}">Home</a>
                             </li>
-
                             <li>
-                                <a th:href="@{/menu}">Menu</a>
+                                <a th:href="@{/ebook}">E-Book</a>
                             </li>
 
                             <li>
-                                <a th:href="@{/reservation}">Reservation</a>
+                                <a th:href="@{/video}">Video</a>
                             </li>
 
+                            <li>
+                                <a th:href="@{/audio}">Audio</a>
+                            </li>
                             <li>
                                 <a th:href="@{/gallery}">Gallery</a>
                             </li>
-
                             <li>
                                 <a th:href="@{/about}">About</a>
                             </li>
-
                             <li>
-                                <a th:href="@{/blog}">Blog</a>
-                            </li>
-
-                            <li>
-                                <a th:href="@{/contact}">Contact</a>
+                                <a th:href="@{/regestation}">Regestation</a>
                             </li>
                         </ul>
                     </nav>
@@ -55,8 +50,10 @@
 
                 <!-- Social -->
                 <div class="social flex-w flex-l-m p-r-20">
-                    <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                    <a href="@{/singup}"><i class="fa fa-sign-in m-l-21" aria-hidden="true"></i></a>
+                    <a href="@{/logout}"><i class="fa fa-sign-out m-l-21" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-youtube m-l-21" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
 
                     <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
