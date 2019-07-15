@@ -32,7 +32,7 @@ public class User {
     private String mobile;
 
     @NotEmpty(message = "Enter  Education Levle")
-    private String[] education;
+    private String education;
 
     @NotEmpty(message = "Enter Gender")
     private String gender;
@@ -115,11 +115,11 @@ public class User {
         this.email = email;
     }
 
-    public String[] getEducation() {
+    public String getEducation() {
         return education;
     }
 
-    public void setEducation(String[] education) {
+    public void setEducation(String education) {
         this.education = education;
     }
 
@@ -222,7 +222,7 @@ public class User {
                 Objects.equals(getName(), user.getName()) &&
                 Objects.equals(getEmail(), user.getEmail()) &&
                 Objects.equals(getMobile(), user.getMobile()) &&
-                Arrays.equals(getEducation(), user.getEducation()) &&
+                Objects.equals(getEducation(), user.getEducation()) &&
                 Objects.equals(getGender(), user.getGender());
     }
 
@@ -230,7 +230,7 @@ public class User {
     public int hashCode() {
 
         int result = Objects.hash(getId(), getName(), getAge(), getEmail(),getMobile(), getGender());
-        result = 31 * result + Arrays.hashCode(getEducation());
+        result = 31 * result + Objects.hashCode(getEducation());
         return result;
     }
 
@@ -242,7 +242,7 @@ public class User {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", education=" + Arrays.toString(education) +
+                ", education=" + education +
                 ", gender='" + gender + '\'' +
                 ", username='" + userName + '\'' +
                 ", password='" + password + '\'' +

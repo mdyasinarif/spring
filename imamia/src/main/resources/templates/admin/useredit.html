@@ -2,7 +2,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout.html}">
 <head>
-    <title>Create User</title>
+    <title>Edit User</title>
 </head>
 <body>
 <div class="container" layout:fragment="custom-container">
@@ -12,18 +12,19 @@
                 <i class="fa fa-user"></i>User Regestation
             </div>
             <div class="card-block" style="padding: 24px;">
-<!--                <span th:text="${existMsg}"></span>-->
+                <span th:text="${errorMsg}"></span>
                 <span th:text="${successMsg}"></span>
-                <form name="f" th:object="${user}" th:action="@{/user/add}" method="post" enctype="multipart/form-data">
+                <form name="f" th:object="${user}" th:action="@{/user/edit/}+${id}" method="post" enctype="multipart/form-data">
                     <fieldset>
-                        <!-- Thymeleaf + Spring Security error display -->
-
-
-                        <!-- User Controls -->
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" th:field="*{name}"
-                                   placeholder="Enter Name">
+                        <div class="row">
+                            <div class="col-8">
+                                <label>Name</label>
+                                <input type="text" class="form-control" th:field="*{name}"
+                                       placeholder="Enter Name">
+                            </div>
+                            <div class="col-4">
+                                <label><img th:src="@{${user.filePath}}" width="100" height="120"/></label>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -48,8 +49,8 @@
                                 <label>Education</label>
                             </div>
                             <div class="col-md-8">
-                               <input type="radio" th:field="*{education}" th:value="UnEducated"/> UnEducated
-                                 <input type="radio" th:field="*{education}"  th:value="PSC"/>PSC
+                                <input type="radio" th:field="*{education}" th:value="UnEducated"/> UnEducated
+                                <input type="radio" th:field="*{education}" th:value="PSC"/>PSC
                                 <input type="radio" th:field="*{education}" th:value="JSC"/> JSC
                                 <input type="radio" th:field="*{education}" th:value="SSC"/> SSC
                                 <input type="radio" th:field="*{education}" th:value="HSC"/> HSC
@@ -62,30 +63,50 @@
 
                         <div class="form-group">
                             <label>Gender</label>
-                                <input type="radio"  th:field="*{gender}" th:value="Male"/>Male
-                                <input type="radio" th:field="*{gender}"  th:value="FeMale"/>FeMale
+                            <input type="radio" th:field="*{gender}" th:value="Male"/>Male
+                            <input type="radio" th:field="*{gender}" th:value="FeMale"/>FeMale
                         </div>
 
                         <div class="form-group">
                             <label>Date Of Birth</label>
                             <input type="date" class="form-control" th:field="*{birthDate}">
                         </div>
+                        <div class="form-group">
+                            <label>Date Of Regestation</label>
+                            <label th:text="${user.regiDate}"></label>
 
-                         <div class="form-group">
-                            <label>User Name</label>
-                            <input type="text" class="form-control" th:field="*{userName}" placeholder="Enter User Name">
+
+                        </div>
+                        <div class="form-group">
+                            <label>Date Of modify</label>
+                            <label th:text="${user.lastModifiedDate}"></label>
                         </div>
 
-                         <div class="form-group">
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" class="form-control" th:field="*{userName}"
+                                   placeholder="Enter User Name">
+                        </div>
+
+                        <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" th:field="*{password}"  placeholder="Enter Password">
+                            <input type="password" class="form-control" th:field="*{password}"
+                                   placeholder="Enter Password">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select th:field="*{roles}" multiple>
+                                <option th:each="role : ${roleList}" th:value="${role.id}">
+                                    <span th:text="${role.roleName}"></span>
+                                </option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label>Photo</label>
                             <input type="file" class="form-control" name="file">
                         </div>
-
 
 
                         <!-- Login Button -->

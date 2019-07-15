@@ -1,5 +1,6 @@
 package com.imamia.controller;
 
+import com.imamia.entity.Role;
 import com.imamia.entity.User;
 import com.imamia.repo.RoleRepo;
 import com.imamia.repo.UserRepo;
@@ -17,6 +18,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/user/")
@@ -28,8 +31,8 @@ public class UserController {
     private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
     @Autowired
     private ImageOptimizer imageOptimizer;
-//    @Autowired
-//    private PasswordEncoder encoder;
+//   @Autowired
+//   private PasswordEncoder encoder;
 
     @Autowired
     private UserRepo repo;
@@ -41,7 +44,7 @@ public class UserController {
 
     @GetMapping("add")
     public String showForm(User user, Model model) {
-        model.addAttribute("roleList", this.roleRepo.findAll());
+        model.addAttribute("user", new User());
         return "admin/user";
     }
 
@@ -63,10 +66,14 @@ public class UserController {
             user.setFileName("new-" + file.getOriginalFilename());
             user.setFileSize(file.getSize());
             // user.setFile(file.getBytes());
-            user.setFilePath("images/" + "new-" + file.getOriginalFilename());
+            user.setFilePath("/images/" + "new-" + file.getOriginalFilename());
             user.setFileExtension(file.getContentType());
             //////////////////////For Image Upload end/////////////////////
            // user.setPassword(encoder.encode(user.getPassword()));
+            Role role = roleRepo.findByRoleName("USER");
+            Set<Role> roleSet = new HashSet<>();
+            roleSet.add(role);
+            user.setRoles(roleSet);
             this.repo.save(user);
             model.addAttribute("user", new User());
             model.addAttribute("roleList", this.roleRepo.findAll());
@@ -90,7 +97,7 @@ public class UserController {
     @GetMapping("/edit/{id}")
     public String editView(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", this.repo.getOne(id));
-        return "edit-page";
+        return "admin/useredit";
     }
 
     @PostMapping("/edit/{id}")
@@ -98,10 +105,10 @@ public class UserController {
                        @PathVariable("id") Long id) {
 
         if (bindingResult.hasErrors()) {
-            return "edit-page";
+            return "admin/useredit";
         }
         this.repo.save(user);
-        return "redirect:/";
+        return "redirect:/userlist";
     }
 
 
@@ -110,7 +117,7 @@ public class UserController {
         if (id != null) {
             this.repo.deleteById(id);
         }
-        return "redirect:/";
+        return "redirect:/userlist";
     }
 
 

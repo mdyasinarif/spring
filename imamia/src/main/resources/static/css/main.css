@@ -142,8 +142,8 @@ ul, li {
 
 /* ------------------------------------ */
 input {
-    outline: none;
-    border: none !important;
+    outline: grey;
+    border:  1px;
 }
 
 textarea {

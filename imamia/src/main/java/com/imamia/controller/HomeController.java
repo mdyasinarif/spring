@@ -22,7 +22,6 @@ public class HomeController {
     }
 
 
-
     @GetMapping(value = "/contact")
     public String displaycontact() {
         return "/contact";
@@ -45,6 +44,15 @@ public class HomeController {
         return "/reservation";
     }
 
+    @GetMapping(value = "/blog")
+    public String displayblog() {
+        return "/blog";
+    }
+
+    @GetMapping(value = "/blog-detail")
+    public String blogdetail() {
+        return "/detail";
+    }
 
 
 
