@@ -16,10 +16,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    @Size(min = 2,max = 30,message = "Hey, Size must be between 2 and 30")
+    @Size(min = 2, max = 30, message = "Hey, Size must be between 2 and 30")
     private String name;
 
-    @Min(value = 18,message = "Hey, Minium Age is 18")
+    @Min(value = 18, message = "Hey, Minium Age is 18")
     private byte age;
 
     @NotNull(message = "Enter An Email Address")
@@ -27,12 +27,15 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
 
+    @NotNull(message = "Enter A Contract No")
+    @Column(unique = true)
+    private String mobile;
+
     @NotEmpty(message = "Enter  Education Levle")
     private String[] education;
 
     @NotEmpty(message = "Enter Gender")
     private String gender;
-
 
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -42,7 +45,7 @@ public class User {
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date lastModifiedDate=new Date();
+    private Date lastModifiedDate = new Date();
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -50,10 +53,9 @@ public class User {
 
     @NotNull(message = "Enter An User Name ")
     @Column(nullable = false)
-
     private String userName;
     @NotNull(message = "Enter A Password ")
-    @Min(value = 4,message = "Hey, Minium 4 digit")
+    @Min(value = 4, message = "Hey, Minium 4 digit")
     @Column(nullable = false)
     private String password;
 
@@ -202,6 +204,14 @@ public class User {
         this.password = password;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -211,14 +221,15 @@ public class User {
                 Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getName(), user.getName()) &&
                 Objects.equals(getEmail(), user.getEmail()) &&
+                Objects.equals(getMobile(), user.getMobile()) &&
                 Arrays.equals(getEducation(), user.getEducation()) &&
-                Objects.equals(getGender(), user.getGender()) ;
+                Objects.equals(getGender(), user.getGender());
     }
 
     @Override
     public int hashCode() {
 
-        int result = Objects.hash(getId(), getName(), getAge(), getEmail(), getGender());
+        int result = Objects.hash(getId(), getName(), getAge(), getEmail(),getMobile(), getGender());
         result = 31 * result + Arrays.hashCode(getEducation());
         return result;
     }
@@ -230,6 +241,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
+                ", mobile='" + mobile + '\'' +
                 ", education=" + Arrays.toString(education) +
                 ", gender='" + gender + '\'' +
                 ", username='" + userName + '\'' +
