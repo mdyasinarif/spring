@@ -97,7 +97,7 @@
                         <div class="form-group">
                             <label>Role</label>
                             <select th:field="*{roles}" multiple>
-                                <option th:each="role : ${roleList}" th:value="${role.id}">
+                                <option th:each="role : ${rolelist}" th:value="${role.id}">
                                     <span th:text="${role.roleName}"></span>
                                 </option>
                             </select>

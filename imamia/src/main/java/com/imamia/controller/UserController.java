@@ -97,6 +97,7 @@ public class UserController {
     @GetMapping("/edit/{id}")
     public String editView(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", this.repo.getOne(id));
+        model.addAttribute("rolelist", this.roleRepo.findAll());
         return "admin/useredit";
     }
 
@@ -107,6 +108,8 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "admin/useredit";
         }
+        User oldUser = this.repo.getOne(id);
+        user.setFilePath(oldUser.getFilePath());
         this.repo.save(user);
         return "redirect:/userlist";
     }
