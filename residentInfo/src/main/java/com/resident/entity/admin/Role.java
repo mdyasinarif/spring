@@ -1,4 +1,4 @@
-package com.resident.entity;
+package com.resident.entity.admin;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

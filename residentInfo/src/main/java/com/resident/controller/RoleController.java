@@ -2,7 +2,7 @@ package com.resident.controller;
 
 
 import com.resident.repo.RoleRepo;
-import com.resident.entity.Role;
+import com.resident.entity.admin.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

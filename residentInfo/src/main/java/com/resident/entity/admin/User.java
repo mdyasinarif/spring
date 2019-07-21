@@ -1,4 +1,4 @@
-package com.resident.entity;
+package com.resident.entity.admin;
 
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;

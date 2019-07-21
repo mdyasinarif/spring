@@ -3,8 +3,8 @@ package com.resident.controller;
 
 import com.resident.repo.RoleRepo;
 import com.resident.repo.UserRepo;
-import com.resident.entity.Role;
-import com.resident.entity.User;
+import com.resident.entity.admin.Role;
+import com.resident.entity.admin.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

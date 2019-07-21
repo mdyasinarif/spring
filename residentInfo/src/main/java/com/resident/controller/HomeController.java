@@ -12,15 +12,15 @@ public class HomeController {
 
     @GetMapping(value = "/sign-in")
     public String displaySignin() {
-        return "sign-in";
+        return "/sign-in";
     }
     @GetMapping(value = "/sign-up")
     public String displaySignup() {
-        return "sign-up";
+        return "/sign-up";
     }
-    @GetMapping(value = "/poilce")
+    @GetMapping(value = "/police")
     public String displayPolice() {
-        return "poilce";
+        return "user/police";
     }
 
 }
