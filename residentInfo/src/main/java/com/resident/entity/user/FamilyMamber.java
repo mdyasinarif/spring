@@ -14,10 +14,9 @@ public class FamilyMamber {
 
 
     private String name;
-    private String nidNo;
     private String gender;
-    private Date dateOfBirth;
-    private String education;
+    private int age;
+    private String nidNo;
     private String contractNo;
 
     @ManyToOne

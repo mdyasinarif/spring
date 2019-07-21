@@ -18,11 +18,13 @@ public class HouseOwner {
     // personal information section
     private String name;
     private String education;
-    private String gender;
     private String nidNo;
+    private String gender;
     private String tinNo;
-    private String contractNo;
     private Date dateOfBirth;
+
+    private String contractNo;
+
     private String income;
     // End personal information section
 
@@ -32,7 +34,7 @@ public class HouseOwner {
     private int noOfMamber;
 
 
-    private int noOfServent;
+    private int noOfEmploye;
 
     // End suporting member session
 

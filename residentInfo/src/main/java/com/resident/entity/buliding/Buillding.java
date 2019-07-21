@@ -12,6 +12,7 @@ public class Buillding {
     private Long id;
     private String name;
     private String houseNo;
+    private String buildingType;
 
     private String flatName;
 

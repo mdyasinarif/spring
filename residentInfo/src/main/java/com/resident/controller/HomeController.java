@@ -14,13 +14,25 @@ public class HomeController {
     public String displaySignin() {
         return "/sign-in";
     }
+
     @GetMapping(value = "/sign-up")
     public String displaySignup() {
         return "/sign-up";
     }
+
     @GetMapping(value = "/police")
     public String displayPolice() {
         return "user/police";
+    }
+
+    @GetMapping(value = "/houseOwner")
+    public String displayhouseOwner() {
+        return "user/houseOwner";
+    }
+
+    @GetMapping(value = "/tenant")
+    public String displaytenant() {
+        return "user/tenant";
     }
 
 }
