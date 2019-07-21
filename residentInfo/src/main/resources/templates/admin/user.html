@@ -1,0 +1,102 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Create User</title>
+</head>
+<body>
+<div class="container" layout:fragment="custom-container">
+    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:120px;padding: 24px;">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-user"></i>User Regestation
+            </div>
+            <div class="card-block" style="padding: 24px;">
+<!--                <span th:text="${existMsg}"></span>-->
+                <span th:text="${successMsg}"></span>
+                <form name="f" th:object="${user}" th:action="@{/user/add}" method="post" enctype="multipart/form-data">
+                    <fieldset>
+                        <!-- Thymeleaf + Spring Security error display -->
+
+
+                        <!-- User Controls -->
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" th:field="*{name}"
+                                   placeholder="Enter Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="text" class="form-control" th:field="*{age}"
+                                   placeholder="Enter Age">
+                        </div>
+
+                        <div class="form-group">
+                            <label>E-Mail</label>
+                            <input type="email" class="form-control" th:field="*{email}"
+                                   placeholder="Enter Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile No</label>
+                            <input type="text" class="form-control" th:field="*{mobile}"
+                                   placeholder="Enter Contract No">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>Education</label>
+                            </div>
+                            <div class="col-md-8">
+                               <input type="radio" th:field="*{education}" th:value="UnEducated"/> UnEducated
+                                 <input type="radio" th:field="*{education}"  th:value="PSC"/>PSC
+                                <input type="radio" th:field="*{education}" th:value="JSC"/> JSC
+                                <input type="radio" th:field="*{education}" th:value="SSC"/> SSC
+                                <input type="radio" th:field="*{education}" th:value="HSC"/> HSC
+                                <input type="radio" th:field="*{education}" th:value="Graduate"/> Graduate
+                                <input type="radio" th:field="*{education}" th:value="PostGraduate"/> Post_Graduate
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                                <input type="radio"  th:field="*{gender}" th:value="Male"/>Male
+                                <input type="radio" th:field="*{gender}"  th:value="FeMale"/>FeMale
+                        </div>
+
+                        <div class="form-group">
+                            <label>Date Of Birth</label>
+                            <input type="date" class="form-control" th:field="*{birthDate}">
+                        </div>
+
+                         <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" class="form-control" th:field="*{userName}" placeholder="Enter User Name">
+                        </div>
+
+                         <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" th:field="*{password}"  placeholder="Enter Password">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Photo</label>
+                            <input type="file" class="form-control" name="file">
+                        </div>
+
+
+
+                        <!-- Login Button -->
+                        <div class="form-actions" style="margin-top: 12px;">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

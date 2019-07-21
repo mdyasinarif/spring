@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Police</title>
+    <!-- Favicon-->
+</head>
+
+<body class="theme-red">
+<div layout:fragment="custom-container">
+    <div class="container-fluid">
+        <section class="content">
+            <div class="block-header">
+                <h2>Police Information</h2>
+            </div>
+            <div class="body">
+                <h2 class="card-inside-title">Name</h2>
+                <div class="row clearfix">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" class="form-control" placeholder="Name"/>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="card-inside-title">Batch Id</h2>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" class="form-control" placeholder="Batch Id"/>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="card-inside-title">Post</h2>
+                    <div class="col-sm-4">
+                        <select class="form-control show-tick">
+                            <option value="">-- Please select --</option>
+                            <option value="Inspector General of Police ">Inspector General of Police</option>
+                            <option value="Additional Inspector General of Police">Additional Inspector General of
+                                Police
+                            </option>
+                            <option value="Deputy Inspector General of Police">Deputy Inspector General of Police
+                            </option>
+                            <option value="Additional Deputy Inspector General of Police">Additional Deputy Inspector
+                                General of Police
+                            </option>
+                            <option value="Superintendent of Police">Superintendent of Police</option>
+                            <option value="Additional Superintendent of Police">Additional Superintendent of Police
+                            </option>
+                            <option value="Senior Assistant Superintendent of Police">Senior Assistant Superintendent of
+                                Police
+                            </option>
+                            <option value="Assistant Superintendent of Police ">Assistant Superintendent of Police
+                            </option>
+                            <option value="Inspector ">Inspector</option>
+                            <option value="Sub Inspector ">Sub Inspector</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+</body>
+
+</html>
