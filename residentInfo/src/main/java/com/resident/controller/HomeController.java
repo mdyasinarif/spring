@@ -25,7 +25,7 @@ public class HomeController {
         return "user/police";
     }
 
-    @GetMapping(value = "/houseOwner")
+    @GetMapping(value = "/houseowner")
     public String displayhouseOwner() {
         return "user/houseOwner";
     }

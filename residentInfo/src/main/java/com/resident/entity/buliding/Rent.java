@@ -1,22 +1,43 @@
 package com.resident.entity.buliding;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.resident.entity.user.HouseOwner;
+import com.resident.entity.user.Tenant;
+
+import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Entity
+@Table(name = "house_rent")
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long builldingId;
-    private Long flatId;
-    private Long houseOwnerId;
-    private Double rent;
+    @ManyToOne
+    @JoinColumn(name = "buillding_id")
+    private Buillding buillding;
+
+   @ManyToOne
+    @JoinColumn(name = "flat_id")
+    private Flat flat;
+
+    @ManyToOne
+    @JoinColumn(name = "houseOwner_id")
+    private HouseOwner houseOwner;
+
+    @ManyToOne
+    @JoinColumn(name = "tena_id")
+    private Tenant tenant;
+
+
+    private Double rentAmount;
+
+    @Temporal(TemporalType.DATE)
     private Date rentdate;
-    private String condition;
+
+    @Temporal(TemporalType.DATE)
+    private Date currentdate;
+    private String rentcondition;
 
 }
