@@ -35,7 +35,7 @@ public class RoleController {
                 }else{
                     this.repo.save(role);
                     model.addAttribute("role",new Role());
-                    model.addAttribute("successMsg","Alread Success");
+                    model.addAttribute("successMsg","Role save Successfully");
                 }           }
         }
         return "admin/role";

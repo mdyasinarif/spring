@@ -5,42 +5,36 @@
     <title>Role Edit</title>
 </head>
 <body>
-<div class="container" layout:fragment="custom-container">
-    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:120px;padding: 24px;">
-        <div class="card">
-            <div class="card-header">
-                <i class="fa fa-user"></i> Edit Role
-            </div>
-            <span th:text="${existMsg}"></span>
-            <span th:text="${successMsg}"></span>
-            <div class="card-block" style="padding: 24px;">
-                <form th:action="@{/role/edit/}+${id}" th:object="${role}" method="post">
-                    <fieldset>
-                        <!-- Thymeleaf + Spring Security error display -->
-
-
-                        <!-- User Controls -->
-                        <div class="form-group">
-                            <input type="hidden" th:field="*{id}"/>
-                            <label>Role Name</label>
-                            <input type="text" class="form-control" th:field="*{roleName}"
-                                   placeholder="Role Name">
-                            <td th:class="err" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Name
-                                Error
-                            </td>
-                            <span th:class="err" th:text="${existMsg}"></span>
+<div layout:fragment="custom-container">
+    <section class="content">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Edit Role</h2>
+                    <span th:text="${existMsg}"></span>
+                    <span th:text="${successMsg}"></span>
+                </div>
+                <div class="body">
+                    <form id="form_validation" th:action="@{/role/edit/}+${id}" th:object="${role}" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line focused success">
+                                <input type="text" th:field="*{roleName}" class="form-control" name="name"
+                                       maxlength="10"
+                                       minlength="3" required />
+                                <label class="form-label">Role Name</label>
+                                <td th:class="err" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Name
+                                    Error
+                                </td>
+                                <span th:class="err" th:text="${existMsg}"></span>
+                            </div>
                         </div>
+                        <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                    </form>
+                </div>
 
-                        <!-- Login Button -->
-                        <div class="form-actions" style="margin-top: 12px;">
-                            <button type="submit" class="btn btn-success">Save</button>
-                        </div>
-                    </fieldset>
-                </form>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 </div>
 </body>
 </html>

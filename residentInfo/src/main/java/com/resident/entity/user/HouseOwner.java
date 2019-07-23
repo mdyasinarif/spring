@@ -4,6 +4,7 @@ import com.resident.entity.address.CityCorporation;
 import com.resident.entity.address.Country;
 import com.resident.entity.address.District;
 import com.resident.entity.address.Division;
+import com.resident.entity.admin.User;
 import com.resident.entity.buliding.Buillding;
 
 import javax.persistence.*;
@@ -38,6 +39,103 @@ public class HouseOwner {
 
     // End suporting member session
 
+@OneToOne
+@JoinColumn(name = "user_id")
+    private User user;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getNidNo() {
+        return nidNo;
+    }
+
+    public void setNidNo(String nidNo) {
+        this.nidNo = nidNo;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getTinNo() {
+        return tinNo;
+    }
+
+    public void setTinNo(String tinNo) {
+        this.tinNo = tinNo;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getContractNo() {
+        return contractNo;
+    }
+
+    public void setContractNo(String contractNo) {
+        this.contractNo = contractNo;
+    }
+
+    public String getIncome() {
+        return income;
+    }
+
+    public void setIncome(String income) {
+        this.income = income;
+    }
+
+    public int getNoOfMamber() {
+        return noOfMamber;
+    }
+
+    public void setNoOfMamber(int noOfMamber) {
+        this.noOfMamber = noOfMamber;
+    }
+
+    public int getNoOfEmploye() {
+        return noOfEmploye;
+    }
+
+    public void setNoOfEmploye(int noOfEmploye) {
+        this.noOfEmploye = noOfEmploye;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

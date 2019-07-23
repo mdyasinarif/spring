@@ -19,68 +19,22 @@ public class User {
     @Size(min = 2, max = 30, message = "Hey, Size must be between 2 and 30")
     private String name;
 
-    @Min(value = 18, message = "Hey, Minium Age is 18")
-    private byte age;
-
-    @NotNull(message = "Enter An Email Address")
-    @Email
-    @Column(name = "email", unique = true)
-    private String email;
-
-    @NotNull(message = "Enter A Contract No")
-    @Column(unique = true)
-    private String mobile;
-
-    @NotEmpty(message = "Enter  Education Levle")
-    private String education;
-
-    @NotEmpty(message = "Enter Gender")
-    private String gender;
 
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date regiDate;
+    @NotNull(message = "Enter Phone Number")
 
-    @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date lastModifiedDate = new Date();
+    @Column(name = "text", unique = true)
+    private String phone;
 
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date birthDate;
-
-    @NotNull(message = "Enter An User Name ")
-    @Column(nullable = false)
-    private String userName;
     @NotNull(message = "Enter A Password ")
-    @Min(value = 4, message = "Hey, Minium 4 digit")
-    @Column(nullable = false)
+    @Column(name = "password")
     private String password;
 
-    //////File Upload==============
-    private long fileSize;
-    private String fileName;
-    //  @Lob
-    // private byte[] file;
-    private String filePath;
-    private String fileExtension;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "u_id"),
-            inverseJoinColumns = @JoinColumn(name = "r_id"))
-    private Set<Role> roles;
+    private String usertype;
 
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public User() {
     }
 
     public Long getId() {
@@ -99,101 +53,20 @@ public class User {
         this.name = name;
     }
 
-    public byte getAge() {
-        return age;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setAge(byte age) {
-        this.age = age;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsertype() {
+        return usertype;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-
-    public Date getRegiDate() {
-        return regiDate;
-    }
-
-    public void setRegiDate(Date regiDate) {
-        this.regiDate = regiDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public long getFileSize() {
-        return fileSize;
-    }
-
-    public void setFileSize(long fileSize) {
-        this.fileSize = fileSize;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public String getFileExtension() {
-        return fileExtension;
-    }
-
-    public void setFileExtension(String fileExtension) {
-        this.fileExtension = fileExtension;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
     }
 
     public String getPassword() {
@@ -204,47 +77,26 @@ public class User {
         this.password = password;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getAge() == user.getAge() &&
+        return
                 Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getName(), user.getName()) &&
-                Objects.equals(getEmail(), user.getEmail()) &&
-                Objects.equals(getMobile(), user.getMobile()) &&
-                Objects.equals(getEducation(), user.getEducation()) &&
-                Objects.equals(getGender(), user.getGender());
+                Objects.equals(getPhone(), user.getPhone())&&
+                Objects.equals(getPassword(), user.getPassword())&&
+                Objects.equals(getUsertype(), user.getUsertype());
     }
 
-    @Override
-    public int hashCode() {
 
-        int result = Objects.hash(getId(), getName(), getAge(), getEmail(),getMobile(), getGender());
-        result = 31 * result + Objects.hashCode(getEducation());
-        return result;
-    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", education=" + education +
-                ", gender='" + gender + '\'' +
-                ", username='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

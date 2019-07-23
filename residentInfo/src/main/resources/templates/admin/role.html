@@ -6,39 +6,30 @@
 </head>
 <body>
 <div layout:fragment="custom-container">
-    <div class="container">
-        <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:120px;padding: 24px;">
+    <section class="content">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
-                <div class="card-header">
-                    <i class="fa fa-user"></i> Create Role
+                <div class="header">
+                    <h2>ADD Role</h2>
+                    <span th:text="${existMsg}"></span>
+                    <span th:text="${successMsg}"></span>
                 </div>
-                <span th:text="${existMsg}"></span>
-                <span th:text="${successMsg}"></span>
-                <div class="card-block" style="padding: 24px;">
-                    <div class="container-fluid">
-                        <form name="f" th:object="${role}" th:action="@{/role/add}" method="post">
-                            <fieldset>
-                            <!-- Thymeleaf + Spring Security error display -->
-
-
-                            <!-- User Controls -->
-                            <div class="form-group">
-                                <label>Role Name</label>
-                                <input type="text" class="form-control" th:field="*{roleName}"
-                                       placeholder="Role Name">
+                <div class="body">
+                    <form id="form_validation" th:object="${role}" th:action="@{/role/add}" method="POST">
+                            <div class="form-group form-float">
+                                <div class="form-line focused success">
+                                    <input type="text" th:field="*{roleName}" class="form-control" name="name" maxlength="10"
+                                           minlength="3" required>
+                                    <label class="form-label">Role Name</label>
+                                </div>
                             </div>
-
-                            <!-- Login Button -->
-                            <div class="form-actions" style="margin-top: 12px;">
-                                <button type="submit" class="btn btn-success">Save</button>
-                            </div>
-                        </fieldset>
-                        </form>
-                    </div>
+                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                    </form>
                 </div>
+
             </div>
         </div>
-    </div>
+    </section>
 </div>
 </body>
 </html>

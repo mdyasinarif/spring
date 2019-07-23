@@ -1,8 +1,10 @@
 package com.resident.controller;
 
 
-import com.resident.repo.RoleRepo;
-import com.resident.repo.UserRepo;
+import com.resident.entity.user.HouseOwner;
+import com.resident.entity.user.Police;
+import com.resident.entity.user.Tenant;
+import com.resident.repo.*;
 import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 
 
 import javax.validation.Valid;
@@ -26,14 +27,6 @@ import java.util.Set;
 @RequestMapping(value = "/user/")
 public class UserController {
 
-    //Save the uploaded file to this folder
-    //  private static String UPLOADED_FOLDER = "D:/spring/Spring-37/springmvcinpurvalidation/src/main/resources/static/images/";
-    //private static String UPLOADED_FOLDER = "images/"; //Okay when images folder is at project root
-    private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
-    @Autowired
-    private ImageOptimizer imageOptimizer;
-//   @Autowired
-//   private PasswordEncoder encoder;
 
     @Autowired
     private UserRepo repo;
@@ -41,6 +34,12 @@ public class UserController {
     @Autowired
     private RoleRepo roleRepo;
 
+    @Autowired
+    private HouseOwnerRepo houseOwnerRepo;
+    @Autowired
+    private PoilceRepo poilceRepo;
+    @Autowired
+    private TenantRepo tenantRepo;
 
 
     @GetMapping("add")
@@ -50,46 +49,44 @@ public class UserController {
     }
 
     @PostMapping("add")
-    public String save(@Valid User user, BindingResult bindingResult, Model model, @RequestParam("file") MultipartFile file) {
+    public String save(@Valid User user, BindingResult bindingResult, Model model, @RequestParam("usertype") String usertype) {
 
         if (bindingResult.hasErrors()) {
             return "admin/user";
         }
-        user.setRegiDate(new Date());
 
-
-        try {
-            //////////////////////For Image Upload start /////////////////////
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-
-            Files.write(path, bytes);
-            user.setFileName("new-" + file.getOriginalFilename());
-            user.setFileSize(file.getSize());
-            // user.setFile(file.getBytes());
-            user.setFilePath("/images/" + "new-" + file.getOriginalFilename());
-            user.setFileExtension(file.getContentType());
-            //////////////////////For Image Upload end/////////////////////
-           // user.setPassword(encoder.encode(user.getPassword()));
-            Role role = roleRepo.findByRoleName("USER");
-            Set<Role> roleSet = new HashSet<>();
-            roleSet.add(role);
-            user.setRoles(roleSet);
+        if (usertype.equals("houseowner")) {
             this.repo.save(user);
-            model.addAttribute("user", new User());
-            model.addAttribute("roleList", this.roleRepo.findAll());
-            model.addAttribute("successMsg", "Congratulations! You are old enough to sign up for this site.");
-            imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.3f, 100, 100);
+            HouseOwner owner = new HouseOwner();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            User user1 = repo.findByPhone(user.getPhone());
+
+            owner.setUser(user1);
+            this.houseOwnerRepo.save(owner);
+        } else if (usertype.equals("police")) {
+            this.repo.save(user);
+            Police police = new Police();
+
+            User user1 = repo.findByPhone(user.getPhone());
+
+            police.setUser(user1);
+            this.poilceRepo.save(police);
+
+        } else if (usertype.equals("tenant")) {
+            this.repo.save(user);
+            Tenant tenant = new Tenant();
+
+            User user1 = repo.findByPhone(user.getPhone());
+
+            tenant.setUser(user1);
+            this.tenantRepo.save(tenant);
         }
-        model.addAttribute("roleList", this.roleRepo.findAll());
+
         return "admin/user";
     }
 
     @GetMapping(value = "userlist")
-    public String userList(Model model){
+    public String userList(Model model) {
         model.addAttribute("list", this.repo.findAll());
         return "admin/userlist";
     }
@@ -98,7 +95,6 @@ public class UserController {
     @GetMapping("/edit/{id}")
     public String editView(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", this.repo.getOne(id));
-        model.addAttribute("rolelist", this.roleRepo.findAll());
         return "admin/useredit";
     }
 
@@ -110,7 +106,6 @@ public class UserController {
             return "admin/useredit";
         }
         User oldUser = this.repo.getOne(id);
-        user.setFilePath(oldUser.getFilePath());
         this.repo.save(user);
         return "redirect:/userlist";
     }
