@@ -2,6 +2,7 @@ package com.imamia.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 @Entity
 public class News {
@@ -12,6 +13,10 @@ public class News {
     @NotEmpty(message = "Enter News Titel")
     @Column(unique = true)
     private String title;
+
+    private String byuser;
+
+
 
     private String decription;
 
@@ -35,6 +40,16 @@ public class News {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getByuser() {
+        return byuser;
+    }
+
+    public void setByuser(String byuser) {
+        this.byuser = byuser;
+    }
+
+
 
     public String getDecription() {
         return decription;

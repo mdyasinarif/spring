@@ -15,6 +15,9 @@ public class Event {
     private String title;
 
     private String vanu;
+    private String byuser;
+
+    private  Date postdate  = new Date();
 
     private Date startDate;
 
@@ -86,5 +89,21 @@ public class Event {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String getByuser() {
+        return byuser;
+    }
+
+    public void setByuser(String byuser) {
+        this.byuser = byuser;
+    }
+
+    public Date getPostdate() {
+        return postdate;
+    }
+
+    public void setPostdate(Date postdate) {
+        this.postdate = postdate;
     }
 }

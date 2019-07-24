@@ -5,7 +5,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;

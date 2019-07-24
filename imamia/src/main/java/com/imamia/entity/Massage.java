@@ -2,6 +2,7 @@ package com.imamia.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,9 @@ public class Massage {
     private String title;
 
     private String msg;
+    private String byuser;
+
+    private Date postdate  = new Date();
 
     private String recipient;
 
@@ -57,5 +61,19 @@ public class Massage {
         this.recipient = recipient;
     }
 
+    public String getByuser() {
+        return byuser;
+    }
 
+    public void setByuser(String byuser) {
+        this.byuser = byuser;
+    }
+
+    public Date getPostdate() {
+        return postdate;
+    }
+
+    public void setPostdate(Date postdate) {
+        this.postdate = postdate;
+    }
 }

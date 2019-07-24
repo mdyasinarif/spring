@@ -18,6 +18,7 @@ public class Police {
     private Date dateOfBirth;
     private String gender;
     private String contractNo;
+    private String photo;
 
 
     @OneToOne
@@ -97,5 +98,13 @@ public class Police {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

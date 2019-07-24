@@ -16,7 +16,7 @@
                 <span th:text="${successMsg}"></span>
                 <div class="card-block" style="padding: 24px;">
                     <div class="container-fluid">
-                        <form name="f" th:object="${news}" th:action="@{/news/add}" method="post">
+                        <form name="f" th:object="${news}" th:action="@{/news/add}" method="post" enctype="multipart/form-data">
                             <fieldset>
                             <!-- Thymeleaf + Spring Security error display -->
 
@@ -26,6 +26,12 @@
                                 <label>Title</label>
                                 <input type="text" class="form-control" th:field="*{title}"
                                        placeholder="Title">
+                            </div>
+
+                            <div class="form-group">
+                                <label>User</label>
+                                <input type="text" class="form-control" th:field="*{byuser}"
+                                       placeholder="User Name">
                             </div>
 
                             <div class="form-group">

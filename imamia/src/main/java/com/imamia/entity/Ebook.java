@@ -3,6 +3,7 @@ package com.imamia.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.File;
+import java.util.Date;
 
 @Entity
 public class Ebook {
@@ -15,7 +16,9 @@ public class Ebook {
     private String title;
 
     private String decription;
+    private String byuser;
 
+    private Date postdate  = new Date();
     private String filepath;
 
     private File book;
@@ -39,6 +42,22 @@ public class Ebook {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getByuser() {
+        return byuser;
+    }
+
+    public void setByuser(String byuser) {
+        this.byuser = byuser;
+    }
+
+    public Date getPostdate() {
+        return postdate;
+    }
+
+    public void setPostdate(Date postdate) {
+        this.postdate = postdate;
     }
 
     public String getDecription() {

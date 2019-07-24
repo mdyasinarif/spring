@@ -1,4 +1,4 @@
-package com.resident.controller;
+package com.resident.controller.adminController;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;

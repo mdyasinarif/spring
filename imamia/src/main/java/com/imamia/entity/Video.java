@@ -2,6 +2,7 @@ package com.imamia.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 @Entity
 public class Video {
@@ -14,7 +15,9 @@ public class Video {
     private String title;
 
     private String decription;
+    private String byuser;
 
+    private Date postdate  = new Date();
     private String filepath;
 
     private String videolink;
@@ -62,5 +65,21 @@ public class Video {
 
     public void setVideolink(String videolink) {
         this.videolink = videolink;
+    }
+
+    public String getByuser() {
+        return byuser;
+    }
+
+    public void setByuser(String byuser) {
+        this.byuser = byuser;
+    }
+
+    public Date getPostdate() {
+        return postdate;
+    }
+
+    public void setPostdate(Date postdate) {
+        this.postdate = postdate;
     }
 }

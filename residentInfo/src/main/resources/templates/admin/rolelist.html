@@ -26,8 +26,8 @@
                             <tr th:each="role : ${list}">
                                 <td th:text="${role.id}"></td>
                                 <td th:text="${role.roleName}"></td>
-                                <td><a th:href="@{'/role/edit/' + ${role.id}}">EDIT</a></td>
-                                <td><a th:href="@{'/role/del/' + ${role.id}}">DELETE</a></td>
+                                <td><a th:href="@{'/role/edit/' + ${role.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                <td><a th:href="@{'/role/del/' + ${role.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
                             </tr>
                         </table>
                     </div>

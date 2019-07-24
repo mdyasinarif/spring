@@ -1,27 +1,23 @@
-package com.resident.controller;
+package com.resident.controller.adminController;
 
 
 import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Police;
 import com.resident.entity.user.Tenant;
-import com.resident.repo.*;
-import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
+import com.resident.repo.adminRepo.RoleRepo;
+import com.resident.repo.adminRepo.UserRepo;
+import com.resident.repo.userRepo.HouseOwnerRepo;
+import com.resident.repo.userRepo.PoilceRepo;
+import com.resident.repo.userRepo.TenantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 
 import javax.validation.Valid;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/user/")
@@ -45,14 +41,14 @@ public class UserController {
     @GetMapping("add")
     public String showForm(User user, Model model) {
         model.addAttribute("user", new User());
-        return "admin/user";
+        return "sign-up";
     }
 
     @PostMapping("add")
     public String save(@Valid User user, BindingResult bindingResult, Model model, @RequestParam("usertype") String usertype) {
 
         if (bindingResult.hasErrors()) {
-            return "admin/user";
+            return "sign-up";
         }
 
         if (usertype.equals("houseowner")) {
@@ -82,7 +78,7 @@ public class UserController {
             this.tenantRepo.save(tenant);
         }
 
-        return "admin/user";
+        return "sign-up";
     }
 
     @GetMapping(value = "userlist")
@@ -107,7 +103,7 @@ public class UserController {
         }
         User oldUser = this.repo.getOne(id);
         this.repo.save(user);
-        return "redirect:/userlist";
+        return "redirect:/user/userlist";
     }
 
 
@@ -116,7 +112,7 @@ public class UserController {
         if (id != null) {
             this.repo.deleteById(id);
         }
-        return "redirect:/userlist";
+        return "redirect:/user/userlist";
     }
 
 

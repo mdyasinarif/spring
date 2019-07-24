@@ -16,6 +16,7 @@ public class Tenant {
     private String tinNo;
     private String contractNo;
     private Date dateOfBirth;
+
     // address session
 
 
@@ -31,6 +32,7 @@ public class Tenant {
 
     // End suporting member session
 
+    private String photo;
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -109,5 +111,13 @@ public class Tenant {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
