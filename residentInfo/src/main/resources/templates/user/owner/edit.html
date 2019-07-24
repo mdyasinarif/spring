@@ -25,12 +25,14 @@
                             <h2>Police Information</h2>
                         </div>
                         <div class="body">
-                            <form id="form_validation" method="POST">
+                            <form id="form_validation" th:object="${police}" th:action="@{/police/edit/}+${id}"
+                                  enctype="multipart/form-data" method="POST">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="col-sm-6">
                                         <div class="form-group form-float">
                                             <div class="form-line focused success">
-                                                <input type="text" class="form-control" name="name" maxlength="10"
+                                                <input type="text" class="form-control" th:field="*{name}"
+                                                       maxlength="10"
                                                        minlength="3" required>
                                                 <label class="form-label">Name</label>
                                             </div>
@@ -53,7 +55,8 @@
                                     <div class="col-sm-6">
                                         <div class="form-group form-float">
                                             <div class="form-line focused success">
-                                                <input type="text" class="form-control" name="batchid" maxlength="10"
+                                                <input type="text" class="form-control" th:field="*{batchId}"
+                                                       maxlength="10"
                                                        minlength="3" required>
                                                 <label class="form-label">Batch Id</label>
                                             </div>
@@ -76,7 +79,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group form-float">
                                             <div class="form-line focused success">
-                                                <input type="text" class="form-control" name="nid" maxlength="10"
+                                                <input type="text" class="form-control" th:field="*{nid}" maxlength="10"
                                                        minlength="3" required>
                                                 <label class="form-label">NID</label>
                                             </div>
@@ -89,7 +92,7 @@
                                                 <i class="material-icons">date_range</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="date" class="form-control date">
+                                                <input type="date" class="form-control date" th:field="*{dateOfBirth}">
                                             </div>
                                         </div>
 
@@ -106,19 +109,36 @@
                                             </span>
                                             <div class="form-line">
                                                 <input type="text" class="form-control mobile-phone-number"
-                                                       placeholder="Ex: +00 (000) 000-00-00">
+                                                       th:field="*{contractNo}" placeholder="Ex: +00 (000) 000-00-00">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <h2 class="card-inside-title">Gender</h2>
                                         <div class="demo-radio-button">
-                                            <input name="group1" type="radio" id="Male" checked/>
+                                            <input name="group1" type="radio" id="Male" th:field="*{gender}"
+                                                   th:value="Male" checked/>
                                             <label for="Male">Male</label>
-                                            <input name="group1" type="radio" id="FeMale"/>
+                                            <input name="group1" type="radio" id="FeMale" th:field="*{gender}"
+                                                   th:value="Female"/>
                                             <label for="FeMale">FeMale</label>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                                        <b>Photo</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">image</i>
+                                            </span>
+
+                                                <input type="file" name="file">
+
+                                        </div>
+
+
                                 </div>
 
                                 <div class="form-group">
