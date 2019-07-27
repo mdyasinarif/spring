@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD Student</title>
+    <link rel='stylesheet' href='/webjars/bootstrap/3.1.0/css/bootstrap.min.css'>
+</head>
+<body>
+<span th:text="successMsg"></span>
+<form name="f" th:object="${student}" th:action="@{/add}" th:method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="name">Name</label>
+        </div>
+        <div class="col-md-9">
+            <input type="text" th:field="*{name}" id="name">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label>User Name</label>
+        </div>
+        <div class="col-md-9">
+            <input type="text" th:field="*{userName}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label>Password</label>
+        </div>
+        <div class="col-md-9">
+            <input type="text" th:field="*{password}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label>Photo</label>
+        </div>
+        <div class="col-md-9">
+            <input type="file" name="file">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label></label>
+        </div>
+        <div class="col-md-9">
+            <input type="submit" th:value="Save"/>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
