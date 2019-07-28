@@ -22,7 +22,7 @@ public class HomeController {
 
     @GetMapping(value = "/police")
     public String displayPolice() {
-        return "user/police";
+        return "policeedit";
     }
 
     @GetMapping(value = "/houseowner")

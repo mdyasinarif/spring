@@ -4,7 +4,6 @@ import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Tenant;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Entity
@@ -16,7 +15,7 @@ public class Rent {
 
     @ManyToOne
     @JoinColumn(name = "buillding_id")
-    private Buillding buillding;
+    private Builliding builliding;
 
    @ManyToOne
     @JoinColumn(name = "flat_id")

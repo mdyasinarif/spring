@@ -1,15 +1,10 @@
 package com.resident.entity.user;
 
-import com.resident.entity.address.CityCorporation;
-import com.resident.entity.address.Country;
-import com.resident.entity.address.District;
-import com.resident.entity.address.Division;
 import com.resident.entity.admin.User;
-import com.resident.entity.buliding.Buillding;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class HouseOwner {
@@ -22,6 +17,8 @@ public class HouseOwner {
     private String nidNo;
     private String gender;
     private String tinNo;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     private String contractNo;

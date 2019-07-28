@@ -34,22 +34,22 @@
                                 <th colspan="2" style="text-align: center">Action</th>
 
                             </tr>
-                            <tr th:each="owner : ${list}">
-                                <td th:text="${owner?.name}"></td>
-                                <td th:text="${owner?.education}"></td>
-                                <td th:text="${owner?.nidNo}"></td>
-                                <td th:text="${owner?.dateOfBirth}"></td>
-                                <td th:text="${owner?.contractNo}"></td>
-                                <td th:text="${owner?.gender}"></td>
-                                <td th:text="${owner?.tinNo}"></td>
-                                <td th:text="${owner?.income}"></td>
-                                <td th:text="${owner?.noOfMamber}"></td>
-                                <td th:text="${owner?.noOfEmploye}"></td>
-                                <td><img th:src="@{${owner?.photo}}" width="100" height="120"/></td>
+                            <tr th:each="tenant : ${list}">
+                                <td th:text="${tenant?.name}"></td>
+                                <td th:text="${tenant?.education}"></td>
+                                <td th:text="${tenant?.nidNo}"></td>
+                                <td th:text="${tenant?.dateOfBirth}"></td>
+                                <td th:text="${tenant?.contractNo}"></td>
+                                <td th:text="${tenant?.gender}"></td>
+                                <td th:text="${tenant?.tinNo}"></td>
+                                <td th:text="${tenant?.income}"></td>
+                                <td th:text="${tenant?.noOfMamber}"></td>
+                                <td th:text="${tenant?.noOfEmploye}"></td>
+                                <td><img th:src="@{${tenant?.photo}}" width="100" height="120"/></td>
 
 
-                                <td><a th:href="@{'/houseowner/edit/' + ${owner.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
-                                <td><a th:href="@{'/houseowner/del/' + ${owner.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                <td><a th:href="@{'/tenant/edit/' + ${tenant.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                <td><a th:href="@{'/tenant/del/' + ${tenant.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
                             </tr>
                         </table>
                     </div>

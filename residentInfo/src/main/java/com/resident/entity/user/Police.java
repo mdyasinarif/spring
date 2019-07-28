@@ -2,8 +2,10 @@ package com.resident.entity.user;
 
 import com.resident.entity.address.Thana;
 import com.resident.entity.admin.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Entity
@@ -15,6 +17,8 @@ public class Police {
     private String batchId;
     private String post;
     private String nid;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     private String gender;
     private String contractNo;

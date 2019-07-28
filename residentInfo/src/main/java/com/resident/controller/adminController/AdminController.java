@@ -17,6 +17,11 @@ public class AdminController {
         return "/admin/user";
     }
 
+@GetMapping(value = "/ediatable")
+    public String displaytable() {
+        return "editable-table";
+    }
+
 
 
 

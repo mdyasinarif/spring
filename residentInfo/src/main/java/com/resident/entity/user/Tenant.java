@@ -1,6 +1,7 @@
 package com.resident.entity.user;
 
 import com.resident.entity.admin.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,24 +12,27 @@ public class Tenant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String tenantName;
+    private String name;
+    private String education;
     private String nidNo;
+    private String gender;
     private String tinNo;
-    private String contractNo;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
-    // address session
+    private String contractNo;
+
+    private String income;
+    // End personal information section
 
 
-
-    // End address session
 
     // suporting member session
     private int noOfMamber;
 
 
-    private int noOfServent;
-
+    private int noOfEmploye;
 
     // End suporting member session
 
@@ -49,12 +53,20 @@ public class Tenant {
         this.id = id;
     }
 
-    public String getTenantName() {
-        return tenantName;
+    public String getName() {
+        return name;
     }
 
-    public void setTenantName(String tenantName) {
-        this.tenantName = tenantName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
     }
 
     public String getNidNo() {
@@ -65,20 +77,20 @@ public class Tenant {
         this.nidNo = nidNo;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getTinNo() {
         return tinNo;
     }
 
     public void setTinNo(String tinNo) {
         this.tinNo = tinNo;
-    }
-
-    public String getContractNo() {
-        return contractNo;
-    }
-
-    public void setContractNo(String contractNo) {
-        this.contractNo = contractNo;
     }
 
     public Date getDateOfBirth() {
@@ -89,6 +101,22 @@ public class Tenant {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public String getContractNo() {
+        return contractNo;
+    }
+
+    public void setContractNo(String contractNo) {
+        this.contractNo = contractNo;
+    }
+
+    public String getIncome() {
+        return income;
+    }
+
+    public void setIncome(String income) {
+        this.income = income;
+    }
+
     public int getNoOfMamber() {
         return noOfMamber;
     }
@@ -97,20 +125,12 @@ public class Tenant {
         this.noOfMamber = noOfMamber;
     }
 
-    public int getNoOfServent() {
-        return noOfServent;
+    public int getNoOfEmploye() {
+        return noOfEmploye;
     }
 
-    public void setNoOfServent(int noOfServent) {
-        this.noOfServent = noOfServent;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setNoOfEmploye(int noOfEmploye) {
+        this.noOfEmploye = noOfEmploye;
     }
 
     public String getPhoto() {
@@ -119,5 +139,13 @@ public class Tenant {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
