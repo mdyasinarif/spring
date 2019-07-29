@@ -4,7 +4,9 @@ import com.resident.controller.adminController.ImageOptimizer;
 import com.resident.entity.admin.Role;
 import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.HouseOwner;
+import com.resident.repo.adddressRepo.ThanaRepo;
 import com.resident.repo.adminRepo.UserRepo;
+import com.resident.repo.builldingRepo.BuillidingRepo;
 import com.resident.repo.userRepo.EmployeeRepo;
 import com.resident.repo.userRepo.FamilyMamberRepo;
 import com.resident.repo.userRepo.HouseOwnerRepo;
@@ -39,18 +41,24 @@ public class HouseOwnerController {
 
     @Autowired
     private EmployeeRepo employeeRepo;
+    @Autowired
+    private ThanaRepo thanaRepo;
+    @Autowired
+    private BuillidingRepo buillidingRepo;
 
    
 
     @GetMapping(value = "list")
     public String list(Model model) {
         model.addAttribute("list", this.repo.findAll());
+        //model.addAttribute("address", this.buillidingRepo.findByAdress(thanaRepo.findByName()));
         return "user/owner/list";
     }
 
     @GetMapping(value = "edit/{id}")
     public String editRoleView(@PathVariable("id") Long id, Model model) {
         model.addAttribute("houseOwner", this.repo.getOne(id));
+        model.addAttribute("thanalist",this.thanaRepo.findAll());
         return "user/owner/edit";
 
     }

@@ -56,6 +56,7 @@ public class CityCorporationController {
     @GetMapping(value = "edit/{id}")
     public String editCityCorporationView(@PathVariable("id") Long id, Model model){
         model.addAttribute("cityCorporation", this.repo.getOne(id));
+        model.addAttribute("districtlist", this.districtRepo.findAll());
         return "location/cityCorporation/edit";
 
     }

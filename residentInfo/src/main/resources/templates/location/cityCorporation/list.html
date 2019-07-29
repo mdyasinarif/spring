@@ -28,8 +28,8 @@
                                 <td th:text="${cityCorporation.id}"></td>
                                 <td th:text="${cityCorporation.name}"></td>
                                 <td th:text="${cityCorporation.district.name}"></td>
-                                <td><a th:href="@{'/cityCorporation/edit/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
-                                <td><a th:href="@{'/cityCorporation/del/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                <td><a th:href="@{'/location/cityCorporation/edit/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                <td><a th:href="@{'/location/cityCorporation/del/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
                             </tr>
                         </table>
                     </div>

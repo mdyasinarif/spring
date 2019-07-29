@@ -22,7 +22,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Police Information</h2>
+                            <h2>House Owner Information</h2>
                         </div>
                         <div class="body">
                             <form id="form_validation" th:object="${houseOwner}" th:action="@{/houseowner/edit/}+${id}"
@@ -31,7 +31,8 @@
                                     <div class="col-sm-6">
                                         <div class="form-group form-float">
                                             <div class="form-line focused success">
-                                                <input type="text" class="form-control" th:field="*{name}" maxlength="10"
+                                                <input type="text" class="form-control" th:field="*{name}"
+                                                       maxlength="10"
                                                        minlength="3" required>
                                                 <label class="form-label">Name</label>
                                             </div>
@@ -57,7 +58,8 @@
                                     <div class="col-sm-6">
                                         <div class="form-group form-float">
                                             <div class="form-line focused success">
-                                                <input type="text" class="form-control" th:field="*{nidNo}" maxlength="10"
+                                                <input type="text" class="form-control" th:field="*{nidNo}"
+                                                       maxlength="10"
                                                        minlength="3" required>
                                                 <label class="form-label">NID</label>
                                             </div>
@@ -85,7 +87,8 @@
                                                 <i class="material-icons">phone_iphone</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control mobile-phone-number" th:field="*{contractNo}"
+                                                <input type="text" class="form-control mobile-phone-number"
+                                                       th:field="*{contractNo}"
                                                        placeholder="Ex: +00 (000) 000-00-00">
                                             </div>
                                         </div>
@@ -107,42 +110,53 @@
                                     <div class="col-sm-6">
                                         <div class="form-group form-float">
                                             <div class="form-line focused success">
-                                                <input type="text" class="form-control" th:field="*{tinNo}" maxlength="10"
+                                                <input type="text" class="form-control" th:field="*{tinNo}"
+                                                       maxlength="10"
                                                        minlength="3" required>
                                                 <label class="form-label">TIN Number</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <b>Income</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">attach_money</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" class="form-control money-tk" th:field="*{income}"
-                                                       placeholder="Ex: 99,99 TK.">
+                                        <label>Thana</label>
+                                        <select th:field="*{thana}">
+                                            <option th:each="d : ${thanalist}" th:value="${d.id}">
+                                                <span th:text="${d.name}"></span>
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line focused success">
+                                                <input type="text" class="form-control" th:field="*{income}">
+                                                <label class="form-label">Monthly Income</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line focused success">
+                                                <input type="text" class="form-control" th:field="*{noOfMamber}">
+                                                <label class="form-label">Number of Family Member</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line focused success">
+                                                <input type="text" class="form-control" th:field="*{noOfEmploye}">
+                                                <label class="form-label">Number of Employee</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="col-sm-6">
-                                        <div class="col-sm-3">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control money-tk" th:field="*{noOfMamber}"
-                                                       placeholder="Number of Family Member">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control money-tk" th:field="*{noOfEmploye}"
-                                                       placeholder="Number of Employee">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
                                     <b>Photo</b>
                                     <div class="input-group">
                                             <span class="input-group-addon">
@@ -152,10 +166,8 @@
                                         <input type="file" name="file">
 
                                     </div>
-                                    </div>
-
-
                                 </div>
+
 
                                 <div class="form-group">
                                     <input type="checkbox" id="checkbox" name="checkbox">

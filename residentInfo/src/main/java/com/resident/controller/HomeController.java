@@ -20,19 +20,10 @@ public class HomeController {
         return "/sign-up";
     }
 
-    @GetMapping(value = "/police")
-    public String displayPolice() {
-        return "policeedit";
+    @GetMapping(value = "/editable")
+    public String displayeditabletable() {
+        return "/editable-table";
     }
 
-    @GetMapping(value = "/houseowner")
-    public String displayhouseOwner() {
-        return "user/houseOwner";
-    }
-
-    @GetMapping(value = "/tenant")
-    public String displaytenant() {
-        return "user/tenant";
-    }
 
 }

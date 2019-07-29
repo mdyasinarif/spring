@@ -1,5 +1,6 @@
 package com.resident.entity.user;
 
+import com.resident.entity.address.Thana;
 import com.resident.entity.admin.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,7 +23,9 @@ public class HouseOwner {
     private Date dateOfBirth;
 
     private String contractNo;
-
+    @ManyToOne
+    @JoinColumn(name = "thana_id")
+    private Thana thana;
     private String income;
     // End personal information section
 
@@ -143,5 +146,13 @@ public class HouseOwner {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Thana getThana() {
+        return thana;
+    }
+
+    public void setThana(Thana thana) {
+        this.thana = thana;
     }
 }
