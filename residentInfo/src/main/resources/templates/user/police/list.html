@@ -35,14 +35,14 @@
                             <tr th:each="police : ${list}">
                                 <td th:text="${police?.name}"></td>
                                 <td th:text="${police?.batchId}"></td>
-                               <td th:text="${police?.thana.name}"></td>
+                               <td th:text="${police?.thana?.name}"></td>
                                 <td th:text="${police?.post}"></td>
                                 <td th:text="${police?.nid}"></td>
                                 <td th:text="${police?.dateOfBirth}"></td>
                                 <td th:text="${police?.gender}"></td>
                                 <td th:text="${police?.contractNo}"></td>
                                 <td><img th:src="@{${police?.photo}}" width="100" height="120"/></td>
-
+                                name
 
                                 <td><a th:href="@{'/police/edit/' + ${police.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
                                 <td><a th:href="@{'/police/del/' + ${police.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
