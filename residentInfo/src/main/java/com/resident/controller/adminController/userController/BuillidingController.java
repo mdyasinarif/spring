@@ -38,6 +38,7 @@ public class BuillidingController {
     public String addBuilliding(@Valid Builliding builliding, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "user/builliding/add";
+
         } else {
             if (builliding != null) {
                 Builliding builliding1 = this.repo.findByName(builliding.getName());

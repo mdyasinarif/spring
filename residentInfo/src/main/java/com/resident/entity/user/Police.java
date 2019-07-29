@@ -14,6 +14,9 @@ public class Police {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "thana_id")
+    private Thana thana;
     private String batchId;
     private String post;
     private String nid;
@@ -110,5 +113,13 @@ public class Police {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Thana getThana() {
+        return thana;
+    }
+
+    public void setThana(Thana thana) {
+        this.thana = thana;
     }
 }

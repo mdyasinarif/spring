@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BuillidingRepo extends JpaRepository<Builliding,Long> {
         Builliding findByName(String name);
+        Builliding findByAdress(String address);
 }

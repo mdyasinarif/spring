@@ -21,8 +21,9 @@
 
                                 <th>User Name</th>
                                 <th>Batch Id</th>
+                                <th>Thana</th>
                                 <th>Post</th>
-                                <th>NID Type</th>
+                                <th>NID</th>
                                 <th>Date Of Birth</th>
                                 <th>Gender</th>
                                 <th>Contract No</th>
@@ -34,6 +35,7 @@
                             <tr th:each="police : ${list}">
                                 <td th:text="${police?.name}"></td>
                                 <td th:text="${police?.batchId}"></td>
+                                <td th:text="${police?.thana.name}"></td>
                                 <td th:text="${police?.post}"></td>
                                 <td th:text="${police?.nid}"></td>
                                 <td th:text="${police?.dateOfBirth}"></td>

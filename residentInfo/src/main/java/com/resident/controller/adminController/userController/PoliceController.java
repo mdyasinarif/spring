@@ -2,6 +2,7 @@ package com.resident.controller.adminController.userController;
 
 import com.resident.controller.adminController.ImageOptimizer;
 import com.resident.entity.user.Police;
+import com.resident.repo.adddressRepo.ThanaRepo;
 import com.resident.repo.adminRepo.UserRepo;
 
 import com.resident.repo.userRepo.PoilceRepo;
@@ -29,6 +30,9 @@ public class PoliceController {
     private PoilceRepo repo;
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private ThanaRepo thanaRepo;
+
 
 
 
@@ -42,6 +46,7 @@ public class PoliceController {
     @GetMapping(value = "edit/{id}")
     public String editRoleView(@PathVariable("id") Long id, Model model) {
         model.addAttribute("police", this.repo.getOne(id));
+        model.addAttribute("thanalist",this.thanaRepo.findAll());
         return "user/police/edit";
 
     }

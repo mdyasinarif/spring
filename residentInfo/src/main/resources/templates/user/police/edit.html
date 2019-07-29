@@ -38,18 +38,17 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-6">
-                                        <b>Thana</b>
-                                        <select>
-                                            <option value=""> Please select</option>
-                                            <option value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="40">40</option>
-                                            <option value="50">50</option>
-                                        </select>
+                                    <label>Thana</label>
+                                    <select th:field="*{thana}">
+                                        <option th:each="d : ${thanalist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
                                     </div>
                                 </div>
+
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="col-sm-6">
@@ -64,13 +63,11 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <b>Post</b>
-                                        <select class="show-tick">
+                                        <select class="show-tick" th:field="*{post}">
                                             <option value="">-- Please select --</option>
-                                            <option value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="40">40</option>
-                                            <option value="50">50</option>
+                                            <option value="ASP">ASP</option>
+                                            <option value="Inspector">Inspector</option>
+                                            <option value="SI">SI</option>
                                         </select>
                                     </div>
                                 </div>

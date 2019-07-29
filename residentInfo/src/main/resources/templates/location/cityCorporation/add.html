@@ -20,7 +20,7 @@
                     <form id="form_validation" th:object="${cityCorporation}" th:action="@{/location/cityCorporation/add}" method="POST">
                             <div class="form-group form-float">
                                 <div class="form-line focused success">
-                                    <input type="text" th:field="*{name}" class="form-control" name="name" maxlength="10"
+                                    <input type="text" th:field="*{name}" class="form-control" name="name"
                                            minlength="3" required>
                                     <label class="form-label">CityCorporations Name</label>
                                 </div>
@@ -37,8 +37,14 @@
 
                             </div>
                             <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+
+                        <a class="btn btn-primary pull-right" th:href="@{/location/thana/add}" type="submit">Next</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/location/district/add}" type="submit">Privew</a>
+
                     </form>
+
                 </div>
+
 
             </div>
         </div>
