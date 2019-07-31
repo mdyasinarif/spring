@@ -1,11 +1,9 @@
 package com.resident.entity.admin;
 
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,7 +15,7 @@ public class User {
 
     @NotNull
     @Size(min = 2, max = 30, message = "Hey, Size must be between 2 and 30")
-    private String name;
+    private String userName;
 
 
 
@@ -33,9 +31,19 @@ public class User {
     @NotNull(message = "Select Your Type")
     private String usertype;
 
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
     public User() {
+    }
+
+    public User(User user) {
+        this.userName = user.userName;
+        this.phone = user.phone;
+        this.password = user.password;
+        this.usertype = user.usertype;
+        this.roles = user.roles;
     }
 
     public Long getId() {
@@ -46,12 +54,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {
@@ -85,7 +93,7 @@ public class User {
         User user = (User) o;
         return
                 Objects.equals(getId(), user.getId()) &&
-                Objects.equals(getName(), user.getName()) &&
+                Objects.equals(getUserName(), user.getUserName()) &&
                 Objects.equals(getPhone(), user.getPhone())&&
                 Objects.equals(getPassword(), user.getPassword())&&
                 Objects.equals(getUsertype(), user.getUsertype());
@@ -97,8 +105,16 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

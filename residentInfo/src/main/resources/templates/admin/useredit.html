@@ -19,12 +19,15 @@
                         <div class="form-group form-float">
                             <div class="form-group">
                                 <label>User Type</label>
-                                <select name="usertype">
-                                    <option value="">Please Selete</option>
-                                    <option value="police">Police</option>
-                                    <option value="houseowner">House Owner</option>
-                                    <option value="tenant">Tenant</option>
-                                </select>
+                                <div class="form-group">
+                                    <label>User Type</label>
+                                    <select  th:field="*{role}" >
+                                        <option th:each="r : ${rolelist}" th:value="${r.id}">
+                                            <span th:text="${r.roleName}"></span>
+                                        </option>
+                                    </select>
+                                </div>
+
 
                             </div>
 
