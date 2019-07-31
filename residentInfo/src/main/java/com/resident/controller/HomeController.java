@@ -25,5 +25,10 @@ public class HomeController {
         return "/editable-table";
     }
 
+    @GetMapping(value = "/addrow")
+    public String addrow() {
+        return "/addrow";
+    }
+
 
 }

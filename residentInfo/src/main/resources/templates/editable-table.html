@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Employee Members
+                                Employees
                                 <small>You can edit any columns except header/footer</small>
                             </h2>
 
@@ -41,29 +41,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                <tr id="tableBody" th:each="branch, stat : *{branchesVO}">
                                     <td>Korimon</td>
                                     <td>Maid</td>
                                     <td>Female</td>
                                     <td>24</td>
                                     <td>84456</td>
                                     <td>0178956123</td>
-                                </tr>
-                                <tr>
-                                    <td>Karim</td>
-                                    <td>Driver</td>
-                                    <td>Male</td>
-                                    <td>27</td>
-                                    <td>456987</td>
-                                    <td>017895632</td>
-                                </tr>
-                                <tr>
-                                    <td>Kamal</td>
-                                    <td>Care Taker</td>
-                                    <td>Male</td>
-                                    <td>15</td>
-                                    <td>45632</td>
-                                    <td>0178965123</td>
                                 </tr>
 
                                 <button class="btn btn-primary waves-effect" type="submit">Add New</button>
@@ -77,7 +61,37 @@
             </div>
         </div>
     </section>
+    <script>
+        function addBranch(table) {
 
+            var tableRow = "<tr>" +
+                "<td>" +
+                "<input type='number' th:value='*{id}' th:field='*{branch[__${stat.index}__].id}' hidden='true' />" +
+                "<div>" +
+                "<div>" +
+                "<div class='form-group col-md-6'>" +
+                "<label th:text='#{customerInfo}'/>" +
+                "<input class='form-control' type='text' name='customerInfo' th:value='*{customerInfo}' th:placeholder='#{customerInfo}' th:field='*{branches[__${stat.index}__].customerInfo}'/>" +
+                "</div>" +
+                "<div class='form-group col-md-6'>" +
+                "<label th:text='#{address}'/>" +
+                "<input class='form-control' type='text' name='address' th:value='*{address}' th:placeholder='#{address}' th:field='*{branches[__${stat.index}__].address}' th:required='required'/></div></div>" +
+                "<div><div class='form-group col-md-4'>" +
+                "<label th:text='#{telephone}'/>" +
+                "<input class='form-control' type='text' name='telephone' th:value='*{telephone}' th:placeholder='#{telephone}' th:field='*{branches[__${stat.index}__].telephone}'/>" +
+                "</div><div class='form-group col-md-4'>" +
+                "<label th:text='#{mobilePhone}'/>" +
+                "<input class='form-control' type='text' name='mobile' th:value='*{cellPhone}' th:placeholder='#{mobilePhone}' th:field='*{branches[__${stat.index}__].cellPhone}'/>" +
+                "</div>" +
+                "<div class='form-group col-md-4'>" +
+                "<label th:text='#{contact}'/>" +
+                "<input class='form-control' type='text' name='contact' th:value='*{contact}' th:placeholder='#{contact}' th:field='*{branches[__${stat.index}__].contact}'/>" +
+                "</div></div></div></td></tr>";
+
+            var row = table.insertRow(table.rows.length);
+            row.innerHTML = tableRow;
+        }
+    </script>
     <!-- Jquery Core Js -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
 

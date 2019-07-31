@@ -1,10 +1,9 @@
 package com.resident.entity.user;
 
-import com.resident.entity.address.Thana;
+
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import java.util.Date;
+
 
 @Entity
 public class FamilyMamber {

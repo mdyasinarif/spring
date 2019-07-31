@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.dawntechbd.idb.IdbApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.113 s - in com.dawntechbd.idb.IdbApplicationTests

@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Editable Table | Bootstrap Based Admin Template - Material Design</title>
+</head>
+
+<body class="theme-red">
+<!-- Page Loader -->
+
+
+<div layout:fragment="custom-container">
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Employees
+                                <small>You can edit any columns except header/footer</small>
+                            </h2>
+
+                        </div>
+                        <div class="body">
+                            <table id="table">
+                                <tbody>
+                                <tr id="tableBody" th:each="branch, stat : *{branchesVO}">
+                                    <td>
+                                        <input type="number" th:value="*{id}" th:field="*{branch[__${stat.index}__].id}" hidden="true" />
+                                        <div>
+                                            <div>
+                                                <div class="form-group col-md-6">
+                                                    <label th:text="#{customerInfo}"/>
+                                                    <input class="form-control" type="text" name="customerInfo" th:value="*{customerInfo}" th:placeholder="#{customerInfo}" th:field="*{branches[__${stat.index}__].customerInfo}"/>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label th:text="#{address}" />
+                                                    <input class="form-control" type="text" name="address" th:value="*{address}" th:placeholder="#{address}" th:field="*{branches[__${stat.index}__].address}"
+                                                           th:required="required" />
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div class="form-group col-md-4">
+                                                    <label th:text="#{telephone}" />
+                                                    <input class="form-control" type="text" name="telephone" th:value="*{telephone}" th:placeholder="#{telephone}" th:field="*{branches[__${stat.index}__].telephone}"/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label th:text="#{mobilePhone}" />
+                                                    <input class="form-control" type="text" name="mobile" th:value="*{cellPhone}" th:placeholder="#{mobilePhone}" th:field="*{branches[__${stat.index}__].cellPhone}"/>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label th:text="#{contact}" />
+                                                    <input class="form-control" type="text" name="contact" th:value="*{contact}" th:placeholder="#{contact}" th:field="*{branches[__${stat.index}__].contact}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div>
+                                <hr/>
+                                <button type="button" class="btn btn-warning" th:text="#{addBranch}" onclick="addBranch(document.getElementById('table'))"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+    function addBranch(table) {
+
+    var tableRow = "<tr>" +
+    "<td>" +
+        "<input type='number' th:value='*{id}' th:field='*{branch[__${stat.index}__].id}' hidden='true' />" +
+        "<div>" +
+            "<div>" +
+                "<div class='form-group col-md-6'>" +
+                    "<label th:text='#{customerInfo}'/>" +
+                    "<input class='form-control' type='text' name='customerInfo' th:value='*{customerInfo}' th:placeholder='#{customerInfo}' th:field='*{branches[__${stat.index}__].customerInfo}'/>" +
+                    "</div>" +
+                "<div class='form-group col-md-6'>" +
+                    "<label th:text='#{address}'/>" +
+                    "<input class='form-control' type='text' name='address' th:value='*{address}' th:placeholder='#{address}' th:field='*{branches[__${stat.index}__].address}' th:required='required'/></div></div>" +
+            "<div><div class='form-group col-md-4'>" +
+                "<label th:text='#{telephone}'/>" +
+                "<input class='form-control' type='text' name='telephone' th:value='*{telephone}' th:placeholder='#{telephone}' th:field='*{branches[__${stat.index}__].telephone}'/>" +
+                "</div><div class='form-group col-md-4'>" +
+                "<label th:text='#{mobilePhone}'/>" +
+                "<input class='form-control' type='text' name='mobile' th:value='*{cellPhone}' th:placeholder='#{mobilePhone}' th:field='*{branches[__${stat.index}__].cellPhone}'/>" +
+                "</div>" +
+                "<div class='form-group col-md-4'>" +
+                    "<label th:text='#{contact}'/>" +
+                    "<input class='form-control' type='text' name='contact' th:value='*{contact}' th:placeholder='#{contact}' th:field='*{branches[__${stat.index}__].contact}'/>" +
+                    "</div></div></div></td></tr>";
+
+    var row = table.insertRow(table.rows.length);
+    row.innerHTML = tableRow;
+    }
+    </script>
+    <!-- Jquery Core Js -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../../plugins/node-waves/waves.js"></script>
+
+    <!-- Editable Table Plugin Js -->
+    <script src="../../plugins/editable-table/mindmup-editabletable.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../../js/admin.js"></script>
+    <script src="../../js/pages/tables/editable-table.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../../js/demo.js"></script>
+</div>
+</body>
+
+</html>

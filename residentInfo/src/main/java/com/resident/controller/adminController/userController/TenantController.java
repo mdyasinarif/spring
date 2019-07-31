@@ -4,6 +4,7 @@ import com.resident.controller.adminController.ImageOptimizer;
 import com.resident.entity.user.Tenant;
 import com.resident.entity.user.Tenant;
 import com.resident.entity.user.Tenant;
+import com.resident.repo.adddressRepo.ThanaRepo;
 import com.resident.repo.adminRepo.UserRepo;
 import com.resident.repo.userRepo.EmployeeRepo;
 import com.resident.repo.userRepo.FamilyMamberRepo;
@@ -44,17 +45,20 @@ public class TenantController {
     @Autowired
     private EmployeeRepo employeeRepo;
 
-    
+    @Autowired
+    private ThanaRepo thanaRepo;
 
     @GetMapping(value = "list")
     public String ownerList(Model model) {
         model.addAttribute("list", this.repo.findAll());
+        model.addAttribute("thanalist",this.thanaRepo.findAll());
         return "user/tenant/list";
     }
 
     @GetMapping(value = "edit/{id}")
     public String editRoleView(@PathVariable("id") Long id, Model model) {
         model.addAttribute("tenant", this.repo.getOne(id));
+        model.addAttribute("thanalist",this.thanaRepo.findAll());
         return "user/tenant/edit";
 
     }

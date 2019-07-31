@@ -47,7 +47,7 @@
                                 <td th:text="${owner?.noOfMamber}"></td>
                                 <td th:text="${owner?.noOfEmploye}"></td>
 
-                                <td th:text="${owner?.thana?.name}+', '+${owner.thana.cityCorporation.name}+', '+${owner.thana.cityCorporation.district.name}"></td>
+                                <td th:text="${owner?.thana?.name}+', '+${owner.thana?.cityCorporation?.name}+', '+${owner.thana?.cityCorporation?.district?.name}"></td>
                                 <td><img th:src="@{${owner?.photo}}" width="100" height="120"/></td>
 
 

@@ -26,6 +26,7 @@
                                 <th>Contract No</th>
                                 <th>Gender</th>
                                 <th>Tin No</th>
+                                <th>Address</th>
                                 <th>Income</th>
                                 <th>No Of Family Mamber</th>
                                 <th>No Of Employe</th>
@@ -42,6 +43,7 @@
                                 <td th:text="${tenant?.contractNo}"></td>
                                 <td th:text="${tenant?.gender}"></td>
                                 <td th:text="${tenant?.tinNo}"></td>
+                                <td th:text="${tenant?.thana?.name}+', '+${tenant.thana?.cityCorporation?.name}+', '+${tenant.thana?.cityCorporation?.district?.name}"></td>
                                 <td th:text="${tenant?.income}"></td>
                                 <td th:text="${tenant?.noOfMamber}"></td>
                                 <td th:text="${tenant?.noOfEmploye}"></td>
