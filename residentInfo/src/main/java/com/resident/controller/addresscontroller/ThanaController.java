@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/location/thana/")
+@RequestMapping(value = "/thana/")
 public class ThanaController {
     @Autowired
     private ThanaRepo repo;
@@ -75,13 +75,13 @@ public class ThanaController {
                     model.addAttribute("successMsg","ThanaName save Success");
                 }           }
         }
-        return "redirect:/location/thana/list";
+        return "redirect:/thana/list";
     }
 
     @RequestMapping(value = "del/{id}",method = RequestMethod.GET)
     public String delThana(@PathVariable("id") Long id){
         this.repo.deleteById(id);
-        return "redirect:/location/thana/list";
+        return "redirect:/thana/list";
 
     }
 }

@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <label>User Type</label>
-                    <select  th:field="*{role}" >
+                    <select>
                         <option th:each="r : ${rolelist}" th:value="${r.id}">
                             <span th:text="${r.roleName}"></span>
                         </option>
@@ -53,7 +53,7 @@
                             <i class="material-icons">person</i>
                         </span>
                     <div class="form-line">
-                        <input type="text" th:field="*{name}" class="form-control" placeholder="User Name" required
+                        <input type="text" th:field="*{userName}" class="form-control" placeholder="User Name" required
                                autofocus>
                     </div>
                 </div>

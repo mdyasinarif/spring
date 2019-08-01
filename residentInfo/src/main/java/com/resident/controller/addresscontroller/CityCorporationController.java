@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/location/cityCorporation/")
+@RequestMapping(value = "/cityCorporation/")
 public class CityCorporationController {
 
     @Autowired
@@ -78,13 +78,13 @@ public class CityCorporationController {
                     model.addAttribute("successMsg","CityCorporationName save Success");
                 }           }
         }
-        return "redirect:/location/cityCorporation/list";
+        return "redirect:/cityCorporation/list";
     }
 
     @RequestMapping(value = "del/{id}",method = RequestMethod.GET)
     public String delCityCorporation(@PathVariable("id") Long id) {
         this.repo.deleteById(id);
-        return "redirect:/location/cityCorporation/list";
+        return "redirect:/cityCorporation/list";
     }
 
 }

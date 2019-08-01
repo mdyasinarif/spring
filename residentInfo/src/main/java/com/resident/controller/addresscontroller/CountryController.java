@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/location/country/")
+@RequestMapping(value = "/country/")
 public class CountryController {
     @Autowired
     private CountryRepo repo;
@@ -70,13 +70,13 @@ public class CountryController {
                     model.addAttribute("successMsg","CountryName save Success");
                 }           }
         }
-        return "redirect:/location/country/list";
+        return "redirect:/country/list";
     }
 
     @RequestMapping(value = "del/{id}",method = RequestMethod.GET)
     public String delCountry(@PathVariable("id") Long id){
         this.repo.deleteById(id);
-        return "redirect:/location/country/list";
+        return "redirect:/country/list";
 
     }
 }

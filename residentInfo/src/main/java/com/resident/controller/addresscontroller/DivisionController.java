@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/location/division/")
+@RequestMapping(value = "/division/")
 public class DivisionController {
     @Autowired
     private DivisionRepo repo;
@@ -75,13 +75,13 @@ public class DivisionController {
                     model.addAttribute("successMsg","DivisionName save Success");
                 }           }
         }
-        return "redirect:/location/division/list";
+        return "redirect:/division/list";
     }
 
     @RequestMapping(value = "del/{id}",method = RequestMethod.GET)
     public String delDivision(@PathVariable("id") Long id){
         this.repo.deleteById(id);
-        return "redirect:/location/division/list";
+        return "redirect:/division/list";
 
     }
 }
