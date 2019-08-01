@@ -47,6 +47,22 @@ public class Tenant {
     public Tenant() {
     }
 
+    public Tenant(String name, String education, String nidNo, String gender, String tinNo, Date dateOfBirth, String contractNo, Thana thana, String income, int noOfMamber, int noOfEmploye, String photo, User user) {
+        this.name = name;
+        this.education = education;
+        this.nidNo = nidNo;
+        this.gender = gender;
+        this.tinNo = tinNo;
+        this.dateOfBirth = dateOfBirth;
+        this.contractNo = contractNo;
+        this.thana = thana;
+        this.income = income;
+        this.noOfMamber = noOfMamber;
+        this.noOfEmploye = noOfEmploye;
+        this.photo = photo;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

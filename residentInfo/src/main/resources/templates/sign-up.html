@@ -34,14 +34,14 @@
     </div>
     <div class="card">
         <div class="body">
-            <form id="sign_up" th:object="${user}" th:action="@{/user/add}" method="POST">
+            <form id="sign_up" th:object="${user}" th:action="@{/sign-up}" method="POST">
                 <div class="msg">Register a new membership</div>
 
 
 
                 <div class="form-group">
                     <label>User Type</label>
-                    <select>
+                    <select th:field="*{roles}">
                         <option th:each="r : ${rolelist}" th:value="${r.id}">
                             <span th:text="${r.roleName}"></span>
                         </option>

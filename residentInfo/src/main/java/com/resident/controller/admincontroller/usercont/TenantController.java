@@ -1,6 +1,7 @@
 package com.resident.controller.admincontroller.usercont;
 
 import com.resident.controller.admincontroller.ImageOptimizer;
+import com.resident.entity.user.Police;
 import com.resident.entity.user.Tenant;
 import com.resident.repo.adddressrepo.ThanaRepo;
 import com.resident.repo.adminrepo.UserRepo;
@@ -65,11 +66,9 @@ public class TenantController {
         if (result.hasErrors()) {
             return "user/owner/edit";
         } else {
-            if (tenant != null) {
-                Tenant tenant1 = this.repo.findByContractNo(tenant.getContractNo());
-                if (tenant1 != null) {
-                    model.addAttribute("existMsg", "Tenant is already exist");
-                } else {
+            Tenant tenant1 = this.repo.getOne(id);
+            tenant.setUser(tenant1.getUser());
+            tenant.setId(tenant1.getId());
 
                     //file upload
                     byte[] bytes = file.getBytes();
@@ -82,8 +81,6 @@ public class TenantController {
 
                     model.addAttribute("successMsg", "Tenant Save Successfully");
                 }
-            }
-        }
 
         return "redirect:/tenant/list";
     }

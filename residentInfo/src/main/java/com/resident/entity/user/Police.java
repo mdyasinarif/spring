@@ -35,6 +35,19 @@ public class Police {
     public Police() {
     }
 
+    public Police(String name, Thana thana, String batchId, String post, String nid, Date dateOfBirth, String gender, String contractNo, String photo, User user) {
+        this.name = name;
+        this.thana = thana;
+        this.batchId = batchId;
+        this.post = post;
+        this.nid = nid;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.contractNo = contractNo;
+        this.photo = photo;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

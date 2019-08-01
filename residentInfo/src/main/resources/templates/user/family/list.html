@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="header">
                     <h2>Builliding List
-                        <a class="btn btn-primary pull-right" th:href="@{/user/builliding/add}" type="submit">ADD Builliding</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/family/add}" type="submit">ADD Family Menber</a>
                     </h2>
                 </div>
                 <div class="body">
@@ -19,16 +19,19 @@
                         <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <tr>
                                 <th>ID</th>
-                                <th>Builliding Name</th>
-                                <th>Address</th>
-                                <th>House OwnerName</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>NID</th>
+                                <th>Mobile</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
-                            <tr th:each="builliding : ${list}">
-                                <td th:text="${builliding.id}"></td>
-                                <td th:text="${builliding.name}"></td>
-                                <td th:text="${builliding.adress}+ ', '+${builliding.thana.name}+', '+${builliding.thana.cityCorporation.name}+', '+${builliding.thana.cityCorporation.district.name}"></td>
+                            <tr th:each="f : ${list}">
+                                <td th:text="${f.id}"></td>
+                                <td th:text="${f.name}"></td>
+                                <td th:text="${f.gender}"></td>
+                                <td th:text="${f.nidNo}"></td>
+                                <td th:text="${f.p}"></td>
 
                                 <td>
                                     <span  th:each="owner : ${builliding.houseOwner}" th:text="${owner.name}+' '"></span>

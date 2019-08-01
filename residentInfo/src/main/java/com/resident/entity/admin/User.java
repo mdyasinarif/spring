@@ -2,6 +2,8 @@ package com.resident.entity.admin;
 
 
 
+import com.resident.entity.address.District;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Objects;
@@ -20,18 +22,16 @@ public class User {
 
 
     @NotNull(message = "Enter Phone Number")
-
-    @Column(name = "text", unique = true)
+    @Column(unique = true)
     private String phone;
 
     @NotNull(message = "Enter A Password ")
     @Column(name = "password")
     private String password;
 
-    @NotNull(message = "Select Your Type")
-    private String usertype;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+
+    @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
@@ -42,8 +42,11 @@ public class User {
         this.userName = user.userName;
         this.phone = user.phone;
         this.password = user.password;
-        this.usertype = user.usertype;
         this.roles = user.roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -70,13 +73,7 @@ public class User {
         this.phone = phone;
     }
 
-    public String getUsertype() {
-        return usertype;
-    }
 
-    public void setUsertype(String usertype) {
-        this.usertype = usertype;
-    }
 
     public String getPassword() {
         return password;
@@ -95,8 +92,7 @@ public class User {
                 Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getUserName(), user.getUserName()) &&
                 Objects.equals(getPhone(), user.getPhone())&&
-                Objects.equals(getPassword(), user.getPassword())&&
-                Objects.equals(getUsertype(), user.getUsertype());
+                Objects.equals(getPassword(), user.getPassword());
     }
 
 
@@ -112,9 +108,5 @@ public class User {
 
     public Set<Role> getRoles() {
         return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 }

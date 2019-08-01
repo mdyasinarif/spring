@@ -25,23 +25,23 @@ public class UserController {
     private RoleRepo roleRepo;
 
 
-    @PostMapping(value = "add")
-    public String addRole(@Valid User user, BindingResult result, Model model){
-        if(result.hasErrors()){
-            return "admin/role";
-        }else{
-            if(user != null){
-                User user1=this.repo.findByUserName(user.getUserName());
-                if(user1 != null ){
-                    model.addAttribute("existMsg","Userame is already exist");
-                }else{
-                    this.repo.save(user);
-                    model.addAttribute("user",new User());
-                    model.addAttribute("successMsg","User save Successfully");
-                }           }
-        }
-        return "sing-up";
-    }
+//    @PostMapping(value = "add")
+//    public String addRole(@Valid User user, BindingResult result, Model model){
+//        if(result.hasErrors()){
+//            return "admin/role";
+//        }else{
+//            if(user != null){
+//                User user1=this.repo.findByUserName(user.getUserName());
+//                if(user1 != null ){
+//                    model.addAttribute("existMsg","Userame is already exist");
+//                }else{
+//                    this.repo.save(user);
+//                    model.addAttribute("user",new User());
+//                    model.addAttribute("successMsg","User save Successfully");
+//                }           }
+//        }
+//        return "sing-up";
+//    }
 
     @GetMapping(value = "userlist")
     public String userList(Model model) {

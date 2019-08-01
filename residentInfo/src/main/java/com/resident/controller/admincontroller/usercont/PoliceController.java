@@ -56,11 +56,9 @@ public class PoliceController {
         if (result.hasErrors()) {
             return "user/police/edit";
         } else {
-            if (police != null) {
-                Police police1 = this.repo.findByContractNo(police.getContractNo());
-                if (police1 != null) {
-                    model.addAttribute("existMsg", "Police is already exist");
-                } else {
+            Police police1 = this.repo.getOne(id);
+            police.setUser(police1.getUser());
+            police.setId(police1.getId());
 
                     //file upload
                     byte[] bytes = file.getBytes();
@@ -73,8 +71,8 @@ public class PoliceController {
 
                     model.addAttribute("successMsg", "Police Save Successfully");
                 }
-            }
-        }
+
+
 
         return "redirect:/police/list";
     }

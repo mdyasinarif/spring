@@ -11,14 +11,14 @@
             <div class="card">
                 <div class="header">
                     <h2>ADD FamilyMember
-                        <a class="btn btn-primary pull-right" th:href="@{/user/family/list}" type="submit">FamilyMember
+                        <a class="btn btn-primary pull-right" th:href="@{/family/list}" type="submit">FamilyMember
                             List</a>
                     </h2>
                     <span th:text="${existMsg}"></span>
                     <span th:text="${successMsg}"></span>
                 </div>
                 <div class="body">
-                    <form id="form_validation" th:object="${family}" th:action="@{/user/family/add}"
+                    <form id="form_validation" th:object="${familyMamber}" th:action="@{/user/family/add}"
                           method="POST">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 

@@ -44,7 +44,6 @@ public class HouseOwnerController {
     @Autowired
     private BuillidingRepo buillidingRepo;
 
-   
 
     @GetMapping(value = "list")
     public String list(Model model) {
@@ -56,7 +55,7 @@ public class HouseOwnerController {
     @GetMapping(value = "edit/{id}")
     public String editRoleView(@PathVariable("id") Long id, Model model) {
         model.addAttribute("houseOwner", this.repo.getOne(id));
-        model.addAttribute("thanalist",this.thanaRepo.findAll());
+        model.addAttribute("thanalist", this.thanaRepo.findAll());
         return "user/owner/edit";
 
     }
@@ -66,25 +65,22 @@ public class HouseOwnerController {
         if (result.hasErrors()) {
             return "user/owner/edit";
         } else {
-            if (houseOwner != null) {
-                HouseOwner houseOwner1 = this.repo.findByContractNo(houseOwner.getContractNo());
-                if (houseOwner1 != null) {
-                    model.addAttribute("existMsg", "HouseOwner is already exist");
-                } else {
+            HouseOwner houseOwner1 = this.repo.getOne(id);
+            houseOwner.setUser(houseOwner1.getUser());
+            houseOwner.setId(houseOwner1.getId());
+            //file upload
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.write(path, bytes);
+            houseOwner.setPhoto("/images/new-" + file.getOriginalFilename());
+            // file upload end
+            imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 100, 120);
+            this.repo.save(houseOwner);
+            model.addAttribute("thanalist", this.thanaRepo.findAll());
+            model.addAttribute("successMsg", "HouseOwner Save Successfully");
 
-                    //file upload
-                    byte[] bytes = file.getBytes();
-                    Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-                    Files.write(path, bytes);
-                    houseOwner.setPhoto("/images/new-" + file.getOriginalFilename());
-                    // file upload end
-                    imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 100, 120);
-                    this.repo.save(houseOwner);
-
-                    model.addAttribute("successMsg", "HouseOwner Save Successfully");
-                }
-            }
         }
+
 
         return "redirect:/houseowner/list";
     }

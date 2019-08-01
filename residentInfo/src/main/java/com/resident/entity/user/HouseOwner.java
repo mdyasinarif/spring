@@ -30,8 +30,7 @@ public class HouseOwner {
     // End personal information section
 
 
-
-   // suporting member session
+    // suporting member session
     private int noOfMamber;
 
 
@@ -40,9 +39,28 @@ public class HouseOwner {
     // End suporting member session
 
     private String photo;
-@OneToOne
-@JoinColumn(name = "user_id")
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
+    public HouseOwner() {
+    }
+
+    public HouseOwner(String name, String education, String nidNo, String gender, String tinNo, Date dateOfBirth, String contractNo, Thana thana, String income, int noOfMamber, int noOfEmploye, String photo, User user) {
+        this.name = name;
+        this.education = education;
+        this.nidNo = nidNo;
+        this.gender = gender;
+        this.tinNo = tinNo;
+        this.dateOfBirth = dateOfBirth;
+        this.contractNo = contractNo;
+        this.thana = thana;
+        this.income = income;
+        this.noOfMamber = noOfMamber;
+        this.noOfEmploye = noOfEmploye;
+        this.photo = photo;
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
