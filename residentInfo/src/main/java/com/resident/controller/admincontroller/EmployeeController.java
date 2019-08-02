@@ -2,7 +2,7 @@ package com.resident.controller.admincontroller;
 
 
 import com.resident.entity.user.Employee;
-import com.resident.repo.userrepo.EmployeeRepo;
+import com.resident.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

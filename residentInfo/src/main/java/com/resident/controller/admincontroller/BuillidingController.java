@@ -3,9 +3,9 @@ package com.resident.controller.admincontroller;
 
 import com.resident.entity.buliding.Builliding;
 
-import com.resident.repo.adddressrepo.ThanaRepo;
-import com.resident.repo.builldingrepo.BuillidingRepo;
-import com.resident.repo.userrepo.HouseOwnerRepo;
+import com.resident.repo.ThanaRepo;
+import com.resident.repo.BuillidingRepo;
+import com.resident.repo.HouseOwnerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

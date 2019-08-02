@@ -2,8 +2,8 @@ package com.resident.controller.addresscontroller;
 
 
 import com.resident.entity.address.Division;
-import com.resident.repo.adddressrepo.CountryRepo;
-import com.resident.repo.adddressrepo.DivisionRepo;
+import com.resident.repo.CountryRepo;
+import com.resident.repo.DivisionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

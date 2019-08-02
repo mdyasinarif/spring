@@ -4,7 +4,7 @@ package com.resident.controller.admincontroller;
 
 import com.resident.entity.user.FamilyMamber;
 
-import com.resident.repo.userrepo.FamilyMamberRepo;
+import com.resident.repo.FamilyMamberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

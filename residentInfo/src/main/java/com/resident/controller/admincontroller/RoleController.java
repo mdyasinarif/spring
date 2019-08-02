@@ -1,7 +1,7 @@
 package com.resident.controller.admincontroller;
 
 
-import com.resident.repo.adminrepo.RoleRepo;
+import com.resident.repo.RoleRepo;
 import com.resident.entity.admin.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

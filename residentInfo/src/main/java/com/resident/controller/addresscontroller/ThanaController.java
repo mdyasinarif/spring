@@ -2,8 +2,8 @@ package com.resident.controller.addresscontroller;
 
 
 import com.resident.entity.address.Thana;
-import com.resident.repo.adddressrepo.CityCorporationRepo;
-import com.resident.repo.adddressrepo.ThanaRepo;
+import com.resident.repo.CityCorporationRepo;
+import com.resident.repo.ThanaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

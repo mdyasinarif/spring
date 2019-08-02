@@ -33,14 +33,20 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST">
+                <div th:if="${param.error}" style="color: red">
+                    Invalid username and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <form th:action="@{/login}" method="post">
                     <div class="msg">Sign in to start your session</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="userName" placeholder="Username" required autofocus>
+                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
                         </div>
                     </div>
                     <div class="input-group">

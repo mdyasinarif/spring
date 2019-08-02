@@ -1,11 +1,10 @@
 package com.resident.controller.admincontroller;
 
-import com.resident.controller.admincontroller.ImageOptimizer;
 import com.resident.entity.user.Police;
-import com.resident.repo.adddressrepo.ThanaRepo;
-import com.resident.repo.adminrepo.UserRepo;
+import com.resident.repo.ThanaRepo;
+import com.resident.repo.UserRepo;
 
-import com.resident.repo.userrepo.PoilceRepo;
+import com.resident.repo.PoilceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

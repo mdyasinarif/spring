@@ -1,4 +1,4 @@
-package com.resident.repo.adminrepo;
+package com.resident.repo;
 
 
 

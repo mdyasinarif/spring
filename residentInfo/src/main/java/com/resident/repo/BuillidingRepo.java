@@ -1,4 +1,4 @@
-package com.resident.repo.builldingrepo;
+package com.resident.repo;
 
 
 

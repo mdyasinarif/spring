@@ -1,4 +1,4 @@
-package com.resident.repo.userrepo;
+package com.resident.repo;
 
 
 import com.resident.entity.user.Police;

@@ -1,4 +1,4 @@
-package com.resident.repo.adminrepo;
+package com.resident.repo;
 
 
 import com.resident.entity.admin.Role;

@@ -1,4 +1,4 @@
-package com.resident.repo.adddressrepo;
+package com.resident.repo;
 
 
 
