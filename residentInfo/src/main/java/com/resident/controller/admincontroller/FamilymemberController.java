@@ -1,11 +1,18 @@
 package com.resident.controller.admincontroller;
 
 
-
+import com.resident.entity.admin.Role;
+import com.resident.entity.admin.User;
 import com.resident.entity.user.FamilyMamber;
 
+import com.resident.entity.user.HouseOwner;
 import com.resident.repo.FamilyMamberRepo;
+import com.resident.repo.HouseOwnerRepo;
+import com.resident.repo.TenantRepo;
+import com.resident.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +26,13 @@ public class FamilymemberController {
     @Autowired
     private FamilyMamberRepo repo;
 
+    @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
+    private HouseOwnerRepo houseOwnerRepo;
+    @Autowired
+    private TenantRepo tenantRepo;
 
     @GetMapping(value = "add")
     public String addFamilyMamberView(FamilyMamber familyMamber, Model model) {
@@ -38,6 +52,21 @@ public class FamilymemberController {
                 if (familyMamber1 != null) {
                     model.addAttribute("existMsg", "FamilyMamberName is already exist");
                 } else {
+                    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+                    User user = this.userRepo.findByUserName(auth.getName());
+
+                    String rolename = null;
+                    for (Role r : user.getRoles()) {
+                        rolename = r.getRoleName();
+                    }
+                    if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+                        familyMamber.setHouseOwner(this.houseOwnerRepo.findByUser(user));
+                    } else if (rolename.equalsIgnoreCase("TENANT")) {
+                        familyMamber.setTenant(this.tenantRepo.findByUser(user));
+                    }
+
+
                     this.repo.save(familyMamber);
                     model.addAttribute("familyMamber", new FamilyMamber());
                     model.addAttribute("successMsg", "FamilyMamber save Successfully");
@@ -49,7 +78,8 @@ public class FamilymemberController {
 
     @GetMapping(value = "list")
     public String familyList(Model model) {
-        model.addAttribute("list", this.repo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
 
         return "user/family/list";
     }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Bar</title>
@@ -9,7 +10,7 @@
     <!-- Left Sidebar -->
     <aside id="leftsidebar" class="sidebar">
         <!-- User Info -->
-        <div class="user-info">
+        <div class="user-info" >
             <div class="image">
                 <img src="images/myphoto.jpg" width="48" height="48" alt="User" />
             </div>
@@ -34,26 +35,26 @@
         <!-- Menu -->
         <div class="menu">
             <ul class="list">
-                <li class="header">MAIN NAVIGATION</li>
+                <li class="header" >MAIN NAVIGATION</li>
                 <li class="active">
                     <a th:href="@{/}">
                         <i class="material-icons">home</i>
                         <span>Home</span>
                     </a>
                 </li>
-                <li>
+                <li sec:authorize="hasRole('ROLE_POLICE')">
                     <a th:href="@{/police/list}">
                         <i class="material-icons">text_fields</i>
                         <span>Police</span>
                     </a>
                 </li>
-                <li>
+                <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
                     <a th:href="@{/houseowner/list}">
                         <i class="material-icons">layers</i>
                         <span>House Owner</span>
                     </a>
                 </li>
-                 <li>
+                <li sec:authorize="hasRole('ROLE_TENANT')">
                     <a th:href="@{/tenant/list}">
                         <i class="material-icons">layers</i>
                         <span>Tenant</span>
@@ -65,7 +66,7 @@
                         <span>Admin</span>
                     </a>
                     <ul class="ml-menu">
-                        <li>
+                        <li sec:authorize="hasRole('ROLE_POLICE')">
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <span>Role</span>
                             </a>
@@ -86,14 +87,14 @@
                                 <li>
                                     <a th:href="@{/user/add}">Add User</a>
                                 </li>
-                                <li>
+                                <li sec:authorize="hasRole('ROLE_POLICE')">
                                     <a th:href="@{/user/userlist}">User List</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li sec:authorize="hasRole('ROLE_POLICE')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">swap_calls</i>
                         <span>Add Location</span>
@@ -118,7 +119,7 @@
 
                     </ul>
                 </li>
-                <li>
+                <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">assignment</i>
                         <span>Builliding & Flat Reg</span>
@@ -133,7 +134,7 @@
 
                     </ul>
                 </li>
-                <li>
+                <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_list</i>
                         <span>Rents</span>
@@ -145,7 +146,7 @@
 
                     </ul>
                 </li>
-                <li>
+                <li sec:authorize="hasAnyRole('ROLE_HOUSEOWNER','ROLE_TENANT')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">perm_media</i>
                         <span>Add Members</span>
@@ -194,90 +195,6 @@
 
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">map</i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="pages/maps/google.html">Google Map</a>
-                        </li>
-                        <li>
-                            <a href="pages/maps/yandex.html">YandexMap</a>
-                        </li>
-                        <li>
-                            <a href="pages/maps/jvectormap.html">jVectorMap</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">trending_down</i>
-                        <span>Multi Level Menu</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span>Menu Item</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span>Menu Item - 2</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <span>Level - 2</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <span>Menu Item</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <span>Level - 3</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="javascript:void(0);">
-                                                <span>Level - 4</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="pages/changelogs.html">
-                        <i class="material-icons">update</i>
-                        <span>Changelogs</span>
-                    </a>
-                </li>
-                <li class="header">LABELS</li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <i class="material-icons col-red">donut_large</i>
-                        <span>Important</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <i class="material-icons col-amber">donut_large</i>
-                        <span>Warning</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <i class="material-icons col-light-blue">donut_large</i>
-                        <span>Information</span>
-                    </a>
-                </li>
             </ul>
         </div>
         <!-- #Menu -->
@@ -294,7 +211,7 @@
     </aside>
     <!-- #END# Left Sidebar -->
     <!-- Right Sidebar -->
-    <aside id="rightsidebar" class="right-sidebar">
+    <aside id="rightsidebar" class="right-sidebar" sec:authorize="isAuthenticated()">
         <ul class="nav nav-tabs tab-nav-right" role="tablist">
             <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
             <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>

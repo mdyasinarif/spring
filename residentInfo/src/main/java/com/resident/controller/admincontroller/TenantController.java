@@ -7,6 +7,8 @@ import com.resident.repo.EmployeeRepo;
 import com.resident.repo.FamilyMamberRepo;
 import com.resident.repo.TenantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,7 +48,8 @@ public class TenantController {
 
     @GetMapping(value = "list")
     public String ownerList(Model model) {
-        model.addAttribute("list", this.repo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
         model.addAttribute("thanalist",this.thanaRepo.findAll());
         return "user/tenant/list";
     }

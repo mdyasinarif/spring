@@ -1,5 +1,7 @@
 package com.resident.entity.user;
 
+import com.resident.entity.admin.User;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -23,6 +25,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "tenant_id", nullable = true)
     private Tenant tenant;
+
 
     public Employee() {
     }
@@ -98,4 +101,6 @@ public class Employee {
     public void setTenant(Tenant tenant) {
         this.tenant = tenant;
     }
+
+
 }

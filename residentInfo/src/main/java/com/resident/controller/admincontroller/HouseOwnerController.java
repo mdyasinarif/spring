@@ -8,11 +8,14 @@ import com.resident.repo.EmployeeRepo;
 import com.resident.repo.FamilyMamberRepo;
 import com.resident.repo.HouseOwnerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import sun.plugin.liveconnect.SecurityContextHelper;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -46,7 +49,8 @@ public class HouseOwnerController {
 
     @GetMapping(value = "list")
     public String list(Model model) {
-        model.addAttribute("list", this.repo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
         //model.addAttribute("address", this.buillidingRepo.findByAdress(thanaRepo.findByName()));
         return "user/owner/list";
     }

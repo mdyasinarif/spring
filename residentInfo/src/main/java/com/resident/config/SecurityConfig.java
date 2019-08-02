@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/role/**","/user/**","/login","/css/**","/documentation/**","/font/**","/images/**","/js/**","/plugins/**","/scss/**"
                 ).permitAll()
-                .antMatchers("/houseowner/add","/houseowner/edit","/houseowner/list/{id}","/builliding/add","/builliding/edit","/builliding/list/{id}")
+                .antMatchers("/houseowner/**")
                 .hasRole("HOUSEOWNER")
                 .antMatchers("/police/**")
                 .hasRole("POLICE")
@@ -80,3 +80,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 }
+//"/houseowner/add","/houseowner/edit","/houseowner/list/{id}","/builliding/add","/builliding/edit","/builliding/list/{id}"

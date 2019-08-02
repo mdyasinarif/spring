@@ -1,9 +1,16 @@
 package com.resident.controller.admincontroller;
 
 
+import com.resident.entity.admin.Role;
+import com.resident.entity.admin.User;
 import com.resident.entity.user.Employee;
 import com.resident.repo.EmployeeRepo;
+import com.resident.repo.HouseOwnerRepo;
+import com.resident.repo.TenantRepo;
+import com.resident.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +23,12 @@ import javax.validation.Valid;
 public class EmployeeController {
     @Autowired
     private EmployeeRepo repo;
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private HouseOwnerRepo houseOwnerRepo;
+    @Autowired
+    private TenantRepo tenantRepo;
 
 
     @GetMapping(value = "add")
@@ -36,6 +49,18 @@ public class EmployeeController {
                 if (employee1 != null) {
                     model.addAttribute("existMsg", "EmployeeName is already exist");
                 } else {
+                    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+                    User user =this.userRepo.findByUserName(auth.getName());
+
+                    String rolename=null;
+                    for(Role r : user.getRoles()){
+                        rolename =r.getRoleName();
+                    }
+                    if(rolename.equalsIgnoreCase("HOUSEOWNER")){
+                        employee.setHouseOwner(this.houseOwnerRepo.findByUser(user));
+                    }else  if(rolename.equalsIgnoreCase("TENANT")){
+                        employee.setTenant(this.tenantRepo.findByUser(user));
+                    }
                     this.repo.save(employee);
                     model.addAttribute("employee", new Employee());
                     model.addAttribute("successMsg", "Employee save Successfully");
@@ -47,7 +72,8 @@ public class EmployeeController {
 
     @GetMapping(value = "list")
     public String employeeList(Model model) {
-        model.addAttribute("list", this.repo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //model.addAttribute("list", this.repo.findAllByAndHouseOwner(this.houseOwnerRepo.findByUser(auth.getName())));
 
         return "user/employee/list";
     }
