@@ -11,14 +11,14 @@
             <div class="card">
                 <div class="header">
                     <h2>ADD Builliding
-                        <a class="btn btn-primary pull-right" th:href="@{/user/builliding/list}" type="submit">Builliding
+                        <a class="btn btn-primary pull-right" th:href="@{/builliding/list}" type="submit">Builliding
                             List</a>
                     </h2>
                     <span th:text="${existMsg}"></span>
                     <span th:text="${successMsg}"></span>
                 </div>
                 <div class="body">
-                    <form id="form_validation" th:object="${builliding}" th:action="@{/user/builliding/add}"
+                    <form id="form_validation" th:object="${builliding}" th:action="@{/builliding/add}"
                           method="POST">
 
                         <div class="form-group form-float">

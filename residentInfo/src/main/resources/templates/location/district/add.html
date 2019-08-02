@@ -11,13 +11,13 @@
             <div class="card">
                 <div class="header">
                     <h2>ADD Districts
-                        <a class="btn btn-primary pull-right" th:href="@{/location/district/list}" type="submit">Districts List</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/district/list}" type="submit">Districts List</a>
                     </h2>
                     <span th:text="${existMsg}"></span>
                     <span th:text="${successMsg}"></span>
                 </div>
                 <div class="body">
-                    <form id="form_validation" th:object="${district}" th:action="@{/location/district/add}" method="POST">
+                    <form id="form_validation" th:object="${district}" th:action="@{/district/add}" method="POST">
                             <div class="form-group form-float">
                                 <div class="form-line focused success">
                                     <input type="text" th:field="*{name}" class="form-control" name="name" maxlength="10"
@@ -37,8 +37,8 @@
 
                             </div>
                             <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
-                        <a class="btn btn-primary pull-right" th:href="@{/location/cityCorporation/add}" type="submit">Next</a>
-                        <a class="btn btn-primary pull-right" th:href="@{/location/division/add}" type="submit">Privew</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/cityCorporation/add}" type="submit">Next</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/division/add}" type="submit">Privew</a>
                     </form>
                 </div>
 

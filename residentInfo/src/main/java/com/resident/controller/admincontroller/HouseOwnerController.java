@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller.usercont;
+package com.resident.controller.admincontroller;
 
 import com.resident.controller.admincontroller.ImageOptimizer;
 import com.resident.entity.user.HouseOwner;

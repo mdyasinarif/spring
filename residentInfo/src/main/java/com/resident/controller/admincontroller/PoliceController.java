@@ -1,13 +1,11 @@
-package com.resident.controller.admincontroller.usercont;
+package com.resident.controller.admincontroller;
 
 import com.resident.controller.admincontroller.ImageOptimizer;
 import com.resident.entity.user.Police;
-import com.resident.entity.user.Tenant;
 import com.resident.repo.adddressrepo.ThanaRepo;
 import com.resident.repo.adminrepo.UserRepo;
-import com.resident.repo.userrepo.EmployeeRepo;
-import com.resident.repo.userrepo.FamilyMamberRepo;
-import com.resident.repo.userrepo.TenantRepo;
+
+import com.resident.repo.userrepo.PoilceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,72 +20,67 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Controller
-@RequestMapping(value = "/tenant/")
-public class TenantController {
+@RequestMapping(value = "/police/")
+public class PoliceController {
     private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
 
     @Autowired
     private ImageOptimizer imageOptimizer;
     @Autowired
-    private TenantRepo repo;
-    
-    @Autowired
-    private TenantRepo tenantRepo;
-
+    private PoilceRepo repo;
     @Autowired
     private UserRepo userRepo;
-
-    @Autowired
-    private FamilyMamberRepo familyMamberRepo;
-
-    @Autowired
-    private EmployeeRepo employeeRepo;
-
     @Autowired
     private ThanaRepo thanaRepo;
 
+
+
+
     @GetMapping(value = "list")
     public String ownerList(Model model) {
+        model.addAttribute("police", new Police());
         model.addAttribute("list", this.repo.findAll());
-        model.addAttribute("thanalist",this.thanaRepo.findAll());
-        return "user/tenant/list";
+        return "user/police/list";
     }
 
     @GetMapping(value = "edit/{id}")
     public String editRoleView(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("tenant", this.repo.getOne(id));
+        model.addAttribute("police", this.repo.getOne(id));
         model.addAttribute("thanalist",this.thanaRepo.findAll());
-        return "user/tenant/edit";
+        return "user/police/edit";
 
     }
 
     @PostMapping(value = "edit/{id}")
-    public String editTenant(@Valid Tenant tenant, BindingResult result, @PathVariable("id") Long id, Model model, @RequestParam("file") MultipartFile file) throws IOException {
+    public String editPolice(@Valid Police police, BindingResult result, @PathVariable("id") Long id, Model model,@RequestParam("file") MultipartFile file) throws IOException {
         if (result.hasErrors()) {
-            return "user/owner/edit";
+            return "user/police/edit";
         } else {
-            Tenant tenant1 = this.repo.getOne(id);
-            tenant.setUser(tenant1.getUser());
-            tenant.setId(tenant1.getId());
+            Police police1 = this.repo.getOne(id);
+            police.setUser(police1.getUser());
+            police.setId(police1.getId());
 
                     //file upload
                     byte[] bytes = file.getBytes();
                     Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
                     Files.write(path, bytes);
-                    tenant.setPhoto("/images/new-" + file.getOriginalFilename());
+                    police.setPhoto("/images/new-" + file.getOriginalFilename());
                     // file upload end
                     imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 100, 120);
-                    this.repo.save(tenant);
+                    this.repo.save(police);
 
-                    model.addAttribute("successMsg", "Tenant Save Successfully");
+                    model.addAttribute("successMsg", "Police Save Successfully");
                 }
 
-        return "redirect:/tenant/list";
+
+
+        return "redirect:/police/list";
     }
+
     @RequestMapping(value = "del/{id}", method = RequestMethod.GET)
-    public String delTenant(@PathVariable("id") Long id) {
+    public String delPolice(@PathVariable("id") Long id) {
         this.repo.deleteById(id);
-        return "redirect:/user/tenant/list";
+        return "redirect:/police/list";
 
     }
 

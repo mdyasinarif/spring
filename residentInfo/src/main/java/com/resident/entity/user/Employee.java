@@ -11,10 +11,10 @@ public class Employee {
 
     private String name;
     private String nidNo;
-    private String type;
-    private Date dateOfBirth;
-    private String education;
+    private String gender;
+    private String denigration;
     private String contractNo;
+    private double salary;
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = true)
@@ -51,28 +51,28 @@ public class Employee {
         this.nidNo = nidNo;
     }
 
-    public String getType() {
-        return type;
+    public String getGender() {
+        return gender;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public String getDenigration() {
+        return denigration;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDenigration(String denigration) {
+        this.denigration = denigration;
     }
 
-    public String getEducation() {
-        return education;
+    public double getSalary() {
+        return salary;
     }
 
-    public void setEducation(String education) {
-        this.education = education;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public String getContractNo() {

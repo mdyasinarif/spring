@@ -15,68 +15,68 @@
 
 <div layout:fragment="custom-container">
 
-    <section class="content">
-        <div class="container-fluid">
+<!--    <section class="content">-->
+<!--        <div class="container-fluid">-->
 
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Employees
-                                <small>You can edit any columns except header/footer</small>
-                            </h2>
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+<!--                    <div class="card">-->
+<!--                        <div class="header">-->
+<!--                            <h2>-->
+<!--                                Employees-->
+<!--                                <small>You can edit any columns except header/footer</small>-->
+<!--                            </h2>-->
 
-                        </div>
-                        <div class="body">
-                            <table id="table">
-                                <tbody>
-                                <tr id="tableBody" th:each="branch, stat : *{branchesVO}">
-                                    <td>
-                                        <input type="number" th:value="*{id}" th:field="*{branch[__${stat.index}__].id}" hidden="true" />
-                                        <div>
-                                            <div>
-                                                <div class="form-group col-md-6">
-                                                    <label th:text="#{customerInfo}"/>
-                                                    <input class="form-control" type="text" name="customerInfo" th:value="*{customerInfo}" th:placeholder="#{customerInfo}" th:field="*{branches[__${stat.index}__].customerInfo}"/>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label th:text="#{address}" />
-                                                    <input class="form-control" type="text" name="address" th:value="*{address}" th:placeholder="#{address}" th:field="*{branches[__${stat.index}__].address}"
-                                                           th:required="required" />
-                                                </div>
-                                            </div>
+<!--                        </div>-->
+<!--                        <div class="body">-->
+<!--                            <table id="table">-->
+<!--                                <tbody>-->
+<!--                                <tr id="tableBody" th:each="member : *{familyMember}">-->
+<!--                                    <td>-->
+<!--                                        <input type="number" th:value="*{id}" th:field="*{branch[__${stat.index}__].id}" hidden="true" />-->
+<!--                                        <div>-->
+<!--                                            <div>-->
+<!--                                                <div class="form-group col-md-6">-->
+<!--                                                    <label th:text="#{customerInfo}"/>-->
+<!--                                                    <input class="form-control" type="text" name="customerInfo" th:value="*{customerInfo}" th:placeholder="#{customerInfo}" th:field="*{branches[__${stat.index}__].customerInfo}"/>-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group col-md-6">-->
+<!--                                                    <label th:text="#{address}" />-->
+<!--                                                    <input class="form-control" type="text" name="address" th:value="*{address}" th:placeholder="#{address}" th:field="*{branches[__${stat.index}__].address}"-->
+<!--                                                           th:required="required" />-->
+<!--                                                </div>-->
+<!--                                            </div>-->
 
-                                            <div>
-                                                <div class="form-group col-md-4">
-                                                    <label th:text="#{telephone}" />
-                                                    <input class="form-control" type="text" name="telephone" th:value="*{telephone}" th:placeholder="#{telephone}" th:field="*{branches[__${stat.index}__].telephone}"/>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label th:text="#{mobilePhone}" />
-                                                    <input class="form-control" type="text" name="mobile" th:value="*{cellPhone}" th:placeholder="#{mobilePhone}" th:field="*{branches[__${stat.index}__].cellPhone}"/>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label th:text="#{contact}" />
-                                                    <input class="form-control" type="text" name="contact" th:value="*{contact}" th:placeholder="#{contact}" th:field="*{branches[__${stat.index}__].contact}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+<!--                                            <div>-->
+<!--                                                <div class="form-group col-md-4">-->
+<!--                                                    <label th:text="#{telephone}" />-->
+<!--                                                    <input class="form-control" type="text" name="telephone" th:value="*{telephone}" th:placeholder="#{telephone}" th:field="*{branches[__${stat.index}__].telephone}"/>-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group col-md-4">-->
+<!--                                                    <label th:text="#{mobilePhone}" />-->
+<!--                                                    <input class="form-control" type="text" name="mobile" th:value="*{cellPhone}" th:placeholder="#{mobilePhone}" th:field="*{branches[__${stat.index}__].cellPhone}"/>-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group col-md-4">-->
+<!--                                                    <label th:text="#{contact}" />-->
+<!--                                                    <input class="form-control" type="text" name="contact" th:value="*{contact}" th:placeholder="#{contact}" th:field="*{branches[__${stat.index}__].contact}"/>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                </tbody>-->
+<!--                            </table>-->
 
-                            <div>
-                                <hr/>
-                                <button type="button" class="btn btn-warning" th:text="#{addBranch}" onclick="addBranch(document.getElementById('table'))"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--                            <div>-->
+<!--                                <hr/>-->
+<!--                                <button type="button" class="btn btn-warning" th:text="#{addBranch}" onclick="addBranch(document.getElementById('table'))"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
     <script>
     function addBranch(table) {
 

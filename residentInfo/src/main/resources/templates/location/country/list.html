@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="header">
                     <h2>Country List
-                        <a class="btn btn-primary pull-right" th:href="@{/location/country/add}" type="submit">ADD Country</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/country/add}" type="submit">ADD Country</a>
                     </h2>
                 </div>
                 <div class="body">
@@ -26,8 +26,8 @@
                             <tr th:each="country : ${list}">
                                 <td th:text="${country.id}"></td>
                                 <td th:text="${country.name}"></td>
-                                <td><a th:href="@{'/location/country/edit/' + ${country.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
-                                <td><a th:href="@{'/location/country/del/' + ${country.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                <td><a th:href="@{'/country/edit/' + ${country.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                <td><a th:href="@{'/country/del/' + ${country.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
                             </tr>
                         </table>
                     </div>

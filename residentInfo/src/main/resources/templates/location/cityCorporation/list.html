@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="header">
                     <h2>CityCorporations List
-                        <a class="btn btn-primary pull-right" th:href="@{/location/cityCorporation/add}" type="submit">ADD CityCorporations</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/cityCorporation/add}" type="submit">ADD CityCorporations</a>
                     </h2>
                 </div>
                 <div class="body">
@@ -28,8 +28,9 @@
                                 <td th:text="${cityCorporation.id}"></td>
                                 <td th:text="${cityCorporation.name}"></td>
                                 <td th:text="${cityCorporation.district.name}"></td>
-                                <td><a th:href="@{'/location/cityCorporation/edit/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
-                                <td><a th:href="@{'/location/cityCorporation/del/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+
+                                <td><a th:href="@{'/cityCorporation/edit/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                <td><a th:href="@{'/cityCorporation/del/' + ${cityCorporation.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
                             </tr>
                         </table>
                     </div>

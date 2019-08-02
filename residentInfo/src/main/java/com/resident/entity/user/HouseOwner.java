@@ -26,7 +26,7 @@ public class HouseOwner {
     @ManyToOne
     @JoinColumn(name = "thana_id")
     private Thana thana;
-    private String income;
+    private double income;
     // End personal information section
 
 
@@ -46,7 +46,7 @@ public class HouseOwner {
     public HouseOwner() {
     }
 
-    public HouseOwner(String name, String education, String nidNo, String gender, String tinNo, Date dateOfBirth, String contractNo, Thana thana, String income, int noOfMamber, int noOfEmploye, String photo, User user) {
+    public HouseOwner(String name, String education, String nidNo, String gender, String tinNo, Date dateOfBirth, String contractNo, Thana thana, Double income, int noOfMamber, int noOfEmploye, String photo, User user) {
         this.name = name;
         this.education = education;
         this.nidNo = nidNo;
@@ -126,11 +126,11 @@ public class HouseOwner {
         this.contractNo = contractNo;
     }
 
-    public String getIncome() {
+    public double getIncome() {
         return income;
     }
 
-    public void setIncome(String income) {
+    public void setIncome(double income) {
         this.income = income;
     }
 

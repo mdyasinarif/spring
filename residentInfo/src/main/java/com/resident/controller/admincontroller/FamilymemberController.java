@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller.usercont;
+package com.resident.controller.admincontroller;
 
 
 

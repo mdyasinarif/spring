@@ -11,14 +11,14 @@
             <div class="card">
                 <div class="header">
                     <h2>ADD Flat
-                        <a class="btn btn-primary pull-right" th:href="@{/user/flat/list}" type="submit">Flat
+                        <a class="btn btn-primary pull-right" th:href="@{/flat/list}" type="submit">Flat
                             List</a>
                     </h2>
                     <span th:text="${existMsg}"></span>
                     <span th:text="${successMsg}"></span>
                 </div>
                 <div class="body">
-                    <form id="form_validation" th:object="${flat}" th:action="@{/user/flat/add}"
+                    <form id="form_validation" th:object="${flat}" th:action="@{/flat/add}"
                           method="POST">
 
                         <div class="form-group form-float">

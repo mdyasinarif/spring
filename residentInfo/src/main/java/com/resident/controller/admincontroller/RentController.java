@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller.usercont;
+package com.resident.controller.admincontroller;
 
 
 import com.resident.entity.buliding.Rent;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/user/rent/")
+@RequestMapping(value = "/rent/")
 public class RentController {
     @Autowired
     private RentRepo repo;

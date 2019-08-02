@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller.usercont;
+package com.resident.controller.admincontroller;
 
 
 import com.resident.entity.buliding.Flat;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/user/flat/")
+@RequestMapping(value = "/flat/")
 public class FlatController {
     @Autowired
     private FlatRepo repo;

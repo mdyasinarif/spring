@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller.usercont;
+package com.resident.controller.admincontroller;
 
 
 import com.resident.entity.buliding.Builliding;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/user/builliding/")
+@RequestMapping(value = "/builliding/")
 public class BuillidingController {
     @Autowired
     private BuillidingRepo repo;
