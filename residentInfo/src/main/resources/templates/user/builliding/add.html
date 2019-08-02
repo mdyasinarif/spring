@@ -30,11 +30,11 @@
                             </div>
                         </div>
                         <div class="form-group form-float">
-                        <div class="form-line focused success">
-                            <input type="text" th:field="*{adress}" class="form-control" name="name"
-                                   minlength="3" required>
-                            <label class="form-label">Builliding Addtess</label>
-                        </div>
+                            <div class="form-line focused success">
+                                <input type="text" th:field="*{adress}" class="form-control" name="name"
+                                       minlength="3" required>
+                                <label class="form-label">Builliding Addtess</label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Thana</label>
@@ -57,13 +57,15 @@
                         </div>
 
 
-                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
-                </form>
-            </div>
+                        <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                        <a class="btn btn-primary pull-right" th:href="@{/flat/add}" type="submit">Next</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/employee/add}" type="submit">Privew</a>
+                    </form>
+                </div>
 
+            </div>
         </div>
-</div>
-</section>
+    </section>
 </div>
 </body>
 </html>
