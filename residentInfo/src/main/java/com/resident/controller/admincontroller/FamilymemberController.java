@@ -78,8 +78,21 @@ public class FamilymemberController {
 
     @GetMapping(value = "list")
     public String familyList(Model model) {
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        Iterable<FamilyMamber> list = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        } else if (rolename.equalsIgnoreCase("TENANT")) {
+            list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        }
+
+
+        model.addAttribute("list", list);
 
         return "user/family/list";
     }
