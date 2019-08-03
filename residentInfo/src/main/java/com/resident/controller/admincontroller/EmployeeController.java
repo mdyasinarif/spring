@@ -4,6 +4,7 @@ package com.resident.controller.admincontroller;
 import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
 import com.resident.entity.user.Employee;
+import com.resident.entity.user.FamilyMamber;
 import com.resident.repo.EmployeeRepo;
 import com.resident.repo.HouseOwnerRepo;
 import com.resident.repo.TenantRepo;
@@ -73,7 +74,19 @@ public class EmployeeController {
     @GetMapping(value = "list")
     public String employeeList(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        //model.addAttribute("list", this.repo.findAllByAndHouseOwner(this.houseOwnerRepo.findByUser(auth.getName())));
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        Iterable<Employee> list = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        } else if (rolename.equalsIgnoreCase("TENANT")) {
+            list = this.repo.findAllByTenant(this.tenantRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        }
+
+
+        model.addAttribute("list", list);
 
         return "user/employee/list";
     }

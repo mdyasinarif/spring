@@ -88,7 +88,7 @@ public class FamilymemberController {
         if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
             list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
         } else if (rolename.equalsIgnoreCase("TENANT")) {
-            list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+            list = this.repo.findAllByTenant(this.tenantRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
         }
 
 

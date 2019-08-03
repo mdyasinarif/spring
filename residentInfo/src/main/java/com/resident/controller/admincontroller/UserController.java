@@ -98,6 +98,7 @@ private PasswordEncoder passwordEncoder;
     @GetMapping(value = "userlist")
     public String userList(Model model) {
         model.addAttribute("list", this.repo.findAll());
+        model.addAttribute("rolelist", this.roleRepo.findAll());
         return "admin/userlist";
     }
 

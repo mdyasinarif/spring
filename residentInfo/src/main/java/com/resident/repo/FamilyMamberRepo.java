@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public interface FamilyMamberRepo extends JpaRepository<FamilyMamber,Long> {
     FamilyMamber findByName(String name);
-//    List<FamilyMamber> findAllByUser(User user);
     List<FamilyMamber> findAllByHouseOwner(HouseOwner houseOwner);
+    List<FamilyMamber> findAllByTenant(Tenant tenant);
 
 }
 

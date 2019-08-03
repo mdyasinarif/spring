@@ -13,6 +13,7 @@
         <div class="user-info" >
             <div class="image">
                 <img src="images/myphoto.jpg" width="48" height="48" alt="User" />
+                <!--<img th:src=@{${owner.photo}}" width="48" height="48" alt="User" />-->
             </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Md Yasin Arif</div>
@@ -22,11 +23,8 @@
                     <ul class="dropdown-menu pull-right">
                         <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                         <li role="seperator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                         <li role="seperator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a th:href="@{/logout}" ><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -149,14 +147,28 @@
                 <li sec:authorize="hasAnyRole('ROLE_HOUSEOWNER','ROLE_TENANT')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">perm_media</i>
-                        <span>Add Members</span>
+                        <span>Family Member</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a th:href="@{/family/add}">Add Family Member</a>
+                            <a th:href="@{/family/add}">Add</a>
                         </li>
                         <li>
-                            <a th:href="@{/employee/add}">Add Employee</a>
+                            <a th:href="@{/family/list}">list</a>
+                        </li>
+                    </ul>
+                </li>
+                <li sec:authorize="hasAnyRole('ROLE_HOUSEOWNER','ROLE_TENANT')">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">perm_media</i>
+                        <span>Employee</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a th:href="@{/employee/add}">Add</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/employee/list}">list</a>
                         </li>
                     </ul>
                 </li>
