@@ -49,6 +49,29 @@
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
+                                        <input type="text" class="form-control" th:field="*{age}" required>
+                                        <label class="form-label">Age</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <b>Education Level</b>
+                                <select class="show-tick" th:field="*{education}">
+                                    <option value="">-- Please select --</option>
+                                    <option value="UnEducated">UnEducated</option>
+                                    <option value="PSC">PSC</option>
+                                    <option value="JSC">JSC</option>
+                                    <option value="SSC">SSC</option>
+                                    <option value="HSC">HSC</option>
+                                    <option value="Graduate">Graduate</option>
+                                    <option value="Post Graduate">Post Graduate</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
                                         <input type="text" class="form-control" th:field="*{nidNo}"
                                                maxlength="10"
                                                minlength="3" required>

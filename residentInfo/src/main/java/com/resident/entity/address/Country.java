@@ -12,7 +12,7 @@ public class Country {
     private Long id;
     private String name;
 
-    private String note;
+    private String bnName;
 
     public Country() {
     }
@@ -33,12 +33,12 @@ public class Country {
         this.name = name;
     }
 
-    public String getNote() {
-        return note;
+    public String getBnName() {
+        return bnName;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setBnName(String bnName) {
+        this.bnName = bnName;
     }
 }
 

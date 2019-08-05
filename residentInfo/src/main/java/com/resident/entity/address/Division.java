@@ -8,7 +8,7 @@ public class Division {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String note;
+    private String bnName;;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -35,12 +35,12 @@ public class Division {
         this.name = name;
     }
 
-    public String getNote() {
-        return note;
+    public String getBnName() {
+        return bnName;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setBnName(String bnName) {
+        this.bnName = bnName;
     }
 
     public Country getCountry() {

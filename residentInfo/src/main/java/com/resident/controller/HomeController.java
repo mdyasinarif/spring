@@ -23,6 +23,11 @@ public class HomeController {
     public String addrow() {
         return "addrow";
     }
+    @GetMapping(value = "/owner")
+    public String addrviewow() {
+
+        return "user/houseOwner";
+    }
 
 
 }

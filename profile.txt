@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>House Owner | Resident Information System BD</title>
+    <!-- Favicon-->
+
+</head>
+
+<body class="theme-red">
+<div layout:fragment="custom-container">
+
+    <section class="content">
+
+
+        <!-- personal information -->
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>House Owner Information</h2>
+
+                    </div>
+                    <div class="body">
+                        <form id="form_validation" method="POST">
+
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line focused success">
+                                            <input type="text" class="form-control" th:field="*{name}"
+                                                   maxlength="10"
+                                                   minlength="3" required>
+                                            <label class="form-label">Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <b>Education Level</b>
+                                    <select class="show-tick" th:field="*{education}">
+                                        <option value="">-- Please select --</option>
+                                        <option value="UnEducated">UnEducated</option>
+                                        <option value="PSC">PSC</option>
+                                        <option value="JSC">JSC</option>
+                                        <option value="SSC">SSC</option>
+                                        <option value="HSC">HSC</option>
+                                        <option value="Graduate">Graduate</option>
+                                        <option value="Post Graduate">Post Graduate</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line focused success">
+                                            <input type="text" class="form-control" th:field="*{nidNo}"
+                                                   maxlength="10"
+                                                   minlength="3" required>
+                                            <label class="form-label">NID</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <b>Date of Birth</b>
+                                    <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">date_range</i>
+                                            </span>
+                                        <div class="form-line">
+                                            <input type="date" class="form-control date" th:field="*{dateOfBirth}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="col-sm-6">
+                                    <b>Mobile Phone Number</b>
+                                    <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">phone_iphone</i>
+                                            </span>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control mobile-phone-number"
+                                                   th:field="*{contractNo}"
+                                                   placeholder="Ex: +00 (000) 000-00-00">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h2 class="card-inside-title">Gender</h2>
+                                    <div class="demo-radio-button">
+                                        <input name="group1" type="radio" id="Male" th:field="*{gender}"
+                                               th:value="Male" checked/>
+                                        <label for="Male">Male</label>
+                                        <input name="group1" type="radio" id="FeMale" th:field="*{gender}"
+                                               th:value="Female"/>
+                                        <label for="FeMale">FeMale</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line focused success">
+                                            <input type="text" class="form-control" th:field="*{tinNo}"
+                                                   maxlength="10"
+                                                   minlength="3" required>
+                                            <label class="form-label">TIN Number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Thana</label>
+                                    <select th:field="*{thana}">
+                                        <option th:each="d : ${thanalist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                                <div class="col-sm-4">
+                                    <div class="form-group form-float">
+                                        <div class="form-line focused success">
+                                            <input type="text" class="form-control" th:field="*{income}">
+                                            <label class="form-label">Monthly Income</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group form-float">
+                                        <div class="form-line focused success">
+                                            <input type="number" class="form-control" th:field="*{noOfMamber}">
+                                            <label class="form-label">Number of Family Member</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group form-float">
+                                        <div class="form-line focused success">
+                                            <input type="number" class="form-control" th:field="*{noOfEmploye}">
+                                            <label class="form-label">Number of Employee</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+<!--family member list-->
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>Age</th>
+                                        <th>Education</th>
+                                        <th>NID</th>
+                                        <th>Mobile</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    <tr th:each="f : ${list}">
+                                        <td th:text="${f.id}"></td>
+                                        <td th:text="${f.name}"></td>
+                                        <td th:text="${f.gender}"></td>
+                                        <td th:text="${f.age}"></td>
+                                        <td th:text="${f.education}"></td>
+                                        <td th:text="${f.nidNo}"></td>
+                                        <td th:text="${f.contractNo}"></td>
+
+                                        <td><a th:href="@{'/family/edit/' + ${f.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                        <td><a th:href="@{'/family/del/' + ${f.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!--Employee list-->
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>NID</th>
+                                        <th>Mobile</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    <tr th:each="f : ${list}">
+                                        <td th:text="${f.id}"></td>
+                                        <td th:text="${f.name}"></td>
+                                        <td th:text="${f.gender}"></td>
+                                        <td th:text="${f.nidNo}"></td>
+                                        <td th:text="${f.contractNo}"></td>
+
+                                        <td><a th:href="@{'/employee/edit/' + ${f.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                        <td><a th:href="@{'/employee/del/' + ${f.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+
+
+                            <!--Builling Information-->
+
+                            <h5> Builling Information</h5>
+                            <hr>
+                            <div class="form-group form-float">
+
+                                <div class="form-line focused success">
+                                    <input type="text" th:field="*{name}" class="form-control" name="name" maxlength="10"
+                                           minlength="3" required>
+                                    <label class="form-label">Builliding Name</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line focused success">
+                                    <input type="text" th:field="*{adress}" class="form-control" name="name"
+                                           minlength="3" required>
+                                    <label class="form-label">Builliding Addtess</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Thana</label>
+                                <select th:field="*{thana}">
+                                    <option th:each="d : ${thanalist}" th:value="${d.id}">
+                                        <span th:text="${d.name}"></span>
+                                    </option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>House Owner</label>
+                                <select th:field="*{houseOwner}">
+                                    <option th:each="d : ${ownerlist}" th:value="${d.id}">
+                                        <span th:text="${d.name}"></span>
+                                    </option>
+                                </select>
+
+                            </div>
+
+<!--flate information-->
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Flat Name</th>
+                                        <th>Builliding Name</th>
+                                        <th>House OwnerName</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    <tr th:each="flat : ${list}">
+                                        <td th:text="${flat.id}"></td>
+                                        <td th:text="${flat.name}"></td>
+                                        <td th:text="${flat.builliding.name}"></td>
+
+                                        <td>
+                                            <span  th:each="owner : ${flat.houseOwner}" th:text="${owner.name}+' '"></span>
+                                        </td>
+                                        <td><a th:href="@{'/flat/edit/' + ${flat.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                        <td><a th:href="@{'/flat/del/' + ${flat.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+</body>
+
+</html>
