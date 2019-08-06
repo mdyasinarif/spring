@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Profile | Resident Information System BD</title>
+    <!-- Favicon-->
+
+</head>
+
+<body class="theme-red">
+<div layout:fragment="custom-container">
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>House Owner Information</h2>
+                        </div>
+                        <div class="body">
+                            <!--<form id="form_validation" method="Get">-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-sm-6">
+                                        <b>Name</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">person</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.name}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Education</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">school</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.education}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-sm-4">-->
+                                    <!--<img th:src="@{${userdetail.photo}}" class="m-x-auto img-fluid img-circle"/>-->
+                                    <!--</div>-->
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-sm-6">
+                                        <b>NID</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">sim_card</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.nidNo}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Date of Birth</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">date_range</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.dateOfBirth}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="col-sm-6">
+                                        <b>Mobile Phone Number</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">phone_iphone</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.contractNo}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Gender</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.gender}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-sm-6">
+                                        <b>TIN</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">person_pin</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.tinNo}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Thana</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">local_activity</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.thana}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                                    <div class="col-sm-4">
+                                        <b>Income</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">monetization_on</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${userdetail.income}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!--family member-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="header">
+                                            <h2>Family Member List
+                                                <a class="btn btn-primary pull-right" th:href="@{/family/add}"
+                                                   type="submit">ADD Family Menber</a>
+                                            </h2>
+                                        </div>
+                                        <div class="body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Gender</th>
+                                                        <th>NID</th>
+                                                        <th>Mobile</th>
+                                                        <th>Edit</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                    <tr th:each="f : ${family}">
+                                                        <td th:text="${f.id}"></td>
+                                                        <td th:text="${f.name}"></td>
+                                                        <td th:text="${f.gender}"></td>
+                                                        <td th:text="${f.nidNo}"></td>
+                                                        <td th:text="${f.contractNo}"></td>
+
+                                                        <td><a th:href="@{'/family/edit/' + ${f.id}}">
+                                                            <button type="button" class="btn btn-round btn-success">
+                                                                Edit
+                                                            </button>
+                                                        </a></td>
+                                                        <td><a th:href="@{'/family/del/' + ${f.id}}">
+                                                            <button type="button" class="btn btn-round btn-danger">
+                                                                DELETE
+                                                            </button>
+                                                        </a></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--Employees-->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="header">
+                                        <h2>Employee  List
+                                            <a class="btn btn-primary pull-right" th:href="@{/employee/add}" type="submit">ADD Employee</a>
+                                        </h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Gender</th>
+                                                    <th>NID</th>
+                                                    <th>Mobile</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                                <tr th:each="e : ${employess}">
+                                                    <td th:text="${e.id}"></td>
+                                                    <td th:text="${e.name}"></td>
+                                                    <td th:text="${e.gender}"></td>
+                                                    <td th:text="${e.nidNo}"></td>
+                                                    <td th:text="${e.contractNo}"></td>
+
+                                                    <td><a th:href="@{'/employee/edit/' + ${e.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                                    <td><a th:href="@{'/employee/del/' + ${e.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                <a class="btn btn-primary pull-right" th:href="@{/family/add}" type="submit">Next</a>
+                            <!--</form>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+</body>
+
+</html>
