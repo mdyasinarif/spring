@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
                 .antMatchers(
-                        "/role/**","/user/**","/login","/css/**","/documentation/**","/font/**","/images/**","/js/**","/plugins/**","/scss/**"
+                        "/role/**","/user/**","/login","/owner","/css/**","/documentation/**","/font/**","/images/**","/js/**","/plugins/**","/scss/**"
                 ).permitAll()
                 .antMatchers("/houseowner/**")
                 .hasRole("HOUSEOWNER")

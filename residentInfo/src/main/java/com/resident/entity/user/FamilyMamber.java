@@ -15,6 +15,7 @@ public class FamilyMamber {
     private String name;
     private String gender;
     private int age;
+    private String education;
     private String nidNo;
     private String contractNo;
 
@@ -91,5 +92,13 @@ public class FamilyMamber {
 
     public void setTenant(Tenant tenant) {
         this.tenant = tenant;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
     }
 }

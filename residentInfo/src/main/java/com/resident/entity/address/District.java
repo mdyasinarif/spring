@@ -8,6 +8,7 @@ public class District {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String bnName;
 
     @ManyToOne
     @JoinColumn(name = "division_id")
@@ -38,6 +39,14 @@ public class District {
 
     public void setDivision(Division division) {
         this.division = division;
+    }
+
+    public String getBnName() {
+        return bnName;
+    }
+
+    public void setBnName(String bnName) {
+        this.bnName = bnName;
     }
 }
 
