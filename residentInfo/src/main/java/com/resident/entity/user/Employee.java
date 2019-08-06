@@ -15,6 +15,7 @@ public class Employee {
     private String nidNo;
     private String gender;
     private String denigration;
+    private String education;
     private String contractNo;
     private double salary;
 
@@ -102,5 +103,11 @@ public class Employee {
         this.tenant = tenant;
     }
 
+    public String getEducation() {
+        return education;
+    }
 
+    public void setEducation(String education) {
+        this.education = education;
+    }
 }

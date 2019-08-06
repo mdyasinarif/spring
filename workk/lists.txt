@@ -1,0 +1,79 @@
+List<Builliding> buillidingList =this.buillidingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
+            model.addAttribute("building", buillidingList);
+
+            List<Flat> flatList = this.flatRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
+            model.addAttribute("flats",flatList);
+
+
+<!--                            builliding list-->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="header">
+                                        <h2>Builliding List
+                                            <a class="btn btn-primary pull-right" th:href="@{/builliding/add}" type="submit">ADD Builliding</a>
+                                        </h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Builliding Name</th>
+                                                    <th>Address</th>
+                                                    <th>House OwnerName</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                                <tr th:each="b : ${building}">
+                                                    <td th:text="${b.id}"></td>
+                                                    <td th:text="${b.name}"></td>
+                                                    <td th:text="${b.address}+ ', '+${b.thana.name}+', '+${b.thana.cityCorporation.name}+', '+${b.thana.cityCorporation.district.name}"></td>
+
+                                                    <td>
+                                                        <span  th:each="owner : ${b.houseOwner}" th:text="${owner.name}+' '"></span>
+                                                    </td>
+                                                    <td><a th:href="@{'/builliding/edit/' + ${b.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                                    <td><a th:href="@{'/builliding/del/' + ${b.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+<!--                            flate list-->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="header">
+                                        <h2>Flat List
+                                            <a class="btn btn-primary pull-right" th:href="@{/flat/add}" type="submit">ADD Flat</a>
+                                        </h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Flat Name</th>
+                                                    <th>Builliding Name</th>
+                                                    <th>House OwnerName</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                                <tr th:each="flat : ${flats}">
+                                                    <td th:text="${flat.id}"></td>
+                                                    <td th:text="${flat.name}"></td>
+                                                    <td th:text="${flat.builliding.name}"></td>
+
+                                                    <td>
+                                                        <span  th:each="owner : ${flat.houseOwner}" th:text="${owner.name}+' '"></span>
+                                                    </td>
+                                                    <td><a th:href="@{'/flat/edit/' + ${flat.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                                    <td><a th:href="@{'/flat/del/' + ${flat.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>

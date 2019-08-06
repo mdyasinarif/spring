@@ -23,6 +23,9 @@
                                 <th>Gender</th>
                                 <th>NID</th>
                                 <th>Mobile</th>
+                                <th>Education</th>
+                                <th>Denigration</th>
+                                <th>Sallary</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -32,6 +35,9 @@
                                 <td th:text="${f.gender}"></td>
                                 <td th:text="${f.nidNo}"></td>
                                 <td th:text="${f.contractNo}"></td>
+                                <td th:text="${f.education}"></td>
+                                <td th:text="${f.denigration}"></td>
+                                <td th:text="${f.salary}"></td>
 
                                 <td><a th:href="@{'/employee/edit/' + ${f.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
                                 <td><a th:href="@{'/employee/del/' + ${f.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>

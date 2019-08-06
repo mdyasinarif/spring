@@ -28,7 +28,7 @@
                             <tr th:each="builliding : ${list}">
                                 <td th:text="${builliding.id}"></td>
                                 <td th:text="${builliding.name}"></td>
-                                <td th:text="${builliding.adress}+ ', '+${builliding.thana.name}+', '+${builliding.thana.cityCorporation.name}+', '+${builliding.thana.cityCorporation.district.name}"></td>
+                                <td th:text="${builliding.address}+ ', '+${builliding.thana.name}+', '+${builliding.thana.cityCorporation.name}+', '+${builliding.thana.cityCorporation.district.name}"></td>
 
                                 <td>
                                     <span  th:each="owner : ${builliding.houseOwner}" th:text="${owner.name}+' '"></span>

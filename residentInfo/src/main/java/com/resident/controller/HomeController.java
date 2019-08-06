@@ -1,6 +1,10 @@
 package com.resident.controller;
 
 
+import com.resident.entity.admin.Role;
+import com.resident.entity.admin.User;
+import com.resident.entity.buliding.Builliding;
+import com.resident.entity.buliding.Flat;
 import com.resident.entity.user.Employee;
 import com.resident.entity.user.FamilyMamber;
 import com.resident.repo.*;
@@ -23,6 +27,9 @@ public class HomeController {
     private HouseOwnerRepo houseOwnerRepo;
 
     @Autowired
+    private TenantRepo tenantRepo;
+
+    @Autowired
     private UserRepo repo;
     @Autowired
     private FamilyMamberRepo familyMamberRepo;
@@ -32,20 +39,38 @@ public class HomeController {
     @Autowired
     private BuillidingRepo buillidingRepo;
 
+    @Autowired
+    private FlatRepo flatRepo;
+
     @GetMapping(value = "/profile")
-    public String profile(Model model) {
+    public String profile(Model model,User user) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
+            String rolename = null;
+            for (Role r : user.getRoles()) {
+                rolename = r.getRoleName();
+            }
 
-            model.addAttribute("userdetail", this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
+            if (rolename.equalsIgnoreCase("HOUSEOWNER")){
+                model.addAttribute("ownerditels", this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
 
-            List<FamilyMamber> familyMamberList = this.familyMamberRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
-            model.addAttribute("family", familyMamberList);
+                List<FamilyMamber> familyMamberList = this.familyMamberRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
+                model.addAttribute("family", familyMamberList);
 
-            List<Employee> employeeList = this.employeeRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
-            model.addAttribute("employess", employeeList);
+                List<Employee> employeeList = this.employeeRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
+                model.addAttribute("employess", employeeList);
+            }else {
+                model.addAttribute("tenantditels",this.tenantRepo.findByUser(this.repo.findByUserName(auth.getName())));
+                List<FamilyMamber> familyMamberList = this.familyMamberRepo.findAllByTenant(this.tenantRepo.findByUser(this.repo.findByUserName(auth.getName())));
+                model.addAttribute("family", familyMamberList);
 
-            model.addAttribute("building", this.buillidingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName()))));
+                List<Employee> employeeList = this.employeeRepo.findAllByTenant(this.tenantRepo.findByUser(this.repo.findByUserName(auth.getName())));
+                model.addAttribute("employess", employeeList);
+            }
+
+
+
+
 
 
         }

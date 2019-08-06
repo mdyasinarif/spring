@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface BuillidingRepo extends JpaRepository<Builliding,Long> {
         Builliding findByName(String name);
-        Builliding findByAdress(String address);
+        Builliding findByAddress(String address);
          List<Builliding> findAllByHouseOwner(HouseOwner houseOwner);
 }

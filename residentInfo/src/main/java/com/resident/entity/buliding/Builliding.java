@@ -12,7 +12,7 @@ public class Builliding {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String adress;
+    private String address;
 
     @ManyToOne
     @JoinColumn(name = "thana_id")
@@ -46,12 +46,12 @@ public class Builliding {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Thana getThana() {

@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.6.40-log
+-- Server version	5.6.44-log
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,18 +28,20 @@ USE resi;
 DROP TABLE IF EXISTS `builliding`;
 CREATE TABLE `builliding` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `adress` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `thana_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK73vf1rb00ifs33inn4fusoxld` (`thana_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `builliding`
 --
 
 /*!40000 ALTER TABLE `builliding` DISABLE KEYS */;
+INSERT INTO `builliding` (`id`,`address`,`name`,`thana_id`) VALUES 
+ (1,'54 SotosSorkar Road','KarimVila',1);
 /*!40000 ALTER TABLE `builliding` ENABLE KEYS */;
 
 
@@ -60,6 +62,8 @@ CREATE TABLE `builling_owner` (
 --
 
 /*!40000 ALTER TABLE `builling_owner` DISABLE KEYS */;
+INSERT INTO `builling_owner` (`builling_id`,`owner_id`) VALUES 
+ (1,2);
 /*!40000 ALTER TABLE `builling_owner` ENABLE KEYS */;
 
 
@@ -75,13 +79,15 @@ CREATE TABLE `city_corporation` (
   `district_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKrrhdydqlsxmre3e9a19fwvwk0` (`district_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `city_corporation`
 --
 
 /*!40000 ALTER TABLE `city_corporation` DISABLE KEYS */;
+INSERT INTO `city_corporation` (`id`,`name`,`notes`,`district_id`) VALUES 
+ (1,'South City',NULL,1);
 /*!40000 ALTER TABLE `city_corporation` ENABLE KEYS */;
 
 
@@ -92,16 +98,18 @@ CREATE TABLE `city_corporation` (
 DROP TABLE IF EXISTS `country`;
 CREATE TABLE `country` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `bn_name` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `country`
 --
 
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
+INSERT INTO `country` (`id`,`bn_name`,`name`) VALUES 
+ (1,NULL,'Bangladesh');
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
 
@@ -112,17 +120,21 @@ CREATE TABLE `country` (
 DROP TABLE IF EXISTS `district`;
 CREATE TABLE `district` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `bn_name` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `division_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK78g8m793eebrogjuuey668ihu` (`division_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `district`
 --
 
 /*!40000 ALTER TABLE `district` DISABLE KEYS */;
+INSERT INTO `district` (`id`,`bn_name`,`name`,`division_id`) VALUES 
+ (1,NULL,'Dhaka',1),
+ (2,NULL,'Chatrogram',1);
 /*!40000 ALTER TABLE `district` ENABLE KEYS */;
 
 
@@ -133,18 +145,21 @@ CREATE TABLE `district` (
 DROP TABLE IF EXISTS `division`;
 CREATE TABLE `division` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `bn_name` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `note` varchar(255) DEFAULT NULL,
   `country_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKrjici6pk7j0mjom8a1xga0jsg` (`country_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `division`
 --
 
 /*!40000 ALTER TABLE `division` DISABLE KEYS */;
+INSERT INTO `division` (`id`,`bn_name`,`name`,`country_id`) VALUES 
+ (1,NULL,'Dhaka',1),
+ (2,NULL,'Chatrogram',1);
 /*!40000 ALTER TABLE `division` ENABLE KEYS */;
 
 
@@ -157,6 +172,7 @@ CREATE TABLE `employee` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `contract_no` varchar(255) DEFAULT NULL,
   `denigration` varchar(255) DEFAULT NULL,
+  `education` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `nid_no` varchar(255) DEFAULT NULL,
@@ -166,13 +182,17 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`id`),
   KEY `FK15af427j279hfm3chpb8cqi8e` (`owner_id`),
   KEY `FKhvmrplj0c8g0dyhfbhai1gp14` (`tenant_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
 --
 
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` (`id`,`contract_no`,`denigration`,`education`,`gender`,`name`,`nid_no`,`salary`,`owner_id`,`tenant_id`) VALUES 
+ (1,'01458963','Coock','PSC','Female','Rahima','895678',5000,2,NULL),
+ (2,'015632789','Driver','SSC','Male','Raju','895678',8000,2,NULL),
+ (3,'0178523689','driver','HSC','Male','khdus','85623',20000,NULL,1);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 
 
@@ -185,6 +205,7 @@ CREATE TABLE `family_mamber` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `age` int(11) NOT NULL,
   `contract_no` varchar(255) DEFAULT NULL,
+  `education` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `nid_no` varchar(255) DEFAULT NULL,
@@ -193,13 +214,17 @@ CREATE TABLE `family_mamber` (
   PRIMARY KEY (`id`),
   KEY `FKp93mfiefm3epfk83x1gla9awm` (`owner_id`),
   KEY `FKqfcl0gwgq31qunbcb1wolpcix` (`tenant_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `family_mamber`
 --
 
 /*!40000 ALTER TABLE `family_mamber` DISABLE KEYS */;
+INSERT INTO `family_mamber` (`id`,`age`,`contract_no`,`education`,`gender`,`name`,`nid_no`,`owner_id`,`tenant_id`) VALUES 
+ (1,27,'0158963214','Graduate','Female','Mim','124578',2,NULL),
+ (2,28,'0136985245','Post Graduate','Female','Rumu','784512',2,NULL),
+ (3,45,'014785566666','Graduate','Male','Juma','121545',NULL,1);
 /*!40000 ALTER TABLE `family_mamber` ENABLE KEYS */;
 
 
@@ -215,13 +240,16 @@ CREATE TABLE `flat` (
   `buillding_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK32plolo4le0jfsnmec90sgd8m` (`buillding_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `flat`
 --
 
 /*!40000 ALTER TABLE `flat` DISABLE KEYS */;
+INSERT INTO `flat` (`id`,`name`,`note`,`buillding_id`) VALUES 
+ (1,'A 101',NULL,1),
+ (2,'A 102',NULL,1);
 /*!40000 ALTER TABLE `flat` ENABLE KEYS */;
 
 
@@ -242,6 +270,9 @@ CREATE TABLE `flat_owner` (
 --
 
 /*!40000 ALTER TABLE `flat_owner` DISABLE KEYS */;
+INSERT INTO `flat_owner` (`flat_id`,`owner_id`) VALUES 
+ (1,2),
+ (2,2);
 /*!40000 ALTER TABLE `flat_owner` ENABLE KEYS */;
 
 
@@ -276,8 +307,8 @@ CREATE TABLE `house_owner` (
 
 /*!40000 ALTER TABLE `house_owner` DISABLE KEYS */;
 INSERT INTO `house_owner` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`no_of_employe`,`no_of_mamber`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES 
- (1,'01686239188','2019-08-02','','',0,'','',0,0,'','',NULL,1),
- (2,'01676555764','2019-08-02','','',0,'','',0,0,'','',NULL,4);
+ (1,'01676555764','1991-08-07','Graduate','Male',20000,'Md Minhazu','124578',1,1,'/images/new-pic1.jpg','784512',1,1),
+ (2,'01678965123','1982-08-07','Graduate','Male',20000,'Md Karim','78452',2,2,'/images/new-owner1.jfif','562389',1,4);
 /*!40000 ALTER TABLE `house_owner` ENABLE KEYS */;
 
 
@@ -340,7 +371,7 @@ CREATE TABLE `police` (
 
 /*!40000 ALTER TABLE `police` DISABLE KEYS */;
 INSERT INTO `police` (`id`,`batch_id`,`contract_no`,`date_of_birth`,`gender`,`name`,`nid`,`photo`,`post`,`thana_id`,`user_id`) VALUES 
- (1,'','01686239149','2019-08-02','','','','','',NULL,2);
+ (1,'5623','01676555789','1985-08-07','Male','Mr Sami','7845','/images/new-police4.jfif','Inspector',1,3);
 /*!40000 ALTER TABLE `police` ENABLE KEYS */;
 
 
@@ -363,8 +394,8 @@ CREATE TABLE `role` (
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
 INSERT INTO `role` (`id`,`role_name`) VALUES 
  (1,'HOUSEOWNER'),
- (2,'POLICE'),
- (3,'TENANT');
+ (2,'TENANT'),
+ (3,'POLICE');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 
@@ -399,7 +430,7 @@ CREATE TABLE `tenant` (
 
 /*!40000 ALTER TABLE `tenant` DISABLE KEYS */;
 INSERT INTO `tenant` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`no_of_employe`,`no_of_mamber`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES 
- (1,'01686239170','2019-08-02','','',0,'','',0,0,'','',NULL,3);
+ (1,'01676555765','1991-08-07','Post Graduate','Male',2000,'Md Yasin','425689',2,2,'/images/new-tenant2.jfif','481523',1,2);
 /*!40000 ALTER TABLE `tenant` ENABLE KEYS */;
 
 
@@ -415,13 +446,15 @@ CREATE TABLE `thana` (
   `citycorporation_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKjkcq11nmvwhctlg0m10bu73p1` (`citycorporation_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thana`
 --
 
 /*!40000 ALTER TABLE `thana` DISABLE KEYS */;
+INSERT INTO `thana` (`id`,`name`,`note`,`citycorporation_id`) VALUES 
+ (1,'Gandaria',NULL,1);
 /*!40000 ALTER TABLE `thana` ENABLE KEYS */;
 
 
@@ -467,10 +500,10 @@ CREATE TABLE `user` (
 
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`,`password`,`phone`,`user_name`) VALUES 
- (1,'$2a$10$uVtqkoA0jvFPLykenObruuov5a5QFpfbQwwOmfFUspTi5gtBi/1T2','01686239188','minhaz'),
- (2,'$2a$10$ADJ0ufmQuAWdeMihf/aAZ./qHjlku78Pd27vZ1uAq42WdTyaOcDoq','01686239149','sami'),
- (3,'$2a$10$7il5QQ7RSQRDan/4S.DKzOzM2/ujBruaBi/8/QHtEhhH3VF0KpX0.','01686239170','yasin'),
- (4,'$2a$10$JdNw8H7s75Wt1.SwaBI6R.VLlrKWIN7CcI5xATBlJL/gFqvn1FCXq','01676555764','arif');
+ (1,'$2a$10$Btrj50E.iEPgURlq/FWIX.GBb.Qv2tloGFCP1QdqxSXgsi/tRMrGi','01676555764','minhaz'),
+ (2,'$2a$10$Wod1TzQlmUbXhPdNMyUnouSkGeDrtJOqlAZJ90kGHz7cqM5YpvZgG','01676555765','yasin'),
+ (3,'$2a$10$1DMu9AVQ7Eji4aWT7t0kauiXSP9WneSliT0AdBJW.WXDEj2pFTZGO','01676555789','sami'),
+ (4,'$2a$10$MH/YrhREqn1YN8Jt/g0K3um/8WsLv92fHW6ZVje5uO1TeZRzQ87QG','01678965123','karim');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
