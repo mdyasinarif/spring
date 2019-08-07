@@ -45,9 +45,10 @@ public class HomeController {
     @GetMapping(value = "/profile")
     public String profile(Model model,User user) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user1 = this.repo.findByUserName(user.getUserName());
         if (auth != null) {
             String rolename = null;
-            for (Role r : user.getRoles()) {
+            for (Role r : user1.getRoles()) {
                 rolename = r.getRoleName();
             }
 
@@ -67,11 +68,6 @@ public class HomeController {
                 List<Employee> employeeList = this.employeeRepo.findAllByTenant(this.tenantRepo.findByUser(this.repo.findByUserName(auth.getName())));
                 model.addAttribute("employess", employeeList);
             }
-
-
-
-
-
 
         }
         return "profile";
