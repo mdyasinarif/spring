@@ -43,9 +43,9 @@ public class HomeController {
     private FlatRepo flatRepo;
 
     @GetMapping(value = "/profile")
-    public String profile(Model model,User user) {
+    public String profile(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user1 = this.repo.findByUserName(user.getUserName());
+        User user1 = this.repo.findByUserName(auth.getName());
         if (auth != null) {
             String rolename = null;
             for (Role r : user1.getRoles()) {
@@ -53,7 +53,7 @@ public class HomeController {
             }
 
             if (rolename.equalsIgnoreCase("HOUSEOWNER")){
-                model.addAttribute("ownerditels", this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
+                model.addAttribute("ditels", this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
 
                 List<FamilyMamber> familyMamberList = this.familyMamberRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
                 model.addAttribute("family", familyMamberList);
@@ -61,7 +61,7 @@ public class HomeController {
                 List<Employee> employeeList = this.employeeRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.repo.findByUserName(auth.getName())));
                 model.addAttribute("employess", employeeList);
             }else {
-                model.addAttribute("tenantditels",this.tenantRepo.findByUser(this.repo.findByUserName(auth.getName())));
+                model.addAttribute("ditels",this.tenantRepo.findByUser(this.repo.findByUserName(auth.getName())));
                 List<FamilyMamber> familyMamberList = this.familyMamberRepo.findAllByTenant(this.tenantRepo.findByUser(this.repo.findByUserName(auth.getName())));
                 model.addAttribute("family", familyMamberList);
 
@@ -73,6 +73,20 @@ public class HomeController {
         return "profile";
     }
 
+
+    @GetMapping(value = "/flats")
+    public String FlatsView(Flat flat,Model model) {
+        model.addAttribute("flats", this.flatRepo.findAllByStatus(true));
+        return "availableflatlist";
+
+    }
+    @GetMapping(value = "flat/{id}")
+    public String editBuillidingView(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("flat", this.flatRepo.getOne(id));
+        model.addAttribute("owner", this.houseOwnerRepo.getOne(id));
+        return "flatview";
+
+    }
 
     @GetMapping(value = "/editable")
     public String displayeditabletable() {

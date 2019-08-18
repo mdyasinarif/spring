@@ -1,8 +1,10 @@
 package com.resident.entity.buliding;
 
 import com.resident.entity.user.HouseOwner;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,6 +14,12 @@ public class Flat {
     private Long id;
 
     private String name;
+    private Boolean status;
+    private Double rentAmount;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date rentDate;
+    private String photo;
     private String note;
 
     @ManyToOne
@@ -66,6 +74,38 @@ public class Flat {
 
     public void setHouseOwner(Set<HouseOwner> houseOwner) {
         this.houseOwner = houseOwner;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Double getRentAmount() {
+        return rentAmount;
+    }
+
+    public void setRentAmount(Double rentAmount) {
+        this.rentAmount = rentAmount;
+    }
+
+    public Date getRentDate() {
+        return rentDate;
+    }
+
+    public void setRentDate(Date rentDate) {
+        this.rentDate = rentDate;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
 

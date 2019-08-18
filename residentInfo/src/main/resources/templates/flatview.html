@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Flats | Resident Information System BD</title>
+    <!-- Favicon-->
+
+</head>
+
+<body class="theme-red">
+<div layout:fragment="custom-container">
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Flate Information</h2>
+                        </div>
+                        <div class="body">
+                            <!--<form id="form_validation" method="Get">-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-sm-6">
+                                        <b>Buillidung Name</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">person</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${flat.builliding.name}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label th:text="${flat.name}"></label>
+                                        <img th:src="@{${flat.photo}}" class="m-x-auto img-fluid img-rounded"/>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-sm-6">
+                                        <b>Monthly Rent Amount</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">sim_card</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${flat.rentAmount}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Rent Date</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">date_range</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${flat.rentDate}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-sm-6">
+                                        <b>Owner Name</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${owner.name}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Mobile Phone Number</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">phone_iphone</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <label th:text="${owner.contractNo}"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+                                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                <a class="btn btn-primary pull-right" th:href="@{/family/add}" type="submit">Next</a>
+                            <!--</form>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.6.44-log
+-- Server version	5.6.40-log
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,7 +33,7 @@ CREATE TABLE `builliding` (
   `thana_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK73vf1rb00ifs33inn4fusoxld` (`thana_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `builliding`
@@ -41,7 +41,8 @@ CREATE TABLE `builliding` (
 
 /*!40000 ALTER TABLE `builliding` DISABLE KEYS */;
 INSERT INTO `builliding` (`id`,`address`,`name`,`thana_id`) VALUES 
- (1,'54 SotosSorkar Road','KarimVila',1);
+ (1,'54 SotosSorkar Road','KarimVila',1),
+ (2,'90/A S K Dash Road ','Sakib vila',1);
 /*!40000 ALTER TABLE `builliding` ENABLE KEYS */;
 
 
@@ -63,7 +64,8 @@ CREATE TABLE `builling_owner` (
 
 /*!40000 ALTER TABLE `builling_owner` DISABLE KEYS */;
 INSERT INTO `builling_owner` (`builling_id`,`owner_id`) VALUES 
- (1,2);
+ (1,2),
+ (2,3);
 /*!40000 ALTER TABLE `builling_owner` ENABLE KEYS */;
 
 
@@ -182,7 +184,7 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`id`),
   KEY `FK15af427j279hfm3chpb8cqi8e` (`owner_id`),
   KEY `FKhvmrplj0c8g0dyhfbhai1gp14` (`tenant_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
@@ -192,7 +194,8 @@ CREATE TABLE `employee` (
 INSERT INTO `employee` (`id`,`contract_no`,`denigration`,`education`,`gender`,`name`,`nid_no`,`salary`,`owner_id`,`tenant_id`) VALUES 
  (1,'01458963','Coock','PSC','Female','Rahima','895678',5000,2,NULL),
  (2,'015632789','Driver','SSC','Male','Raju','895678',8000,2,NULL),
- (3,'0178523689','driver','HSC','Male','khdus','85623',20000,NULL,1);
+ (3,'0178523689','driver','HSC','Male','khdus','85623',20000,NULL,1),
+ (4,'0178954126','Servet','HSC','Female','Rahamia','12547',20000,1,NULL);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 
 
@@ -214,7 +217,7 @@ CREATE TABLE `family_mamber` (
   PRIMARY KEY (`id`),
   KEY `FKp93mfiefm3epfk83x1gla9awm` (`owner_id`),
   KEY `FKqfcl0gwgq31qunbcb1wolpcix` (`tenant_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `family_mamber`
@@ -224,7 +227,8 @@ CREATE TABLE `family_mamber` (
 INSERT INTO `family_mamber` (`id`,`age`,`contract_no`,`education`,`gender`,`name`,`nid_no`,`owner_id`,`tenant_id`) VALUES 
  (1,27,'0158963214','Graduate','Female','Mim','124578',2,NULL),
  (2,28,'0136985245','Post Graduate','Female','Rumu','784512',2,NULL),
- (3,45,'014785566666','Graduate','Male','Juma','121545',NULL,1);
+ (3,45,'014785566666','Graduate','Male','Juma','121545',NULL,1),
+ (4,25,'01789561234','HSC','Female','kumu','213',1,NULL);
 /*!40000 ALTER TABLE `family_mamber` ENABLE KEYS */;
 
 
@@ -237,19 +241,24 @@ CREATE TABLE `flat` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `rent_amount` double DEFAULT NULL,
+  `rent_date` date DEFAULT NULL,
+  `status` bit(1) DEFAULT NULL,
   `buillding_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK32plolo4le0jfsnmec90sgd8m` (`buillding_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `flat`
 --
 
 /*!40000 ALTER TABLE `flat` DISABLE KEYS */;
-INSERT INTO `flat` (`id`,`name`,`note`,`buillding_id`) VALUES 
- (1,'A 101',NULL,1),
- (2,'A 102',NULL,1);
+INSERT INTO `flat` (`id`,`name`,`note`,`photo`,`rent_amount`,`rent_date`,`status`,`buillding_id`) VALUES 
+ (1,'A101',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x01,2),
+ (2,'A102',NULL,'/images/new-flat2.jpg',6000,'2019-09-01',0x01,2),
+ (3,'C101',NULL,'/images/new-flat3.jpg',7000,'2019-08-01',0x00,2);
 /*!40000 ALTER TABLE `flat` ENABLE KEYS */;
 
 
@@ -272,7 +281,10 @@ CREATE TABLE `flat_owner` (
 /*!40000 ALTER TABLE `flat_owner` DISABLE KEYS */;
 INSERT INTO `flat_owner` (`flat_id`,`owner_id`) VALUES 
  (1,2),
- (2,2);
+ (1,3),
+ (2,2),
+ (2,3),
+ (3,3);
 /*!40000 ALTER TABLE `flat_owner` ENABLE KEYS */;
 
 
@@ -299,7 +311,7 @@ CREATE TABLE `house_owner` (
   PRIMARY KEY (`id`),
   KEY `FKd2m8fahm7hrykrfjb628x7973` (`thana_id`),
   KEY `FKhpbnjn4ipu3a94qaxrdlogbnn` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `house_owner`
@@ -308,7 +320,8 @@ CREATE TABLE `house_owner` (
 /*!40000 ALTER TABLE `house_owner` DISABLE KEYS */;
 INSERT INTO `house_owner` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`no_of_employe`,`no_of_mamber`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES 
  (1,'01676555764','1991-08-07','Graduate','Male',20000,'Md Minhazu','124578',1,1,'/images/new-pic1.jpg','784512',1,1),
- (2,'01678965123','1982-08-07','Graduate','Male',20000,'Md Karim','78452',2,2,'/images/new-owner1.jfif','562389',1,4);
+ (2,'01678965123','1982-08-07','Graduate','Male',20000,'Md Karim','78452',2,2,'/images/new-owner1.jfif','562389',1,4),
+ (3,'0167896541','1971-08-18','HSC','Male',50000,'Md Arif','135',1,1,'/images/new-owner3.jfif','2154',1,5);
 /*!40000 ALTER TABLE `house_owner` ENABLE KEYS */;
 
 
@@ -492,7 +505,7 @@ CREATE TABLE `user` (
   `user_name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_589idila9li6a4arw1t8ht1gx` (`phone`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -503,7 +516,8 @@ INSERT INTO `user` (`id`,`password`,`phone`,`user_name`) VALUES
  (1,'$2a$10$Btrj50E.iEPgURlq/FWIX.GBb.Qv2tloGFCP1QdqxSXgsi/tRMrGi','01676555764','minhaz'),
  (2,'$2a$10$Wod1TzQlmUbXhPdNMyUnouSkGeDrtJOqlAZJ90kGHz7cqM5YpvZgG','01676555765','yasin'),
  (3,'$2a$10$1DMu9AVQ7Eji4aWT7t0kauiXSP9WneSliT0AdBJW.WXDEj2pFTZGO','01676555789','sami'),
- (4,'$2a$10$MH/YrhREqn1YN8Jt/g0K3um/8WsLv92fHW6ZVje5uO1TeZRzQ87QG','01678965123','karim');
+ (4,'$2a$10$MH/YrhREqn1YN8Jt/g0K3um/8WsLv92fHW6ZVje5uO1TeZRzQ87QG','01678965123','karim'),
+ (5,'$2a$10$eSuZUJHQBoOmme7rGO8Op.LyW/9JfdgV7J2DiiQiBg3dOpkflKywm','0167896541','arif');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
@@ -528,7 +542,8 @@ INSERT INTO `user_role` (`user_id`,`role_id`) VALUES
  (1,1),
  (2,2),
  (3,3),
- (4,1);
+ (4,1),
+ (5,1);
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 
 

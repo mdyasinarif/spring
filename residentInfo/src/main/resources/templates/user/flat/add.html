@@ -19,35 +19,83 @@
                 </div>
                 <div class="body">
                     <form id="form_validation" th:object="${flat}" th:action="@{/flat/add}"
-                          method="POST">
+                          enctype="multipart/form-data"  method="POST">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
 
-                        <div class="form-group form-float">
-
-                            <div class="form-line focused success">
-                                <input type="text" th:field="*{name}" class="form-control" name="name" maxlength="10"
-                                       minlength="3" required>
-                                <label class="form-label">Flat Name</label>
+                                    <div class="form-line focused success">
+                                        <input type="text" th:field="*{name}" class="form-control" name="name"
+                                               maxlength="10"
+                                               minlength="3" required>
+                                        <label class="form-label">Flat Name</label>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-sm-6">
+                                <b>Photo</b>
+                                <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">image</i>
+                                            </span>
+
+                                    <input type="file" name="file">
+
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="form-group">
-                            <label>Builliding</label>
-                            <select th:field="*{builliding}">
-                                <option th:each="d : ${buillidinglist}" th:value="${d.id}">
-                                    <span th:text="${d.name}"></span>
-                                </option>
-                            </select>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Builliding</label>
+                                    <select th:field="*{builliding}">
+                                        <option th:each="d : ${buillidinglist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>House Owner</label>
+                                    <select th:field="*{houseOwner}">
+                                        <option th:each="d : ${ownerlist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
 
                         </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                        <div class="form-group">
-                            <label>House Owner</label>
-                            <select th:field="*{houseOwner}">
-                                <option th:each="d : ${ownerlist}" th:value="${d.id}">
-                                    <span th:text="${d.name}"></span>
-                                </option>
-                            </select>
 
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input type="text" class="form-control" th:field="*{rentAmount}">
+                                        <label class="form-label">Monthly Rent Amount</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <b>Rent Date</b>
+                                <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">date_range</i>
+                                            </span>
+                                    <div class="form-line">
+                                        <input type="date" class="form-control date" th:field="*{rentDate}">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 

@@ -19,28 +19,23 @@
                         <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <tr>
                                 <th>ID</th>
+                                <th>Photo</th>
                                 <th>Flat Name</th>
                                 <th>Status</th>
+                                <th>Address</th>
                                 <th>Monthly Rent Amount</th>
                                 <th>Rent Date</th>
-                                <th>Builliding Name</th>
-                                <th>House OwnerName</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Action</th>
                             </tr>
-                            <tr th:each="flat : ${list}">
+                            <tr th:each="flat : ${flats}">
                                 <td th:text="${flat.id}"></td>
+                                <td><img th:src="@{${flat.photo}}" width="100" height="120"/></td>
                                 <td th:text="${flat.name}"></td>
                                 <td th:text="${flat.status}"></td>
+                                <td th:text="${flat.builliding.getAddress()}+', '+${flat.builliding.thana.name}"></td>
                                 <td th:text="${flat.rentAmount}"></td>
                                 <td th:text="${flat.rentDate}"></td>
-                                <td th:text="${flat.builliding.name}"></td>
-
-                                <td>
-                                    <span  th:each="owner : ${flat.houseOwner}" th:text="${owner.name}+' '"></span>
-                                </td>
-                                <td><a th:href="@{'/flat/edit/' + ${flat.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
-                                <td><a th:href="@{'/flat/del/' + ${flat.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                <td><a th:href="@{'/flat/' + ${flat.id}}"><button type="button" class="btn btn-round btn-success">View</button></a></td>
                             </tr>
                         </table>
                     </div>

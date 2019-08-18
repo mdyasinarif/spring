@@ -30,18 +30,9 @@ public class TenantController {
     private ImageOptimizer imageOptimizer;
     @Autowired
     private TenantRepo repo;
-    
-    @Autowired
-    private TenantRepo tenantRepo;
 
     @Autowired
     private UserRepo userRepo;
-
-    @Autowired
-    private FamilyMamberRepo familyMamberRepo;
-
-    @Autowired
-    private EmployeeRepo employeeRepo;
 
     @Autowired
     private ThanaRepo thanaRepo;

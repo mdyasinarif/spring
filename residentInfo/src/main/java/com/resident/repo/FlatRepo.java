@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface FlatRepo extends JpaRepository<Flat,Long> {
  Flat findByName(String name);
- List<Flat> findAllByHouseOwner(HouseOwner houseOwner);
+ Iterable<Flat> findAllByStatus(boolean status);
 }

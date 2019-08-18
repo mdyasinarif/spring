@@ -10,8 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 @RequestMapping(value = "/flat/")
@@ -22,6 +27,10 @@ public class FlatController {
     private BuillidingRepo buillidingRepo;
     @Autowired
     private HouseOwnerRepo houseOwnerRepo;
+    @Autowired
+    private ImageOptimizer imageOptimizer;
+
+    private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
 
     @GetMapping(value = "add")
     public String addFlatView(Flat flat, Model model) {
@@ -32,7 +41,7 @@ public class FlatController {
     }
 
     @PostMapping(value = "add")
-    public String addFlat(@Valid Flat flat, BindingResult result, Model model) {
+    public String addFlat(@Valid Flat flat, BindingResult result, Model model, @RequestParam("file") MultipartFile file) throws IOException {
         if (result.hasErrors()) {
             return "user/flat/add";
         } else {
@@ -41,6 +50,13 @@ public class FlatController {
                 if (flat1 != null) {
                     model.addAttribute("existMsg", "FlatName is already exist");
                 } else {
+                    byte[] bytes = file.getBytes();
+                    Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+                    Files.write(path, bytes);
+                    flat.setPhoto("/images/new-" + file.getOriginalFilename());
+                    // file upload end
+                    imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 100, 120);
+                    flat.setStatus(true);
                     this.repo.save(flat);
                     model.addAttribute("flat", new Flat());
                     model.addAttribute("successMsg", "Flat save Successfully");
@@ -65,7 +81,7 @@ public class FlatController {
     }
 
     @PostMapping(value = "edit/{id}")
-    public String editFlat(@Valid Flat flat, BindingResult result, @PathVariable("id") Long id, Model model) {
+    public String editFlat(@Valid Flat flat, BindingResult result, @PathVariable("id") Long id, Model model, @RequestParam("file") MultipartFile file) throws IOException {
         if (result.hasErrors()) {
             return "user/flat/edit";
         } else {
@@ -75,6 +91,12 @@ public class FlatController {
                     model.addAttribute("existMsg", "FlatName is already exist");
                     return "user/flat/edit";
                 } else {
+                    byte[] bytes = file.getBytes();
+                    Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+                    Files.write(path, bytes);
+                    flat.setPhoto("/images/new-" + file.getOriginalFilename());
+                    // file upload end
+                    imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 100, 120);
                     this.repo.save(flat);
                     model.addAttribute("flat", new Flat());
                     model.addAttribute("successMsg", "FlatName save Success");
