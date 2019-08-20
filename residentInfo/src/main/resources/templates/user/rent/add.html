@@ -78,14 +78,11 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Tanent</label>
-                                    <select th:field="*{tenant}">
-                                        <option th:each="d : ${tenantlist}" th:value="${d.id}">
-                                            <span th:text="${d.name}"></span>
-                                        </option>
-                                    </select>
-
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input type="text" class="form-control" th:field="*{tenant.contractNo}"  required>
+                                        <label class="form-label">Tanent Contract No</label>
+                                    </div>
                                 </div>
 
                             </div>

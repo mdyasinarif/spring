@@ -12,8 +12,9 @@ import java.util.List;
 
 @Repository
 public interface TenantRepo extends JpaRepository<Tenant,Long> {
-    Tenant findByContractNo(String contractNO);
+
     List<Tenant> findAllByUser(User user);
     Tenant findByUser(User user);
+    Tenant findByContractNo(String  contractNO);
 
 }

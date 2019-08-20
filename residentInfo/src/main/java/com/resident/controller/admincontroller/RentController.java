@@ -2,12 +2,14 @@ package com.resident.controller.admincontroller;
 
 
 import com.resident.entity.buliding.Rent;
+import com.resident.entity.user.Tenant;
 import com.resident.repo.BuillidingRepo;
 import com.resident.repo.FlatRepo;
 import com.resident.repo.RentRepo;
 import com.resident.repo.HouseOwnerRepo;
 import com.resident.repo.TenantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,13 +36,12 @@ public class RentController {
         model.addAttribute("buillidinglist", this.buillidingRepo.findAll());
         model.addAttribute("flatlist", this.flatRepo.findAll());
         model.addAttribute("ownerlist", this.houseOwnerRepo.findAll());
-        model.addAttribute("tenantlist", this.tenantRepo.findAll());
         return "user/rent/add";
 
     }
 
     @PostMapping(value = "add")
-    public String addRent(@Valid Rent rent, BindingResult result, Model model) {
+    public String addRent(@Valid Rent rent, BindingResult result, Model model,@PathVariable("contractNo") String  contractNo) {
         if (result.hasErrors()) {
             return "user/rent/add";
         } else {
@@ -49,6 +50,9 @@ public class RentController {
                 if (rent1 != null) {
                     model.addAttribute("existMsg", "RentName is already exist");
                 } else {
+
+                    Tenant tenant = tenantRepo.findByContractNo(contractNo);
+                    rent.setTenant(tenant);
                     this.repo.save(rent);
                     model.addAttribute("rent", new Rent());
                     model.addAttribute("successMsg", "Rent save Successfully");
