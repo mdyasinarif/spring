@@ -27,6 +27,10 @@ public class Builliding {
             inverseJoinColumns = @JoinColumn(name = "owner_id"))
     private Set<HouseOwner> houseOwner;
 
+    @OneToMany(mappedBy = "builliding")
+    private Set<Flat> flats;
+
+
     public Builliding() {
     }
 

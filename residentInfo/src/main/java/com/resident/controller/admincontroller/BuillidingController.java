@@ -1,12 +1,17 @@
 package com.resident.controller.admincontroller;
 
 
+import com.resident.entity.admin.Role;
 import com.resident.entity.buliding.Builliding;
 
+import com.resident.entity.buliding.Flat;
 import com.resident.repo.ThanaRepo;
 import com.resident.repo.BuillidingRepo;
 import com.resident.repo.HouseOwnerRepo;
+import com.resident.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +28,8 @@ public class BuillidingController {
     private ThanaRepo thanaRepo;
     @Autowired
     private HouseOwnerRepo houseOwnerRepo;
-
+    @Autowired
+    private UserRepo userRepo;
     @GetMapping(value = "add")
     public String addBuillidingView(Builliding builliding, Model model) {
         model.addAttribute("thanalist", this.thanaRepo.findAll());
@@ -54,7 +60,17 @@ public class BuillidingController {
 
     @GetMapping(value = "list")
     public String buillidingList(Model model) {
-        model.addAttribute("list", this.repo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        Iterable <Builliding> list = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        }
+
+        model.addAttribute("list", list);
 
         return "user/builliding/list";
     }

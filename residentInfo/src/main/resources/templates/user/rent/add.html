@@ -22,20 +22,20 @@
                           method="POST">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-sm-6">
-                        <div class="form-group form-float">
-                            <label class="form-label">Rent Type</label>
-                            <select th:field="*{rentType}">
+                                <div class="form-group form-float">
+                                    <label class="form-label">Rent Type</label>
+                                    <select th:field="*{rentType}">
 
-                                <option th:value="Commercial">Commercial</option>
-                                <option th:value="Family">Family</option>
-                                <option th:value="Family_Sub_late">Family Sub late</option>
-                                <option th:value="Match">Match</option>
-                            </select>
-                        </div>
+                                        <option th:value="Commercial">Commercial</option>
+                                        <option th:value="Family">Family</option>
+                                        <option th:value="Family_Sub_late">Family Sub late</option>
+                                        <option th:value="Match">Match</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Date</label>
-                               <label th:text="*{currentdate}"></label>
+                                <label th:text="*{currentdate}"></label>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -52,13 +52,12 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>House Owner</label>
-                                    <select th:field="*{houseOwner}">
-                                        <option th:each="d : ${ownerlist}" th:value="${d.id}">
+                                    <label>Flat</label>
+                                    <select th:field="*{flat}">
+                                        <option th:each="d : ${flatlist}" th:value="${d.id}">
                                             <span th:text="${d.name}"></span>
                                         </option>
                                     </select>
-
                                 </div>
                             </div>
 
@@ -67,21 +66,20 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Flat</label>
-                                    <select th:field="*{flat}">
-                                        <option th:each="d : ${flatlist}" th:value="${d.id}">
-                                            <span th:text="${d.name}"></span>
-                                        </option>
-                                    </select>
-
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input type="text" class="form-control" th:field="*{rentAmount}" maxlength="10"
+                                               minlength="3" required>
+                                        <label class="form-label">Rent Amount</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input type="text" class="form-control" th:field="*{tenant.contractNo}"  required>
-                                        <label class="form-label">Tanent Contract No</label>
+                                        <input type="text" class="form-control" th:field="*{advanceAmount}" maxlength="10"
+                                               minlength="3" required>
+                                        <label class="form-label">Advance Amount</label>
                                     </div>
                                 </div>
 
@@ -93,9 +91,9 @@
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input type="text" class="form-control" th:field="*{rentAmount}" maxlength="10"
-                                               minlength="3" required>
-                                        <label class="form-label">Rent Amount</label>
+                                        <input type="text" class="form-control" th:field="*{tenant.contractNo}"
+                                               required>
+                                        <label class="form-label">Tanent Contract No</label>
                                     </div>
                                 </div>
                             </div>

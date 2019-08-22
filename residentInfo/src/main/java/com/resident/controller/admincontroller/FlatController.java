@@ -1,11 +1,16 @@
 package com.resident.controller.admincontroller;
 
 
+import com.resident.entity.admin.Role;
 import com.resident.entity.buliding.Flat;
+import com.resident.entity.user.FamilyMamber;
 import com.resident.repo.BuillidingRepo;
 import com.resident.repo.FlatRepo;
 import com.resident.repo.HouseOwnerRepo;
+import com.resident.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +34,8 @@ public class FlatController {
     private HouseOwnerRepo houseOwnerRepo;
     @Autowired
     private ImageOptimizer imageOptimizer;
+    @Autowired
+    private UserRepo userRepo;
 
     private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
 
@@ -68,7 +75,19 @@ public class FlatController {
 
     @GetMapping(value = "list")
     public String flatList(Model model) {
-        model.addAttribute("list", this.repo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        Iterable <Flat> list = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+
+         //  list = this.repo.findAllByBuillidingAndStatus(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())),true);
+
+        }
+
+        model.addAttribute("list", list);
 
         return "user/flat/list";
     }

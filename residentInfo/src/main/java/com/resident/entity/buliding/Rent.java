@@ -37,6 +37,8 @@ public class Rent {
 
     private Double rentAmount;
 
+    private Double advanceAmount;
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rentdate;
@@ -55,6 +57,14 @@ public class Rent {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRentType() {
+        return rentType;
+    }
+
+    public void setRentType(String rentType) {
+        this.rentType = rentType;
     }
 
     public Builliding getBuilliding() {
@@ -97,6 +107,14 @@ public class Rent {
         this.rentAmount = rentAmount;
     }
 
+    public Double getAdvanceAmount() {
+        return advanceAmount;
+    }
+
+    public void setAdvanceAmount(Double advanceAmount) {
+        this.advanceAmount = advanceAmount;
+    }
+
     public Date getRentdate() {
         return rentdate;
     }
@@ -119,13 +137,5 @@ public class Rent {
 
     public void setRentcondition(String rentcondition) {
         this.rentcondition = rentcondition;
-    }
-
-    public String getRentType() {
-        return rentType;
-    }
-
-    public void setRentType(String rentType) {
-        this.rentType = rentType;
     }
 }

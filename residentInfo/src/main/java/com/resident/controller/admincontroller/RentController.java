@@ -3,13 +3,11 @@ package com.resident.controller.admincontroller;
 
 import com.resident.entity.buliding.Rent;
 import com.resident.entity.user.Tenant;
-import com.resident.repo.BuillidingRepo;
-import com.resident.repo.FlatRepo;
-import com.resident.repo.RentRepo;
-import com.resident.repo.HouseOwnerRepo;
-import com.resident.repo.TenantRepo;
+import com.resident.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,12 +28,13 @@ public class RentController {
     private FlatRepo flatRepo;
     @Autowired
     private TenantRepo tenantRepo;
-
+    @Autowired
+    private UserRepo userRepo;
     @GetMapping(value = "add")
     public String addRentView(Rent rent, Model model) {
-        model.addAttribute("buillidinglist", this.buillidingRepo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("buillidinglist", this.houseOwnerRepo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
         model.addAttribute("flatlist", this.flatRepo.findAll());
-        model.addAttribute("ownerlist", this.houseOwnerRepo.findAll());
         return "user/rent/add";
 
     }
