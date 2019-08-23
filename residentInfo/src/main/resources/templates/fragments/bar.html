@@ -126,17 +126,34 @@
                 <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">assignment</i>
-                        <span>Builliding & Flat Reg</span>
+                        <span>Builliding Regestation</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a th:href="@{/builliding/add}">Builliding Regestation</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/flat/add}">Flat Regestation</a>
-                        </li>
 
-                    </ul>
+                        <ul class="ml-menu">
+                            <li>
+                                <a th:href="@{/builliding/add}">Add</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/builliding/list}">list</a>
+                            </li>
+                        </ul>
+
+                </li>
+                <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Flat Regestation</span>
+                    </a>
+
+                        <ul class="ml-menu">
+                            <li>
+                                <a th:href="@{/flat/add}">Add</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/flat/list}">list</a>
+                            </li>
+                        </ul>
+
                 </li>
                 <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
                     <a href="javascript:void(0);" class="menu-toggle">
@@ -146,6 +163,9 @@
                     <ul class="ml-menu">
                         <li>
                             <a th:href="@{/rent/add}">Add Rent</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/rent/list}">Add Rent</a>
                         </li>
 
                     </ul>

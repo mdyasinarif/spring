@@ -15,12 +15,8 @@ public class Flat {
 
     private String name;
     private Boolean status;
-    private Double rentAmount;
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date rentDate;
     private String photo;
-    private String note;
+    private String flatsize;
 
     @ManyToOne
     @JoinColumn(name = "buillding_id")
@@ -52,12 +48,30 @@ public class Flat {
         this.name = name;
     }
 
-    public String getNote() {
-        return note;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getFlatsize() {
+        return flatsize;
+    }
+
+    public void setFlatsize(String flatsize) {
+        this.flatsize = flatsize;
     }
 
     public Builliding getBuilliding() {
@@ -74,38 +88,6 @@ public class Flat {
 
     public void setHouseOwner(Set<HouseOwner> houseOwner) {
         this.houseOwner = houseOwner;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public Double getRentAmount() {
-        return rentAmount;
-    }
-
-    public void setRentAmount(Double rentAmount) {
-        this.rentAmount = rentAmount;
-    }
-
-    public Date getRentDate() {
-        return rentDate;
-    }
-
-    public void setRentDate(Date rentDate) {
-        this.rentDate = rentDate;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 }
 

@@ -34,10 +34,8 @@ public class Rent {
     @JoinColumn(name = "tena_id")
     private Tenant tenant;
 
-
-    private Double rentAmount;
-
     private Double advanceAmount;
+    private Double rentAmount;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -99,20 +97,20 @@ public class Rent {
         this.tenant = tenant;
     }
 
-    public Double getRentAmount() {
-        return rentAmount;
-    }
-
-    public void setRentAmount(Double rentAmount) {
-        this.rentAmount = rentAmount;
-    }
-
     public Double getAdvanceAmount() {
         return advanceAmount;
     }
 
     public void setAdvanceAmount(Double advanceAmount) {
         this.advanceAmount = advanceAmount;
+    }
+
+    public Double getRentAmount() {
+        return rentAmount;
+    }
+
+    public void setRentAmount(Double rentAmount) {
+        this.rentAmount = rentAmount;
     }
 
     public Date getRentdate() {

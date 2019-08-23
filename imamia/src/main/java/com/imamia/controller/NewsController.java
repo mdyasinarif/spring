@@ -21,20 +21,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-@RequestMapping(value = "/news/")
+@RequestMapping(value = "/user/")
 public class NewsController {
     @Autowired
     private NewsRepo repo;
     @Autowired
     private ImageOptimizer imageOptimizer;
     private static String UPLOADED_FOLDER = "src/main/resources/static/images/";
-    @GetMapping(value = "/")
-    public String displayNews(News news){
-        return "blog";
 
-    }
 
-    @GetMapping(value = "add")
+
+    @GetMapping(value = "view")
     public String addNewsView(News news){
         return "admin/news";
 
@@ -46,9 +43,6 @@ public class NewsController {
         if (bindingResult.hasErrors()) {
             return "admin/news";
         }
-
-
-
         try {
             //////////////////////For Image Upload start /////////////////////
             byte[] bytes = file.getBytes();

@@ -5,6 +5,7 @@ import com.resident.entity.admin.Role;
 import com.resident.entity.buliding.Builliding;
 
 import com.resident.entity.buliding.Flat;
+import com.resident.entity.user.HouseOwner;
 import com.resident.repo.ThanaRepo;
 import com.resident.repo.BuillidingRepo;
 import com.resident.repo.HouseOwnerRepo;
@@ -18,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/builliding/")
@@ -33,7 +35,6 @@ public class BuillidingController {
     @GetMapping(value = "add")
     public String addBuillidingView(Builliding builliding, Model model) {
         model.addAttribute("thanalist", this.thanaRepo.findAll());
-        model.addAttribute("ownerlist", this.houseOwnerRepo.findAll());
         return "user/builliding/add";
 
     }
@@ -49,6 +50,7 @@ public class BuillidingController {
                 if (builliding1 != null) {
                     model.addAttribute("existMsg", "BuillidingName is already exist");
                 } else {
+
                     this.repo.save(builliding);
                     model.addAttribute("builliding", new Builliding());
                     model.addAttribute("successMsg", "Builliding save Successfully");
