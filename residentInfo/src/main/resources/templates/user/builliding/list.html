@@ -2,7 +2,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout.html}">
 <head>
-    <title>Builliding List</title>
+    <title>Building List</title>
 </head>
 <body>
 <div layout:fragment="custom-container">
@@ -10,8 +10,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2>Builliding List
-                        <a class="btn btn-primary pull-right" th:href="@{/builliding/add}" type="submit">ADD Builliding</a>
+                    <h2>Building List
+                        <a class="btn btn-primary pull-right" th:href="@{/building/add}" type="submit">ADD Building</a>
                     </h2>
                 </div>
                 <div class="body">
@@ -19,22 +19,22 @@
                         <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <tr>
                                 <th>ID</th>
-                                <th>Builliding Name</th>
+                                <th>Building Name</th>
                                 <th>Address</th>
                                 <th>House OwnerName</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
-                            <tr th:each="builliding : ${list}">
-                                <td th:text="${builliding.id}"></td>
-                                <td th:text="${builliding.name}"></td>
-                                <td th:text="${builliding.address}+ ', '+${builliding.thana.name}+', '+${builliding.thana.cityCorporation.name}+', '+${builliding.thana.cityCorporation.district.name}"></td>
+                            <tr th:each="building : ${list}">
+                                <td th:text="${building.id}"></td>
+                                <td th:text="${building.name}"></td>
+                                <td th:text="${building.address}+ ', '+${building.thana.name}+', '+${building.thana.cityCorporation.name}+', '+${building.thana.cityCorporation.district.name}"></td>
 
                                 <td>
-                                    <span  th:each="owner : ${builliding.houseOwner}" th:text="${owner.name}+' '"></span>
+                                    <span  th:each="owner : ${building.houseOwner}" th:text="${owner.name}+' '"></span>
                                 </td>
-                                <td><a th:href="@{'/builliding/edit/' + ${builliding.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
-                                <td><a th:href="@{'/builliding/del/' + ${builliding.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                <td><a th:href="@{'/building/edit/' + ${building.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
+                                <td><a th:href="@{'/building/del/' + ${building.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
                             </tr>
                         </table>
                     </div>

@@ -42,6 +42,7 @@ public class CityCorporationController {
                     this.repo.save(cityCorporation);
                     model.addAttribute("cityCorporation",new CityCorporation());
                     model.addAttribute("successMsg","CityCorporation save Successfully");
+                    model.addAttribute("districtlist", this.districtRepo.findAll());
                 }           }
         }
         return "location/cityCorporation/add";

@@ -1,5 +1,6 @@
 package com.resident.entity.buliding;
 
+import com.resident.entity.address.Thana;
 import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Tenant;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,8 +20,12 @@ public class Rent {
     private String rentType;
 
     @ManyToOne
-    @JoinColumn(name = "buillding_id")
-    private Builliding builliding;
+    @JoinColumn(name = "building_id")
+    private Building builliding;
+
+    @ManyToOne
+    @JoinColumn(name = "thana_id")
+    private Thana thana;
 
    @ManyToOne
     @JoinColumn(name = "flat_id")
@@ -31,11 +36,13 @@ public class Rent {
     private HouseOwner houseOwner;
 
     @ManyToOne
-    @JoinColumn(name = "tena_id")
+    @JoinColumn(name = "tenant_id")
     private Tenant tenant;
 
-    private Double advanceAmount;
+
     private Double rentAmount;
+
+    private Double advanceAmount;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -47,6 +54,14 @@ public class Rent {
     private String rentcondition;
 
     public Rent() {
+    }
+
+    public Thana getThana() {
+        return thana;
+    }
+
+    public void setThana(Thana thana) {
+        this.thana = thana;
     }
 
     public Long getId() {
@@ -65,11 +80,11 @@ public class Rent {
         this.rentType = rentType;
     }
 
-    public Builliding getBuilliding() {
+    public Building getBuilding() {
         return builliding;
     }
 
-    public void setBuilliding(Builliding builliding) {
+    public void setBuilding(Building builliding) {
         this.builliding = builliding;
     }
 
@@ -97,20 +112,20 @@ public class Rent {
         this.tenant = tenant;
     }
 
-    public Double getAdvanceAmount() {
-        return advanceAmount;
-    }
-
-    public void setAdvanceAmount(Double advanceAmount) {
-        this.advanceAmount = advanceAmount;
-    }
-
     public Double getRentAmount() {
         return rentAmount;
     }
 
     public void setRentAmount(Double rentAmount) {
         this.rentAmount = rentAmount;
+    }
+
+    public Double getAdvanceAmount() {
+        return advanceAmount;
+    }
+
+    public void setAdvanceAmount(Double advanceAmount) {
+        this.advanceAmount = advanceAmount;
     }
 
     public Date getRentdate() {

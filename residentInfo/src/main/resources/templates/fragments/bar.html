@@ -46,7 +46,7 @@
                         <span>Police</span>
                     </a>
                 </li>
-                <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
+                <li sec:authorize="hasAnyRole('ROLE_HOUSEOWNER','ROLE_POLICE')">
                     <a th:href="@{/houseowner/list}">
                         <i class="material-icons">layers</i>
                         <span>House Owner</span>
@@ -54,6 +54,12 @@
                 </li>
                 <li sec:authorize="hasRole('ROLE_TENANT')">
                     <a th:href="@{/tenant/list}">
+                        <i class="material-icons">layers</i>
+                        <span>Tenant</span>
+                    </a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_POLICE')">
+                    <a th:href="@{/rent/listforpolice}">
                         <i class="material-icons">layers</i>
                         <span>Tenant</span>
                     </a>
@@ -123,20 +129,21 @@
 
                     </ul>
                 </li>
+
                 <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">assignment</i>
-                        <span>Builliding Regestation</span>
+                        <span>Building Regestation</span>
                     </a>
 
-                        <ul class="ml-menu">
-                            <li>
-                                <a th:href="@{/builliding/add}">Add</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/builliding/list}">list</a>
-                            </li>
-                        </ul>
+                    <ul class="ml-menu">
+                        <li>
+                            <a th:href="@{/building/add}">Add</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/building/list}">list</a>
+                        </li>
+                    </ul>
 
                 </li>
                 <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
@@ -145,14 +152,14 @@
                         <span>Flat Regestation</span>
                     </a>
 
-                        <ul class="ml-menu">
-                            <li>
-                                <a th:href="@{/flat/add}">Add</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/flat/list}">list</a>
-                            </li>
-                        </ul>
+                    <ul class="ml-menu">
+                        <li>
+                            <a th:href="@{/flat/add}">Add</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/flat/list}">list</a>
+                        </li>
+                    </ul>
 
                 </li>
                 <li sec:authorize="hasRole('ROLE_HOUSEOWNER')">
@@ -165,7 +172,7 @@
                             <a th:href="@{/rent/add}">Add Rent</a>
                         </li>
                         <li>
-                            <a th:href="@{/rent/list}">Add Rent</a>
+                            <a th:href="@{/rent/list}">Rent List</a>
                         </li>
 
                     </ul>

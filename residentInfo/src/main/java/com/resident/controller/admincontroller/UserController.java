@@ -9,7 +9,7 @@ import com.resident.entity.user.Tenant;
 import com.resident.repo.RoleRepo;
 import com.resident.repo.UserRepo;
 import com.resident.repo.HouseOwnerRepo;
-import com.resident.repo.PoilceRepo;
+import com.resident.repo.PoliceRepo;
 import com.resident.repo.TenantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +33,7 @@ public class UserController {
     @Autowired
     private HouseOwnerRepo houseOwnerRepo;
     @Autowired
-    private PoilceRepo poilceRepo;
+    private PoliceRepo policeRepo;
     @Autowired
     private TenantRepo tenantRepo;
     @Autowired
@@ -73,13 +73,13 @@ private PasswordEncoder passwordEncoder;
                     User user2 = this.repo.findByUserName(user.getUserName());
                     if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
 
-                        HouseOwner houseOwner = new HouseOwner("", "", "", "", "", new Date(), user.getPhone(), null, 0.0, 0, 0, "", user2);
+                        HouseOwner houseOwner = new HouseOwner("", "", "", "", "", new Date(), user.getPhone(), null,0.0, "", user2);
                         this.houseOwnerRepo.save(houseOwner);
                     } else if (rolename.equalsIgnoreCase("POLICE")) {
                         Police police = new Police("", null, "", "", "", new Date(), "", user.getPhone(), "", user2);
-                        this.poilceRepo.save(police);
+                        this.policeRepo.save(police);
                     } else {
-                        Tenant tenant = new Tenant("", "", "", "", "", new Date(), user.getPhone(), null, 0.0, 0, 0, "", user2);
+                        Tenant tenant = new Tenant("", "", "", "", "", new Date(), user.getPhone(), null,0.0,"", user2);
                         this.tenantRepo.save(tenant);
                     }
 
@@ -118,6 +118,7 @@ private PasswordEncoder passwordEncoder;
             return "admin/useredit";
         }
         User oldUser = this.repo.getOne(id);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         this.repo.save(user);
         return "redirect:/user/userlist";
     }

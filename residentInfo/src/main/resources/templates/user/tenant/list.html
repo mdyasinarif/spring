@@ -28,8 +28,7 @@
                                 <th>Tin No</th>
                                 <th>Address</th>
                                 <th>Income</th>
-                                <th>No Of Family Mamber</th>
-                                <th>No Of Employe</th>
+
                                 <th>Photo</th>
 
                                 <th colspan="2" style="text-align: center">Action</th>
@@ -45,8 +44,7 @@
                                 <td th:text="${tenant?.tinNo}"></td>
                                 <td th:text="${tenant?.thana?.name}+', '+${tenant.thana?.cityCorporation?.name}+', '+${tenant.thana?.cityCorporation?.district?.name}"></td>
                                 <td th:text="${tenant?.income}"></td>
-                                <td th:text="${tenant?.noOfMamber}"></td>
-                                <td th:text="${tenant?.noOfEmploye}"></td>
+
                                 <td><img th:src="@{${tenant?.photo}}" width="100" height="120"/></td>
 
 

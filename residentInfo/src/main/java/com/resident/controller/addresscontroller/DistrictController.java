@@ -40,6 +40,7 @@ public class DistrictController {
                     this.repo.save(district);
                     model.addAttribute("district",new District());
                     model.addAttribute("successMsg","District save Successfully");
+                    model.addAttribute("divisionlist", this.divisionRepo.findAll());
                 }           }
         }
         return "location/district/add";

@@ -3,7 +3,7 @@ package com.resident.controller;
 
 import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
-import com.resident.entity.buliding.Builliding;
+import com.resident.entity.buliding.Building;
 import com.resident.entity.buliding.Flat;
 import com.resident.entity.user.Employee;
 import com.resident.entity.user.FamilyMamber;
@@ -35,9 +35,6 @@ public class HomeController {
     private FamilyMamberRepo familyMamberRepo;
     @Autowired
     private EmployeeRepo employeeRepo;
-
-    @Autowired
-    private BuillidingRepo buillidingRepo;
 
     @Autowired
     private FlatRepo flatRepo;
@@ -81,7 +78,7 @@ public class HomeController {
 
     }
     @GetMapping(value = "flat/{id}")
-    public String editBuillidingView(@PathVariable("id") Long id, Model model) {
+    public String editBuildingView(@PathVariable("id") Long id, Model model) {
         model.addAttribute("flat", this.flatRepo.getOne(id));
         model.addAttribute("owner", this.houseOwnerRepo.getOne(id));
         return "flatview";

@@ -40,6 +40,7 @@ public class DivisionController {
                     this.repo.save(division);
                     model.addAttribute("division",new Division());
                     model.addAttribute("successMsg","Division save Successfully");
+                    model.addAttribute("countrylist", this.countryRepo.findAll());
                 }           }
         }
         return "location/division/add";

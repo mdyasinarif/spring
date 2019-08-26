@@ -4,6 +4,7 @@ package com.resident.controller.addresscontroller;
 import com.resident.entity.address.Thana;
 import com.resident.repo.CityCorporationRepo;
 import com.resident.repo.ThanaRepo;
+import com.resident.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ public class ThanaController {
     private ThanaRepo repo;
     @Autowired
     private CityCorporationRepo cityCorporationRepo;
+    @Autowired
+    private UserRepo userRepo;
 
     @GetMapping(value = "add")
     public String addThanaView(Thana thana,Model model){
@@ -40,6 +43,7 @@ public class ThanaController {
                     this.repo.save(thana);
                     model.addAttribute("thana",new Thana());
                     model.addAttribute("successMsg","Thana save Successfully");
+                    model.addAttribute("cityCorporationlist", this.cityCorporationRepo.findAll());
                 }           }
         }
         return "location/thana/add";

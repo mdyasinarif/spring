@@ -15,6 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -46,20 +48,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
+//@Bean
+//public HttpFirewall defaltHttpFirewall(){
+//        return new DefaultHttpFirewall();
+//}
+//"/css/**","/documentation/**","/font/**","/images/**","/js/**","/plugins/**","/scss/**"
+//    "/owner"
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
                 .antMatchers(
-                        "/role/**","/user/**","/login","/owner","/css/**","/documentation/**","/font/**","/images/**","/js/**","/plugins/**","/scss/**"
+                        "/login","/rest/flat/**","/role/**","/user/**","/css/**","/documentation/**","/font/**","/images/**","/js/**","/plugins/**","/scss/**"
                 ).permitAll()
                 .antMatchers("/houseowner/**")
-                .hasRole("HOUSEOWNER")
-                .antMatchers("/police/**")
-                .hasRole("POLICE")
+                .hasAnyRole("HOUSEOWNER","POLICE")
                 .antMatchers("/tenant/**")
-                .hasRole("TENANT")
+                .hasAnyRole("TENANT","POLICE")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -80,4 +85,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 }
-//"/houseowner/add","/houseowner/edit","/houseowner/list/{id}","/builliding/add","/builliding/edit","/builliding/list/{id}"
+//"/houseowner/add","/houseowner/edit","/houseowner/list/{id}","/building/add","/building/edit","/building/list/{id}"

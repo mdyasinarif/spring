@@ -1,12 +1,8 @@
 package com.resident.controller.admincontroller;
 
+import com.resident.entity.admin.Role;
 import com.resident.entity.user.HouseOwner;
-import com.resident.repo.ThanaRepo;
-import com.resident.repo.UserRepo;
-import com.resident.repo.BuillidingRepo;
-import com.resident.repo.EmployeeRepo;
-import com.resident.repo.FamilyMamberRepo;
-import com.resident.repo.HouseOwnerRepo;
+import com.resident.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sun.plugin.liveconnect.SecurityContextHelper;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -44,14 +39,27 @@ public class HouseOwnerController {
     @Autowired
     private ThanaRepo thanaRepo;
     @Autowired
-    private BuillidingRepo buillidingRepo;
+    private PoliceRepo policeRepo;
 
 
     @GetMapping(value = "list")
     public String list(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
-        //model.addAttribute("address", this.buillidingRepo.findByAdress(thanaRepo.findByName()));
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        Iterable <HouseOwner> hlist = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            hlist = this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName()));
+        }
+        Iterable <HouseOwner> plist = null;
+        if (rolename.equalsIgnoreCase("POLICE")) {
+            plist = this.repo.findAll();
+        }
+        model.addAttribute("list", hlist);
+        model.addAttribute("list", plist);
+
         return "user/owner/list";
     }
 

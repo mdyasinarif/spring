@@ -2,9 +2,9 @@ package com.resident.controller.admincontroller;
 
 
 import com.resident.entity.admin.Role;
+import com.resident.entity.buliding.Building;
 import com.resident.entity.buliding.Flat;
-import com.resident.entity.user.FamilyMamber;
-import com.resident.repo.BuillidingRepo;
+import com.resident.repo.BuildingRepo;
 import com.resident.repo.FlatRepo;
 import com.resident.repo.HouseOwnerRepo;
 import com.resident.repo.UserRepo;
@@ -29,7 +29,7 @@ public class FlatController {
     @Autowired
     private FlatRepo repo;
     @Autowired
-    private BuillidingRepo buillidingRepo;
+    private BuildingRepo buildingRepo;
     @Autowired
     private HouseOwnerRepo houseOwnerRepo;
     @Autowired
@@ -41,8 +41,21 @@ public class FlatController {
 
     @GetMapping(value = "add")
     public String addFlatView(Flat flat, Model model) {
-        model.addAttribute("buillidinglist", this.buillidingRepo.findAll());
-        model.addAttribute("ownerlist", this.houseOwnerRepo.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        Iterable <Building> blist = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            blist = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        }
+        model.addAttribute("buildinglist", blist);
+
+        model.addAttribute("ownerlist",this.houseOwnerRepo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
+
+
+
         return "user/flat/add";
 
     }
@@ -63,10 +76,24 @@ public class FlatController {
                     flat.setPhoto("/images/new-" + file.getOriginalFilename());
                     // file upload end
                     imageOptimizer.optimizeImage(UPLOADED_FOLDER, file, 0.8f, 100, 120);
+
                     flat.setStatus(true);
                     this.repo.save(flat);
                     model.addAttribute("flat", new Flat());
                     model.addAttribute("successMsg", "Flat save Successfully");
+                    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+                    String rolename = null;
+                    for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+                        rolename = r.getRoleName();
+                    }
+                    Iterable <Building> blist = null;
+                    if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+                        blist = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+                    }
+                    model.addAttribute("buildinglist", blist);
+
+                    model.addAttribute("ownerlist",this.houseOwnerRepo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
                 }
             }
         }
@@ -74,17 +101,15 @@ public class FlatController {
     }
 
     @GetMapping(value = "list")
-    public String flatList(Model model) {
+    public String buildingList(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String rolename = null;
         for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
             rolename = r.getRoleName();
         }
-        Iterable <Flat> list = null;
+        Iterable <Building> list = null;
         if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
-
-         //  list = this.repo.findAllByBuillidingAndStatus(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())),true);
-
+            list = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
         }
 
         model.addAttribute("list", list);

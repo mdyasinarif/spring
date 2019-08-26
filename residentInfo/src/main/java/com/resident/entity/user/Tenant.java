@@ -30,12 +30,6 @@ public class Tenant {
     // End personal information section
 
 
-    // suporting member session
-    private int noOfMamber;
-
-
-    private int noOfEmploye;
-
     // End suporting member session
 
     private String photo;
@@ -47,7 +41,7 @@ public class Tenant {
     public Tenant() {
     }
 
-    public Tenant(String name, String education, String nidNo, String gender, String tinNo, Date dateOfBirth, String contractNo, Thana thana, Double income, int noOfMamber, int noOfEmploye, String photo, User user) {
+    public Tenant(String name, String education, String nidNo, String gender, String tinNo, Date dateOfBirth, String contractNo, Thana thana, Double income,  String photo, User user) {
         this.name = name;
         this.education = education;
         this.nidNo = nidNo;
@@ -57,8 +51,7 @@ public class Tenant {
         this.contractNo = contractNo;
         this.thana = thana;
         this.income = income;
-        this.noOfMamber = noOfMamber;
-        this.noOfEmploye = noOfEmploye;
+
         this.photo = photo;
         this.user = user;
     }
@@ -133,22 +126,6 @@ public class Tenant {
 
     public void setIncome(Double income) {
         this.income = income;
-    }
-
-    public int getNoOfMamber() {
-        return noOfMamber;
-    }
-
-    public void setNoOfMamber(int noOfMamber) {
-        this.noOfMamber = noOfMamber;
-    }
-
-    public int getNoOfEmploye() {
-        return noOfEmploye;
-    }
-
-    public void setNoOfEmploye(int noOfEmploye) {
-        this.noOfEmploye = noOfEmploye;
     }
 
     public String getPhoto() {

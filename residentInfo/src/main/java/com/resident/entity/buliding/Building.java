@@ -1,5 +1,6 @@
 package com.resident.entity.buliding;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.resident.entity.address.Thana;
 import com.resident.entity.user.HouseOwner;
 
@@ -7,7 +8,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Builliding {
+public class Building {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,20 +20,32 @@ public class Builliding {
     private Thana thana;
 
 
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "builling_owner",
-            joinColumns = @JoinColumn(name = "builling_id"),
+            name = "building_owner",
+            joinColumns = @JoinColumn(name = "building_id"),
             inverseJoinColumns = @JoinColumn(name = "owner_id"))
     private Set<HouseOwner> houseOwner;
 
-    @OneToMany(mappedBy = "builliding")
+    @JsonIgnore
+    @OneToMany(mappedBy = "building")
     private Set<Flat> flats;
 
-
-    public Builliding() {
+    public Set<Flat> getFlats() {
+        return flats;
     }
+
+    public void setFlats(Set<Flat> flats) {
+        this.flats = flats;
+    }
+
+    public Building() {
+    }
+
+    public Building(Long id) {
+        this.id = id;
+    }
+
 
     public Long getId() {
         return id;

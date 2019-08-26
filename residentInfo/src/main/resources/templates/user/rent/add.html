@@ -3,6 +3,8 @@
       layout:decorate="~{layout.html}">
 <head>
     <title>ADD Rent</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
 <div layout:fragment="custom-container">
@@ -41,9 +43,9 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>Builliding</label>
-                                    <select th:field="*{builliding}">
-                                        <option th:each="d : ${buillidinglist}" th:value="${d.id}">
+                                    <label>Building</label>
+                                    <select th:field="*{building}">
+                                        <option th:each="d : ${buildinglist}" th:value="${d.id}">
                                             <span th:text="${d.name}"></span>
                                         </option>
                                     </select>
@@ -58,17 +60,42 @@
                                             <span th:text="${d.name}"></span>
                                         </option>
                                     </select>
+
                                 </div>
                             </div>
 
                         </div>
+
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+                        <!--<div class="col-sm-6">-->
+                        <!--<div class="form-group">-->
+                        <!--<label>Building</label>-->
+                        <!--<select onchange="showCustomer(this.value)">-->
+                        <!--<option th:each="d : ${buildinglist}" th:value="${d.id}">-->
+                        <!--<span th:text="${d.name}"></span>-->
+                        <!--</option>-->
+                        <!--</select>-->
+
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-6">-->
+                        <!--<div class="form-group">-->
+                        <!--<label>Flat</label>-->
+                        <!--<select id="flat-dropdown">-->
+                        <!--<option value="0">Select a Flat</option>-->
+                        <!--</select>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <!--</div>-->
+
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input type="text" class="form-control" th:field="*{rentAmount}" >
+                                        <input type="text" class="form-control" th:field="*{rentAmount}" required>
                                         <label class="form-label">Rent Amount</label>
                                     </div>
                                 </div>
@@ -76,7 +103,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input type="text" class="form-control" th:field="*{advanceAmount}" >
+                                        <input type="text" class="form-control" th:field="*{advanceAmount}">
                                         <label class="form-label">Advance Amount</label>
                                     </div>
                                 </div>
@@ -89,7 +116,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input type="text" class="form-control" th:field="*{tenant.contractNo}"
+                                        <input type="text" class="form-control" name="contractNo"
                                                required>
                                         <label class="form-label">Tanent Contract No</label>
                                     </div>
@@ -117,5 +144,38 @@
         </div>
     </section>
 </div>
+
+    <script>
+    function showCustomer(id) {
+        var dropdown = document.getElementById('flat-dropdown');
+        dropdown.length = 0;
+        var defaultOption = document.createElement('option');
+        defaultOption.text = 'Select A flat';
+        dropdown.add(defaultOption);
+        dropdown.selectedIndex = 0;
+        var xhttp;
+        if (id == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        }
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+                var data = JSON.parse(this.responseText);
+                var option;
+                for (var i = 0; i < data.length; i++) {
+                    option = document.createElement('option');
+                    option.text = data[i].name;
+                    option.value = data[i].id;
+                    console.log("rdsjklfdiufdsfj "+data[i].id);
+                    dropdown.add(option);
+                }
+            }
+        };
+        xhttp.open("GET", "/rest/flat/" + id, true);
+        xhttp.send();
+    }
+</script>
 </body>
 </html>

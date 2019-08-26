@@ -1,11 +1,14 @@
 package com.resident.controller.admincontroller;
 
 
+import com.resident.entity.admin.Role;
+import com.resident.entity.admin.User;
+import com.resident.entity.buliding.Building;
 import com.resident.entity.buliding.Rent;
+import com.resident.entity.user.Police;
 import com.resident.entity.user.Tenant;
 import com.resident.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,7 +24,7 @@ public class RentController {
     @Autowired
     private RentRepo repo;
     @Autowired
-    private BuillidingRepo buillidingRepo;
+    private BuildingRepo buildingRepo;
     @Autowired
     private HouseOwnerRepo houseOwnerRepo;
     @Autowired
@@ -30,33 +33,45 @@ public class RentController {
     private TenantRepo tenantRepo;
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private PoliceRepo policeRepo;
+
     @GetMapping(value = "add")
     public String addRentView(Rent rent, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("buillidinglist", this.houseOwnerRepo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
-        model.addAttribute("flatlist", this.flatRepo.findAll());
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        Iterable <Building> blist = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            blist = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        }
+        model.addAttribute("buildinglist", blist);
+
+
+
+      model.addAttribute("flatlist", this.flatRepo.findAll());
         return "user/rent/add";
 
     }
 
     @PostMapping(value = "add")
-    public String addRent(@Valid Rent rent, BindingResult result, Model model,@PathVariable("contractNo") String  contractNo) {
+    public String addRent(@Valid Rent rent, BindingResult result, Model model,@RequestParam("contractNo") String  contractNo) {
+
         if (result.hasErrors()) {
             return "user/rent/add";
         } else {
             if (rent != null) {
-                Rent rent1 = this.repo.findByRentType(rent.getRentType());
-                if (rent1 != null) {
-                    model.addAttribute("existMsg", "RentName is already exist");
-                } else {
-
                     Tenant tenant = tenantRepo.findByContractNo(contractNo);
                     rent.setTenant(tenant);
+                    rent.setThana(rent.getBuilding().getThana());
                     this.repo.save(rent);
                     model.addAttribute("rent", new Rent());
                     model.addAttribute("successMsg", "Rent save Successfully");
                 }
-            }
+
         }
         return "user/rent/add";
     }
@@ -100,5 +115,15 @@ public class RentController {
         this.repo.deleteById(id);
         return "redirect:/user/rent/list";
 
+    }
+
+    @GetMapping(value = "listforpolice")
+    public String rentListForPolice(Model model) {
+        Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+        User user =this.userRepo.findByUserName(auth.getName());
+        Police police =this.policeRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+
+        return "user/police/rentlist";
     }
 }

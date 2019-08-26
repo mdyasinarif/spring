@@ -2,6 +2,7 @@ package com.resident.repo;
 
 
 
+import com.resident.entity.address.Thana;
 import com.resident.entity.admin.User;
 import com.resident.entity.user.HouseOwner;
 import org.springframework.data.jpa.repository.JpaRepository;
