@@ -43,6 +43,12 @@
                 <li sec:authorize="hasRole('ROLE_POLICE')">
                     <a th:href="@{/police/list}">
                         <i class="material-icons">text_fields</i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_POLICE')">
+                    <a th:href="@{/police/mamberlist}">
+                        <i class="material-icons">text_fields</i>
                         <span>Police</span>
                     </a>
                 </li>
@@ -63,6 +69,22 @@
                         <i class="material-icons">layers</i>
                         <span>Tenant</span>
                     </a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_POLICE')">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Message</span>
+                    </a>
+
+                    <ul class="ml-menu">
+                        <li>
+                            <a th:href="@{/houseowner/ownerlist}">House Owner</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/police/tenantlist}">Tenant</a>
+                        </li>
+                    </ul>
+
                 </li>
                 <li sec:authorize="hasRole('ROLE_TENANT')">
                     <a th:href="@{/flats}">

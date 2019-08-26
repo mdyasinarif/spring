@@ -151,4 +151,12 @@ public class Rent {
     public void setRentcondition(String rentcondition) {
         this.rentcondition = rentcondition;
     }
+
+    public Building getBuilliding() {
+        return builliding;
+    }
+
+    public void setBuilliding(Building builliding) {
+        this.builliding = builliding;
+    }
 }

@@ -44,33 +44,46 @@ public class RentController {
         for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
             rolename = r.getRoleName();
         }
-        Iterable <Building> blist = null;
+        Iterable<Building> blist = null;
         if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
             blist = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
         }
         model.addAttribute("buildinglist", blist);
-
-
-
-      model.addAttribute("flatlist", this.flatRepo.findAll());
+        model.addAttribute("flatlist", this.flatRepo.findAll());
         return "user/rent/add";
 
     }
 
     @PostMapping(value = "add")
-    public String addRent(@Valid Rent rent, BindingResult result, Model model,@RequestParam("contractNo") String  contractNo) {
+    public String addRent(@Valid Rent rent, BindingResult result, Model model, @RequestParam("contractNo") String contractNo) {
 
         if (result.hasErrors()) {
             return "user/rent/add";
         } else {
             if (rent != null) {
-                    Tenant tenant = tenantRepo.findByContractNo(contractNo);
-                    rent.setTenant(tenant);
-                    rent.setThana(rent.getBuilding().getThana());
-                    this.repo.save(rent);
-                    model.addAttribute("rent", new Rent());
-                    model.addAttribute("successMsg", "Rent save Successfully");
+                Tenant tenant = tenantRepo.findByContractNo(contractNo);
+                rent.setTenant(tenant);
+                rent.setThana(rent.getBuilding().getThana());
+                rent.getFlat().setStatus(false);
+                Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+                rent.setHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+                this.repo.save(rent);
+                model.addAttribute("rent", new Rent());
+                model.addAttribute("successMsg", "Rent save Successfully");
+
+                String rolename = null;
+                for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+                    rolename = r.getRoleName();
                 }
+                Iterable<Building> blist = null;
+                if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+                    blist = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+                }
+                model.addAttribute("buildinglist", blist);
+
+
+                model.addAttribute("flatlist", this.flatRepo.findAll());
+            }
 
         }
         return "user/rent/add";
@@ -78,13 +91,17 @@ public class RentController {
 
     @GetMapping(value = "list")
     public String rentList(Model model) {
-        model.addAttribute("list", this.repo.findAll());
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Iterable<Rent> list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        model.addAttribute("list", list);
 
         return "user/rent/list";
     }
 
     @GetMapping(value = "edit/{id}")
     public String editRentView(@PathVariable("id") Long id, Model model) {
+
         model.addAttribute("rent", this.repo.getOne(id));
         return "user/rent/edit";
 
@@ -119,9 +136,9 @@ public class RentController {
 
     @GetMapping(value = "listforpolice")
     public String rentListForPolice(Model model) {
-        Authentication auth=SecurityContextHolder.getContext().getAuthentication();
-        User user =this.userRepo.findByUserName(auth.getName());
-        Police police =this.policeRepo.findByUser(user);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = this.userRepo.findByUserName(auth.getName());
+        Police police = this.policeRepo.findByUser(user);
         model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
 
         return "user/police/rentlist";

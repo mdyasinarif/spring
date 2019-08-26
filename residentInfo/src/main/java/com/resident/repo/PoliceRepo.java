@@ -1,6 +1,7 @@
 package com.resident.repo;
 
 
+import com.resident.entity.address.Thana;
 import com.resident.entity.admin.User;
 import com.resident.entity.user.Police;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,5 @@ public interface PoliceRepo extends JpaRepository<Police,Long> {
         Police findByContractNo(String contractNo);
         List<Police> findAllByUser(User user);
         Police findByUser(User user);
+        Iterable<Police> findAllByThana(Thana thana);
 }

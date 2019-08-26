@@ -1,5 +1,7 @@
 package com.resident.controller.admincontroller;
 
+import com.resident.entity.admin.User;
+import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Police;
 import com.resident.repo.*;
 
@@ -35,14 +37,40 @@ public class PoliceController {
     private HouseOwnerRepo houseOwnerRepo;
     @Autowired
     private TenantRepo tenantRepo;
+    @Autowired
+    private PoliceRepo policeRepo;
 
     @GetMapping(value = "list")
-    public String policeList(Model model) {
+    public String policeEdit(Model model) {
         model.addAttribute("police", new Police());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
         return "user/police/list";
     }
+
+
+    @GetMapping(value = "mamberlist")
+    public String policeList(Model model) {
+        model.addAttribute("police", new Police());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = this.userRepo.findByUserName(auth.getName());
+        Police police = this.policeRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+        return "user/police/list";
+    }
+
+    @GetMapping(value = "ownerlist")
+    public String OwnerList(Model model) {
+        model.addAttribute("police", new Police());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = this.userRepo.findByUserName(auth.getName());
+        HouseOwner houseOwner = this.houseOwnerRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(houseOwner.getThana()));
+        return "user/police/ownerlist";
+    }
+
 
     @GetMapping(value = "edit/{id}")
     public String editRoleView(@PathVariable("id") Long id, Model model) {

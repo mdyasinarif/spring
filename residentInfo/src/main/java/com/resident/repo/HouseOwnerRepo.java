@@ -15,4 +15,5 @@ public interface HouseOwnerRepo extends JpaRepository<HouseOwner,Long> {
     HouseOwner findByContractNo(String contractNO);
     List<HouseOwner> findAllByUser(User user);
     HouseOwner findByUser(User user);
+    Iterable<HouseOwner> findAllByThana(Thana thana);
 }

@@ -35,6 +35,7 @@
                                 <td th:text="${rent.rentType}"></td>
                                 <td th:text="${rent.currentdate}"></td>
                                 <td th:text="${rent.building.name}"></td>
+
                                 <td>
                                     <span  th:each="owner : ${rent.houseOwner}" th:text="${owner.name}+' '"></span>
                                 </td>

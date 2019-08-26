@@ -1,7 +1,9 @@
 package com.resident.controller.admincontroller;
 
 import com.resident.entity.admin.Role;
+import com.resident.entity.admin.User;
 import com.resident.entity.user.HouseOwner;
+import com.resident.entity.user.Police;
 import com.resident.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -45,23 +47,27 @@ public class HouseOwnerController {
     @GetMapping(value = "list")
     public String list(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String rolename = null;
-        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
-            rolename = r.getRoleName();
-        }
-        Iterable <HouseOwner> hlist = null;
-        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
-            hlist = this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName()));
-        }
-        Iterable <HouseOwner> plist = null;
-        if (rolename.equalsIgnoreCase("POLICE")) {
-            plist = this.repo.findAll();
-        }
-        model.addAttribute("list", hlist);
-        model.addAttribute("list", plist);
+        model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
+
+
+        User user = this.userRepo.findByUserName(auth.getName());
+        Police police = this.policeRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
 
         return "user/owner/list";
     }
+
+    @GetMapping(value = "ownerlist")
+    public String ownerlist(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = this.userRepo.findByUserName(auth.getName());
+        Police police = this.policeRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+
+        return "user/owner/ownerlist";
+    }
+
 
     @GetMapping(value = "edit/{id}")
     public String editRoleView(@PathVariable("id") Long id, Model model) {
