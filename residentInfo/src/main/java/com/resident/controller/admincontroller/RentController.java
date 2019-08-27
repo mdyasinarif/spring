@@ -5,6 +5,7 @@ import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
 import com.resident.entity.buliding.Building;
 import com.resident.entity.buliding.Rent;
+import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Police;
 import com.resident.entity.user.Tenant;
 import com.resident.repo.*;
@@ -97,6 +98,18 @@ public class RentController {
         model.addAttribute("list", list);
 
         return "user/rent/list";
+    }
+
+    @GetMapping(value = "tenantnumberlist")
+    public String numberList(Model model) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = this.userRepo.findByUserName(auth.getName());
+        Police police = this.policeRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+
+
+        return "user/rent/numberlist";
     }
 
     @GetMapping(value = "edit/{id}")

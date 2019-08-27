@@ -1,6 +1,5 @@
 package com.resident.controller.admincontroller;
 
-import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
 import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Police;
@@ -65,7 +64,7 @@ public class HouseOwnerController {
         Police police = this.policeRepo.findByUser(user);
         model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
 
-        return "user/owner/ownerlist";
+        return "user/owner/numberlist";
     }
 
 

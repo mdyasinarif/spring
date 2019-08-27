@@ -1,11 +1,9 @@
 package com.resident.controller.admincontroller;
 
+import com.resident.entity.admin.User;
+import com.resident.entity.user.Police;
 import com.resident.entity.user.Tenant;
-import com.resident.repo.ThanaRepo;
-import com.resident.repo.UserRepo;
-import com.resident.repo.EmployeeRepo;
-import com.resident.repo.FamilyMamberRepo;
-import com.resident.repo.TenantRepo;
+import com.resident.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +34,8 @@ public class TenantController {
 
     @Autowired
     private ThanaRepo thanaRepo;
+    @Autowired
+    private PoliceRepo policeRepo;
 
     @GetMapping(value = "list")
     public String ownerList(Model model) {
@@ -43,6 +43,16 @@ public class TenantController {
         model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
         model.addAttribute("thanalist",this.thanaRepo.findAll());
         return "user/tenant/list";
+    }
+    @GetMapping(value = "tenantlist")
+    public String ownerlist(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = this.userRepo.findByUserName(auth.getName());
+        Police police = this.policeRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+
+        return "user/tenant/numberlist";
     }
 
     @GetMapping(value = "edit/{id}")

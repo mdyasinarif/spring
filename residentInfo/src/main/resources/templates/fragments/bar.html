@@ -70,18 +70,18 @@
                         <span>Tenant</span>
                     </a>
                 </li>
-                <li sec:authorize="hasRole('ROLE_POLICE')">
+                <li sec:authorize="hasAnyRole('ROLE_HOUSEOWNER','ROLE_POLICE')">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">assignment</i>
                         <span>Message</span>
                     </a>
 
                     <ul class="ml-menu">
-                        <li>
+                        <li sec:authorize="hasRole('ROLE_POLICE')">
                             <a th:href="@{/houseowner/ownerlist}">House Owner</a>
                         </li>
-                        <li>
-                            <a th:href="@{/police/tenantlist}">Tenant</a>
+                        <li sec:authorize="hasAnyRole('ROLE_HOUSEOWNER','ROLE_POLICE')">
+                            <a th:href="@{/rent/tenantnumberlist}">Tenant</a>
                         </li>
                     </ul>
 
