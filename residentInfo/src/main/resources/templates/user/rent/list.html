@@ -25,6 +25,7 @@
                                 <th>House OwnerName</th>
                                 <th>Flat Name</th>
                                 <th>Tenant Name</th>
+                                <th>Contract No</th>
                                 <th>Rant Amount</th>
                                 <th>Rant Date</th>
                                 <th>Edit</th>
@@ -45,6 +46,7 @@
                                 <td>
                                     <span  th:each="tenant : ${rent.tenant}" th:text="${tenant.name}+' '"></span>
                                 </td>
+                                <td th:text="${rent.tenant.contractNo}"></td>
                                 <td th:text="${rent.rentAmount}"></td>
                                 <td th:text="${rent.rentdate}"></td>
 

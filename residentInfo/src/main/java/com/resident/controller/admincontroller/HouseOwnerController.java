@@ -1,5 +1,6 @@
 package com.resident.controller.admincontroller;
 
+import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
 import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Police;
@@ -46,12 +47,22 @@ public class HouseOwnerController {
     @GetMapping(value = "list")
     public String list(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
+        String rolename = null;
+        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
+            rolename = r.getRoleName();
+        }
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            model.addAttribute("list", this.repo.findAllByUser(this.userRepo.findByUserName(auth.getName())));
+        }
+        if (rolename.equalsIgnoreCase("POLICE")) {
+            User user = this.userRepo.findByUserName(auth.getName());
+            Police police = this.policeRepo.findByUser(user);
+            model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+        }
 
 
-        User user = this.userRepo.findByUserName(auth.getName());
-        Police police = this.policeRepo.findByUser(user);
-        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+
+
 
         return "user/owner/list";
     }

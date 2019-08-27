@@ -100,17 +100,16 @@ public class RentController {
         return "user/rent/list";
     }
 
-    @GetMapping(value = "tenantnumberlist")
-    public String numberList(Model model) {
+    @GetMapping(value = "numberlistforowner")
+    public String rentListforowner(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = this.userRepo.findByUserName(auth.getName());
-        Police police = this.policeRepo.findByUser(user);
-        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
-
+        Iterable<Rent> list = this.repo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        model.addAttribute("list", list);
 
         return "user/rent/numberlist";
     }
+
 
     @GetMapping(value = "edit/{id}")
     public String editRentView(@PathVariable("id") Long id, Model model) {
@@ -156,4 +155,17 @@ public class RentController {
 
         return "user/police/rentlist";
     }
+
+    @GetMapping(value = "tenantnumberlist")
+    public String numberList(Model model) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = this.userRepo.findByUserName(auth.getName());
+        Police police = this.policeRepo.findByUser(user);
+        model.addAttribute("list", this.repo.findAllByThana(police.getThana()));
+
+
+        return "user/rent/numberlist";
+    }
+
 }

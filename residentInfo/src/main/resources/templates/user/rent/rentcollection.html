@@ -1,0 +1,107 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>ADD Rent</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div layout:fragment="custom-container">
+    <section class="content">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Rent Collection
+                        <a class="btn btn-primary pull-right" th:href="@{/rent/list}" type="submit">Rent
+                            List</a>
+                    </h2>
+                    <span th:text="${existMsg}"></span>
+                    <span th:text="${successMsg}"></span>
+                </div>
+                <div class="body">
+                    <form id="form_validation" th:object="${rentCollection}" th:action="@{/collection/add}"
+                          method="POST">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Tenant</label>
+                                    <select th:field="*{tenant}">
+                                        <option th:each="d : ${buildinglist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Owner</label>
+                                    <select th:field="*{houseOwner}">
+                                        <option th:each="d : ${ownerlist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Building</label>
+                                    <select th:field="*{building}">
+                                        <option th:each="d : ${buildinglist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Flat</label>
+                                    <select th:field="*{flat}">
+                                        <option th:each="d : ${flatlist}" th:value="${d.id}">
+                                            <span th:text="${d.name}"></span>
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input type="text" class="form-control" name="contractNo"
+                                               required>
+                                        <label class="form-label">Tanent Contract No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <b>Rent Date</b>
+                                <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">date_range</i>
+                                            </span>
+                                    <div class="form-line">
+                                        <input type="date" class="form-control date" th:field="*{rantmonth}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                        <a class="btn btn-primary pull-right" th:href="@{/flat/add}" type="submit">Privew</a>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
