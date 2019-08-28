@@ -7,12 +7,14 @@ public class District {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String bnName;
+
 
     @ManyToOne
     @JoinColumn(name = "division_id")
     private Division division;
+
+    private String name;
+    private String bnName;
 
     public District() {
     }

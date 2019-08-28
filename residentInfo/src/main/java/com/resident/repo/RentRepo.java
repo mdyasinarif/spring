@@ -16,5 +16,5 @@ public interface RentRepo extends JpaRepository<Rent,Long> {
     Rent findByRentType(String name);
     Iterable<Rent> findAllByThana(Thana thana);
     Iterable<Rent> findAllByHouseOwner(HouseOwner houseOwner);
-    Iterable<Rent> findAllByTenant(Tenant tenant);
+
 }

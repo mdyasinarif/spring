@@ -25,10 +25,6 @@ public class RentCollectionController {
 
     @Autowired
     private RentCollectionRepo repo;
-
-
-    @Autowired
-    private RentRepo rentRepo;
     @Autowired
     private BuildingRepo buildingRepo;
     @Autowired
@@ -36,12 +32,9 @@ public class RentCollectionController {
     @Autowired
     private FlatRepo flatRepo;
     @Autowired
-    private TenantRepo tenantRepo;
-    @Autowired
     private UserRepo userRepo;
-
     @Autowired
-    private PoliceRepo policeRepo;
+    private TenantRepo tenantRepo;
 
 
     @GetMapping(value = "add")
@@ -57,22 +50,32 @@ public class RentCollectionController {
         }
         model.addAttribute("buildinglist", blist);
         model.addAttribute("flatlist", this.flatRepo.findAll());
+        model.addAttribute("houseownerlist", this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        model.addAttribute("tenantlist", this.tenantRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
 
         return "user/rent/rentcollection";
 
     }
 
     @PostMapping(value = "add")
-    public String addRent(@Valid RentCollection rentCollection, BindingResult result, Model model, @RequestParam("id") Long id) {
+    public String addRent(@Valid RentCollection rentCollection, Model model,BindingResult result) {
+        if (result.hasErrors()) {
+            return "user/building/add";
 
-                this.repo.save(rentCollection);
-                model.addAttribute("rentCollection", new RentCollection());
-                model.addAttribute("successMsg", "Rent save Successfully");
-
+        } else {
+            if (rentCollection != null) {
+                //RentCollection rentCollection1 = this.repo.findById(rentCollection.getId());
+                if (rentCollection != null) {
+                    model.addAttribute("existMsg", "BuildingName is already exist");
+                } else {
+                    this.repo.save(rentCollection);
+                    model.addAttribute("rentCollection", new RentCollection());
+                    model.addAttribute("successMsg", "Rent save Successfully");
+                }
+            }
+        }
 
         return "user/rent/rentcollection";
     }
-
-
 
 }

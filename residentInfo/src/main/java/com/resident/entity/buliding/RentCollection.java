@@ -5,11 +5,12 @@ import com.resident.entity.user.Tenant;
 
 import javax.persistence.*;
 import java.util.Date;
-
+@Entity
 public class RentCollection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Date rantmonth;
 
     @ManyToOne

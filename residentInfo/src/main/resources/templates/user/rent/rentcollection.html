@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label>Tenant</label>
                                     <select th:field="*{tenant}">
-                                        <option th:each="d : ${buildinglist}" th:value="${d.id}">
+                                        <option th:each="d : ${tenantlist}" th:value="${d.id}">
                                             <span th:text="${d.name}"></span>
                                         </option>
                                     </select>
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label>Owner</label>
                                     <select th:field="*{houseOwner}">
-                                        <option th:each="d : ${ownerlist}" th:value="${d.id}">
+                                        <option th:each="d : ${houseownerlist}" th:value="${d.id}">
                                             <span th:text="${d.name}"></span>
                                         </option>
                                     </select>
