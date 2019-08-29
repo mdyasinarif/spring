@@ -103,7 +103,7 @@ INSERT INTO `city_corporation` (`id`,`name`,`notes`,`district_id`) VALUES
  (4,'Gazipur City Corporation',NULL,3),
  (5,'Chattogram City Corporation',NULL,43),
  (6,'Cumilla City Corporation',NULL,44),
- (7,'Cox\'s bazar City Corporation',NULL,45),
+ (7,'Cox''s bazar City Corporation',NULL,45),
  (8,'Bogura City Corporation',NULL,18),
  (9,'Faridpur City Corporation',NULL,2),
  (10,'Tangail City Corporation',NULL,17),

@@ -42,7 +42,7 @@ public class RentCollectionController {
 
     @GetMapping(value = "add/{id}")
     public String addRentView(Model model,@PathVariable("id") Long id) {
-        Rent rent = this.rentRepo.getOne(id);
+       Optional <Rent> rent = this.rentRepo.findById(id);
         model.addAttribute("rent", rent);
         model.addAttribute("rentCollection", new RentCollection());
         return "user/rent/rentcollection";
