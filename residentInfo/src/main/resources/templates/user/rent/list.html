@@ -50,8 +50,8 @@
                                 <td th:text="${rent.rentAmount}"></td>
                                 <td th:text="${rent.rentdate}"></td>
 
-                                <td><a th:href="@{'/rent/edit/' + ${rent.id}}"><button type="button" class="btn btn-round btn-success">Edit</button></a></td>
-                                <td><a th:href="@{'/rent/del/' + ${rent.id}}"><button type="button" class="btn btn-round btn-danger">DELETE</button></a></td>
+                                <td><a th:href="@{'/collection/add/' + ${rent.id}}"><button type="button" class="btn btn-round btn-success">Collection</button></a></td>
+
                             </tr>
                         </table>
                     </div>

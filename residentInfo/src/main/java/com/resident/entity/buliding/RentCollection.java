@@ -5,13 +5,15 @@ import com.resident.entity.user.Tenant;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
 public class RentCollection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date rantmonth;
+    private String  rantmonth;
+    private Double  rentAmount;
 
     @ManyToOne
     @JoinColumn(name = "tenant_id")
@@ -42,12 +44,20 @@ public class RentCollection {
     }
 
 
-    public Date getRantmonth() {
+    public String getRantmonth() {
         return rantmonth;
     }
 
-    public void setRantmonth(Date rantmonth) {
+    public void setRantmonth(String rantmonth) {
         this.rantmonth = rantmonth;
+    }
+
+    public Double getRentAmount() {
+        return rentAmount;
+    }
+
+    public void setRentAmount(Double rentAmount) {
+        this.rentAmount = rentAmount;
     }
 
     public Tenant getTenant() {

@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.6.44-log
+-- Server version	5.6.40-log
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,20 +33,20 @@ CREATE TABLE `building` (
   `thana_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKo7ef7b0cu39uyj7e8gtxjmbvb` (`thana_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `building`
 --
 
 /*!40000 ALTER TABLE `building` DISABLE KEYS */;
-INSERT INTO `building` (`id`,`address`,`name`,`thana_id`) VALUES
-(1,'11','building1',1),
-(2,'12','building2',2),
-(3,'13','building3',3),
-(4,'14','building4',4),
-(5,'15','building5',5),
-(6,'16','building6',2);
+INSERT INTO `building` (`id`,`address`,`name`,`thana_id`) VALUES 
+ (1,'11','building1',1),
+ (2,'12','building2',2),
+ (3,'13','building3',3),
+ (4,'14','building4',4),
+ (5,'15','building5',5),
+ (6,'16','building6',2);
 /*!40000 ALTER TABLE `building` ENABLE KEYS */;
 
 
@@ -67,7 +67,7 @@ CREATE TABLE `building_owner` (
 --
 
 /*!40000 ALTER TABLE `building_owner` DISABLE KEYS */;
-INSERT INTO `building_owner` (`building_id`,`owner_id`) VALUES
+INSERT INTO `building_owner` (`building_id`,`owner_id`) VALUES 
  (1,1),
  (2,2),
  (3,3),
@@ -96,7 +96,7 @@ CREATE TABLE `city_corporation` (
 --
 
 /*!40000 ALTER TABLE `city_corporation` DISABLE KEYS */;
-INSERT INTO `city_corporation` (`id`,`name`,`notes`,`district_id`) VALUES
+INSERT INTO `city_corporation` (`id`,`name`,`notes`,`district_id`) VALUES 
  (1,'Dhaka North City Corporation',NULL,1),
  (2,'Dhaka South City Corporation',NULL,1),
  (3,'Narayanganj City Corporation',NULL,11),
@@ -135,7 +135,7 @@ CREATE TABLE `country` (
 --
 
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
-INSERT INTO `country` (`id`,`bn_name`,`name`) VALUES
+INSERT INTO `country` (`id`,`bn_name`,`name`) VALUES 
  (1,NULL,'Bangladesh');
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
@@ -159,7 +159,7 @@ CREATE TABLE `district` (
 --
 
 /*!40000 ALTER TABLE `district` DISABLE KEYS */;
-INSERT INTO `district` (`id`,`bn_name`,`name`,`division_id`) VALUES
+INSERT INTO `district` (`id`,`bn_name`,`name`,`division_id`) VALUES 
  (1,'????','Dhaka',3),
  (2,'???????','Faridpur',3),
  (3,'???????','Gazipur',3),
@@ -246,7 +246,7 @@ CREATE TABLE `division` (
 --
 
 /*!40000 ALTER TABLE `division` DISABLE KEYS */;
-INSERT INTO `division` (`id`,`bn_name`,`name`,`country_id`) VALUES
+INSERT INTO `division` (`id`,`bn_name`,`name`,`country_id`) VALUES 
  (1,'??????','Barishal',1),
  (2,'?????????','Chattogram',1),
  (3,'????','Dhaka',1),
@@ -284,7 +284,7 @@ CREATE TABLE `employee` (
 --
 
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` (`id`,`contract_no`,`denigration`,`education`,`gender`,`name`,`nid_no`,`salary`,`owner_id`,`tenant_id`) VALUES
+INSERT INTO `employee` (`id`,`contract_no`,`denigration`,`education`,`gender`,`name`,`nid_no`,`salary`,`owner_id`,`tenant_id`) VALUES 
  (1,'01612345621','Coock','SSC','Male','T 1 Employee','895623',1200,NULL,1),
  (2,'01612345651','Driver','HSC','Male','Owner E 1','4578',15000,5,NULL),
  (3,'016123456712','Coock','HSC','Male','Owner E 2','5784521',5000,6,NULL),
@@ -317,7 +317,7 @@ CREATE TABLE `family_mamber` (
 --
 
 /*!40000 ALTER TABLE `family_mamber` DISABLE KEYS */;
-INSERT INTO `family_mamber` (`id`,`age`,`contract_no`,`education`,`gender`,`name`,`nid_no`,`owner_id`,`tenant_id`) VALUES
+INSERT INTO `family_mamber` (`id`,`age`,`contract_no`,`education`,`gender`,`name`,`nid_no`,`owner_id`,`tenant_id`) VALUES 
  (1,25,'01612345611','HSC','Male','T 1 Member','562389',NULL,1),
  (2,25,'01612345642','Graduate','Male','Owner M 1','895623',5,NULL),
  (3,5623,'016123456711','SSC','Male','Owner M 2','895623',6,NULL),
@@ -341,26 +341,26 @@ CREATE TABLE `flat` (
   `building_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKcuvibqssnlnlcvkphbl35qud1` (`building_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `flat`
 --
 
 /*!40000 ALTER TABLE `flat` DISABLE KEYS */;
-INSERT INTO `flat` (`id`,`name`,`note`,`photo`,`rent_amount`,`rent_date`,`status`,`building_id`) VALUES
-(1,'101',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x01,1),
-(2,'102',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x01,1),
-(3,'601',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x01,6),
-(4,'602',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x01,6),
-(5,'201',NULL,'/images/new-flat2.jpg',5000,'2019-09-01',0x01,2),
-(6,'202',NULL,'/images/new-flat2.jpg',5000,'2019-09-01',0x01,2),
-(7,'301',NULL,'/images/new-flat3.jpg',5000,'2019-09-01',0x01,3),
-(8,'302',NULL,'/images/new-flat3.jpg',5000,'2019-09-01',0x01,3),
-(9,'401',NULL,'/images/new-flat4.jpg',5000,'2019-09-01',0x01,4),
-(10,'402',NULL,'/images/new-flat4.jpg',5000,'2019-09-01',0x01,4),
-(11,'501',NULL,'/images/new-flat5.jpg',5000,'2019-09-01',0x01,5),
-(12,'501',NULL,'/images/new-flat5.jpg',5000,'2019-09-01',0x01,5);
+INSERT INTO `flat` (`id`,`name`,`note`,`photo`,`rent_amount`,`rent_date`,`status`,`building_id`) VALUES 
+ (1,'101',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x00,1),
+ (2,'102',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x00,1),
+ (3,'601',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x01,6),
+ (4,'602',NULL,'/images/new-flat1.jpg',5000,'2019-09-01',0x01,6),
+ (5,'201',NULL,'/images/new-flat2.jpg',5000,'2019-09-01',0x01,2),
+ (6,'202',NULL,'/images/new-flat2.jpg',5000,'2019-09-01',0x01,2),
+ (7,'301',NULL,'/images/new-flat3.jpg',5000,'2019-09-01',0x01,3),
+ (8,'302',NULL,'/images/new-flat3.jpg',5000,'2019-09-01',0x01,3),
+ (9,'401',NULL,'/images/new-flat4.jpg',5000,'2019-09-01',0x01,4),
+ (10,'402',NULL,'/images/new-flat4.jpg',5000,'2019-09-01',0x01,4),
+ (11,'501',NULL,'/images/new-flat5.jpg',5000,'2019-09-01',0x01,5),
+ (12,'501',NULL,'/images/new-flat5.jpg',5000,'2019-09-01',0x01,5);
 /*!40000 ALTER TABLE `flat` ENABLE KEYS */;
 
 
@@ -381,7 +381,7 @@ CREATE TABLE `flat_owner` (
 --
 
 /*!40000 ALTER TABLE `flat_owner` DISABLE KEYS */;
-INSERT INTO `flat_owner` (`flat_id`,`owner_id`) VALUES
+INSERT INTO `flat_owner` (`flat_id`,`owner_id`) VALUES 
  (1,1),
  (2,1),
  (3,1),
@@ -425,12 +425,12 @@ CREATE TABLE `house_owner` (
 --
 
 /*!40000 ALTER TABLE `house_owner` DISABLE KEYS */;
-INSERT INTO `house_owner` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES
-(1,'01612345601','1985-08-26','Graduate','Male',60000,'Owner1','985623','/images/new-owner1.jfif','895623',1,1),
-(2,'01612345602','1985-08-26','Graduate','Male',60000,'Owner2','985623','/images/new-owner2.jfif','895623',2,2),
-(3,'01612345603','1985-08-26','Graduate','Male',60000,'Owner3','985623','/images/new-owner3.jfif','895623',3,3),
-(4,'01612345604','1985-08-26','Graduate','Male',60000,'Owner4','985623','/images/new-owner4.jfif','895623',4,4),
-(5,'01612345605','1985-08-26','Graduate','Male',60000,'Owner5','985623','/images/new-owner5.jfif','895623',5,5);
+INSERT INTO `house_owner` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES 
+ (1,'01612345601','1985-08-26','Graduate','Male',60000,'Owner1','985623','/images/new-owner1.jfif','895623',1,1),
+ (2,'01612345602','1985-08-26','Graduate','Male',60000,'Owner2','985623','/images/new-owner2.jfif','895623',2,2),
+ (3,'01612345603','1985-08-26','Graduate','Male',60000,'Owner3','985623','/images/new-owner3.jfif','895623',3,3),
+ (4,'01612345604','1985-08-26','Graduate','Male',60000,'Owner4','985623','/images/new-owner4.jfif','895623',4,4),
+ (5,'01612345605','1985-08-26','Graduate','Male',60000,'Owner5','985623','/images/new-owner5.jfif','895623',5,5);
 /*!40000 ALTER TABLE `house_owner` ENABLE KEYS */;
 
 
@@ -458,21 +458,16 @@ CREATE TABLE `house_rent` (
   KEY `FKr9x4j07pr54filbiqtvvt41v3` (`house_owner_id`),
   KEY `FKi5y6byoll6ufhw7pntfllfsrp` (`tenant_id`),
   KEY `FKb9mnhpng077uimij2u3m24t32` (`thana_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `house_rent`
 --
 
 /*!40000 ALTER TABLE `house_rent` DISABLE KEYS */;
-
-
-
-
-
-
-
-
+INSERT INTO `house_rent` (`id`,`advance_amount`,`currentdate`,`rent_amount`,`rent_type`,`rentcondition`,`rentdate`,`building_id`,`flat_id`,`house_owner_id`,`tenant_id`,`thana_id`) VALUES 
+ (9,50000,'2019-08-29',5000,'Family',NULL,'2019-09-01',1,1,1,1,1),
+ (10,600000,'2019-08-29',6000,'Family',NULL,'2019-09-01',1,2,1,2,1);
 /*!40000 ALTER TABLE `house_rent` ENABLE KEYS */;
 
 
@@ -503,7 +498,7 @@ CREATE TABLE `police` (
 --
 
 /*!40000 ALTER TABLE `police` DISABLE KEYS */;
-INSERT INTO `police` (`id`,`batch_id`,`contract_no`,`date_of_birth`,`gender`,`name`,`nid`,`photo`,`post`,`thana_id`,`user_id`) VALUES
+INSERT INTO `police` (`id`,`batch_id`,`contract_no`,`date_of_birth`,`gender`,`name`,`nid`,`photo`,`post`,`thana_id`,`user_id`) VALUES 
  (1,'585','01612345694','2019-08-29','Male','police1','7845','/images/new-police1.jfif','SI',1,18),
  (2,'586','01612345693','2019-08-29','Male','police2','4578','/images/new-police2.jfif','SI',2,19),
  (3,'579','01612345692','2019-08-29','FeMale','police3','5689','/images/new-police3.jfif','SI',3,20);
@@ -517,7 +512,8 @@ INSERT INTO `police` (`id`,`batch_id`,`contract_no`,`date_of_birth`,`gender`,`na
 DROP TABLE IF EXISTS `rent_collection`;
 CREATE TABLE `rent_collection` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `rantmonth` datetime DEFAULT NULL,
+  `rantmonth` varchar(255) DEFAULT NULL,
+  `rent_amount` double DEFAULT NULL,
   `building_id` bigint(20) DEFAULT NULL,
   `flat_id` bigint(20) DEFAULT NULL,
   `house_owner_id` bigint(20) DEFAULT NULL,
@@ -554,11 +550,10 @@ CREATE TABLE `role` (
 --
 
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` (`id`,`role_name`) VALUES
-(1,'POLICE'),
-(2,'HOUSEOWNER'),
+INSERT INTO `role` (`id`,`role_name`) VALUES 
+ (1,'POLICE'),
+ (2,'HOUSEOWNER'),
  (3,'TENANT');
- 
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 
@@ -583,26 +578,26 @@ CREATE TABLE `tenant` (
   PRIMARY KEY (`id`),
   KEY `FKpfkiq1sn2e0rrx7ruwpcwy0uf` (`thana_id`),
   KEY `FKmoj8m61gtmcdo59nh0574w7q1` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tenant`
 --
 
 /*!40000 ALTER TABLE `tenant` DISABLE KEYS */;
-INSERT INTO `tenant` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES
-(1,'01612345681','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant1.jfif','8895623',1,6),
-(2,'01612345682','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant2.jfif','8895623',1,7),
-(3,'01612345683','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant3.jfif','8895623',2,8),
-(4,'01612345684','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant4.jfif','8895623',2,9),
-(5,'01612345685','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant5.jfif','8895623',3,10),
-(6,'01612345686','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant6.jfif','8895623',3,11),
-(7,'01612345687','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant7.jfif','8895623',4,12),
-(8,'01612345688','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant8.jfif','8895623',4,13),
-(9,'01612345689','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant9.jfif','8895623',5,14),
-(10,'01612345680','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant10.jfif','8895623',5,15),
-(11,'01612345611','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant11.jfif','8895623',6,16),
-(12,'01612345612','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant12.jfif','8895623',6,17);
+INSERT INTO `tenant` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES 
+ (1,'01612345681','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant1.jfif','8895623',1,6),
+ (2,'01612345682','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant2.jfif','8895623',1,7),
+ (3,'01612345683','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant3.jfif','8895623',2,8),
+ (4,'01612345684','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant4.jfif','8895623',2,9),
+ (5,'01612345685','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant5.jfif','8895623',3,10),
+ (6,'01612345686','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant6.jfif','8895623',3,11),
+ (7,'01612345687','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant7.jfif','8895623',4,12),
+ (8,'01612345688','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant8.jfif','8895623',4,13),
+ (9,'01612345689','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant9.jfif','8895623',5,14),
+ (10,'01612345680','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant10.jfif','8895623',5,15),
+ (11,'01612345611','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant11.jfif','8895623',6,16),
+ (12,'01612345612','1985-08-26','Graduate','Male',17000,'Tenant G 1','785623','/images/new-tenant12.jfif','8895623',6,17);
 /*!40000 ALTER TABLE `tenant` ENABLE KEYS */;
 
 
@@ -625,7 +620,7 @@ CREATE TABLE `thana` (
 --
 
 /*!40000 ALTER TABLE `thana` DISABLE KEYS */;
-INSERT INTO `thana` (`id`,`name`,`note`,`citycorporation_id`) VALUES
+INSERT INTO `thana` (`id`,`name`,`note`,`citycorporation_id`) VALUES 
  (1,'Adabor',NULL,1),
  (2,'Uttar Khan',NULL,1),
  (3,'Uttara',NULL,1),
@@ -705,14 +700,14 @@ CREATE TABLE `user` (
   `user_name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_589idila9li6a4arw1t8ht1gx` (`phone`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`,`password`,`phone`,`user_name`) VALUES
+INSERT INTO `user` (`id`,`password`,`phone`,`user_name`) VALUES 
  (1,'$2a$10$kwPR45QABj9ZfwaXiKs9cO9u0erskI7PtRDj.MYMyLpqT/DpOQLh6','01612345601','Owner1'),
  (2,'$2a$10$McXAVL0lSQfOYlO/bbrMW.mj7LwXAfnAVfs64r9kiNEwbhxlI9BRe','01612345602','Owner2'),
  (3,'$2a$10$ssEz62Qyb1sZgWV6tdl8JeUhgPFer0dpIK2b1ekCj2AWOAnbHKJO2','01612345603','Owner3'),
@@ -733,7 +728,6 @@ INSERT INTO `user` (`id`,`password`,`phone`,`user_name`) VALUES
  (18,'$2a$10$EqX5Ob6fRUupLNs3xcKaDex8e3ubblAGhRj9BCreKoOs7bgTGJ/W.','01612345694','police1'),
  (19,'$2a$10$2V7uMvfspfAb.sMRpSoCVuiQwRj.GkKgXcFIi6mVpfGFiWCZSTaQS','01612345693','police2'),
  (20,'$2a$10$oT17dYLodI9.Ba6yOmu9h.siC1LsbvMhpKSgEBZKx.wE7a7ljyTcK','01612345692','police3');
-
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
@@ -754,9 +748,9 @@ CREATE TABLE `user_role` (
 --
 
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` (`user_id`,`role_id`) VALUES
-(1,2),
-(2,2),
+INSERT INTO `user_role` (`user_id`,`role_id`) VALUES 
+ (1,2),
+ (2,2),
  (3,2),
  (4,2),
  (5,2),
@@ -775,7 +769,6 @@ INSERT INTO `user_role` (`user_id`,`role_id`) VALUES
  (18,1),
  (19,1),
  (20,1);
-
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 
 

@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/collection/")
@@ -35,36 +36,27 @@ public class RentCollectionController {
     private UserRepo userRepo;
     @Autowired
     private TenantRepo tenantRepo;
+    @Autowired
+    private RentRepo rentRepo;
 
 
-    @GetMapping(value = "add")
-    public String addRentView(Rent rent, Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String rolename = null;
-        for (Role r : this.userRepo.findByUserName(auth.getName()).getRoles()) {
-            rolename = r.getRoleName();
-        }
-        Iterable<Building> blist = null;
-        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
-            blist = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
-        }
-        model.addAttribute("buildinglist", blist);
-        model.addAttribute("flatlist", this.flatRepo.findAll());
-        model.addAttribute("houseownerlist", this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
-        model.addAttribute("tenantlist", this.tenantRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
-
+    @GetMapping(value = "add/{id}")
+    public String addRentView(Model model,@PathVariable("id") Long id) {
+        Rent rent = this.rentRepo.getOne(id);
+        model.addAttribute("rent", rent);
+        model.addAttribute("rentCollection", new RentCollection());
         return "user/rent/rentcollection";
 
     }
 
-    @PostMapping(value = "add")
-    public String addRent(@Valid RentCollection rentCollection, Model model,BindingResult result) {
+    @PostMapping(value = "add/{id}")
+    public String addRent(@Valid RentCollection rentCollection, Model model,BindingResult result,@PathVariable("id") Long id) {
         if (result.hasErrors()) {
-            return "user/building/add";
+            return "user/rent/rentcollection";
 
         } else {
             if (rentCollection != null) {
-                //RentCollection rentCollection1 = this.repo.findById(rentCollection.getId());
+               Optional<RentCollection> rentCollection1 = this.repo.findById(id);
                 if (rentCollection != null) {
                     model.addAttribute("existMsg", "BuildingName is already exist");
                 } else {
