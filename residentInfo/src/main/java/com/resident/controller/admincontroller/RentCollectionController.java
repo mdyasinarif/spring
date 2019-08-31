@@ -57,7 +57,7 @@ public class RentCollectionController {
         } else {
             if (rentCollection != null) {
                Optional<RentCollection> rentCollection1 = this.repo.findById(id);
-                if (rentCollection != null) {
+                if (rentCollection1 != null) {
                     model.addAttribute("existMsg", "BuildingName is already exist");
                 } else {
                     this.repo.save(rentCollection);
