@@ -25,25 +25,18 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-sm-6">
                                 <b>Tenant Name</b>
-                                <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
-                                            </span>
-                                    <div class="form-line">
-                                        <label th:field="*{tenant}" th:text="${rent?.get()?.tenant?.name}"
-                                               disabled="disabled"></label>
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input class="form-control" th:text="${rent.get().tenant.name}" th:field="*{tenant}">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <b>Owner Name</b>
-                                <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
-                                            </span>
-                                    <div class="form-line">
-                                        <label  th:text="${rent?.get()?.houseOwner?.name}"
-                                               th:field="*{houseOwner}" disabled="disabled"></label>
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input class="form-control" th:text="${rent.get().houseOwner.name}"
+                                               th:field="*{houseOwner}">
                                     </div>
                                 </div>
                             </div>
@@ -51,43 +44,34 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-sm-6">
                                 <b>Building</b>
-                                <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
-                                            </span>
-                                    <div class="form-line">
-                                        <label  th:text="${rent?.get()?.building?.name}"
-                                               th:field="*{building}" disabled="disabled"></label>
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input class="form-control" th:text="${rent.get().building.name}"
+                                               th:field="*{building}">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <b>Falt</b>
-                                <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
-                                            </span>
-                                    <div class="form-line">
-                                        <label th:text="${rent?.get()?.flat?.name}" th:value="*{flat}"
-                                               disabled="disabled"></label>
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input class="form-control" th:text="${rent.get().flat.name}"
+                                               th:field="*{flat}">
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-sm-6">
                                 <b>Rent Amount</b>
-                                <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
-                                            </span>
-                                    <div class="form-line">
-                                        <label  th:text="${rent?.get()?.rentAmount}"
-                                               th:field="*{rentAmount}" disabled="disabled"></label>
+                                <div class="form-group form-float">
+                                    <div class="form-line focused success">
+                                        <input class="form-control"th:text="${rent.get().rentAmount}"
+                                               th:field="*{rentAmount}">
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <b>Month</b>
                                 <select class="show-tick" th:field="*{rantmonth}">
