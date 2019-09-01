@@ -2,6 +2,7 @@ package com.resident.entity.buliding;
 
 import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Tenant;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +12,10 @@ public class RentCollection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date rentdate;
 
     private String  rantmonth;
     private Double  rentAmount;
@@ -33,6 +38,14 @@ public class RentCollection {
 
 
     public RentCollection() {
+    }
+
+    public Date getRentdate() {
+        return rentdate;
+    }
+
+    public void setRentdate(Date rentdate) {
+        this.rentdate = rentdate;
     }
 
     public Long getId() {
@@ -91,4 +104,5 @@ public class RentCollection {
     public void setFlat(Flat flat) {
         this.flat = flat;
     }
+
 }

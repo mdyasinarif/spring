@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Rent List</title>
+</head>
+<body>
+<div layout:fragment="custom-container">
+    <section class="content">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Rent Collection List
+                        <a class="btn btn-primary pull-right" th:href="@{/rent/add}" type="submit">ADD Rent</a>
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Building Name</th>
+                                <th>House OwnerName</th>
+                                <th>Flat Name</th>
+                                <th>Tenant Name</th>
+                                <th>Rant Amount</th>
+                                <th>Month</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            <tr th:each="rent : ${rentCollectionlist}">
+                                <td th:text="${rent.id}"></td>
+                                <td th:text="${rent.currentdate}"></td>
+                                <td th:text="${rent.building.name}"></td>
+
+                                <td>
+                                    <span  th:each="owner : ${rent.houseOwner}" th:text="${owner.name}+' '"></span>
+                                </td>
+                                <td>
+                                    <span  th:each="flat : ${rent.flat}" th:text="${flat.name}+' '"></span>
+                                </td>
+                                <td>
+                                    <span  th:each="tenant : ${rent.tenant}" th:text="${tenant.name}+' '"></span>
+                                </td>
+                                <td th:text="${rent.rentAmount}"></td>
+                                <td th:text="${rent.month}"></td>
+
+                                <td><a th:href="@{'/collection/add/' + ${rent.id}}"><button type="button" class="btn btn-round btn-success">Collection</button></a></td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

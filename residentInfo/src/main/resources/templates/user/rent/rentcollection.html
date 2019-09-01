@@ -30,8 +30,8 @@
                                                 <i class="material-icons">person</i>
                                             </span>
                                     <div class="form-line">
-                                        <label type="text" th:text="${rent.get().tenant.name}"
-                                               th:field="*{tenant}" disabled="disabled"></label>
+                                        <label th:field="*{tenant}" th:text="${rent?.get()?.tenant?.name}"
+                                               disabled="disabled"></label>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                                 <i class="material-icons">person</i>
                                             </span>
                                     <div class="form-line">
-                                        <label type="text" th:text="${rent.get().houseOwner.name}"
+                                        <label  th:text="${rent?.get()?.houseOwner?.name}"
                                                th:field="*{houseOwner}" disabled="disabled"></label>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                                 <i class="material-icons">person</i>
                                             </span>
                                     <div class="form-line">
-                                        <label type="text" th:text="${rent.get().building.name}"
+                                        <label  th:text="${rent?.get()?.building?.name}"
                                                th:field="*{building}" disabled="disabled"></label>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                                 <i class="material-icons">person</i>
                                             </span>
                                     <div class="form-line">
-                                        <label type="text" th:text="${rent.get().flat.name}" th:field="*{flat}"
+                                        <label th:text="${rent?.get()?.flat?.name}" th:value="*{flat}"
                                                disabled="disabled"></label>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                                 <i class="material-icons">person</i>
                                             </span>
                                     <div class="form-line">
-                                        <label type="text" th:text="${rent.get().rentAmount}"
+                                        <label  th:text="${rent?.get()?.rentAmount}"
                                                th:field="*{rentAmount}" disabled="disabled"></label>
                                     </div>
                                 </div>

@@ -55,19 +55,25 @@ public class RentCollectionController {
             return "user/rent/rentcollection";
 
         } else {
-            if (rentCollection != null) {
-               Optional<RentCollection> rentCollection1 = this.repo.findById(id);
-                if (rentCollection1 != null) {
-                    model.addAttribute("existMsg", "BuildingName is already exist");
-                } else {
+//            if (rentCollection != null) {
+//               Optional<RentCollection> rentCollection1 = this.repo.findById(id);
+
                     this.repo.save(rentCollection);
                     model.addAttribute("rentCollection", new RentCollection());
                     model.addAttribute("successMsg", "Rent save Successfully");
                 }
-            }
-        }
+//            }
+
 
         return "user/rent/rentcollection";
+    }
+
+    @GetMapping(value = "list/{id}")
+    public String addRentCllectionListView(Model model,@PathVariable("id") Long id) {
+
+        model.addAttribute("rentCollectionlist", this.repo.findById(id));
+        return "user/rent/collectionlist";
+
     }
 
 }
