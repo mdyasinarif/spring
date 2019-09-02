@@ -1,5 +1,6 @@
 package com.resident.repo;
 
+import com.resident.entity.buliding.Flat;
 import com.resident.entity.buliding.RentCollection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -7,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RentCollectionRepo extends JpaRepository<RentCollection, Long> {
 //     RentCollection findAllBy(long id);
-   Iterable <RentCollection> findAllByFlat(long id);
+   Iterable <RentCollection> findAllByFlat(Flat flat);
 
 }

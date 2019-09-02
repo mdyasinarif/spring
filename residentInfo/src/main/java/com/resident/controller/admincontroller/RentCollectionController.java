@@ -76,9 +76,9 @@ public class RentCollectionController {
     }
 
     @GetMapping(value = "list/{id}")
-    public String addRentCllectionListView(Model model,@PathVariable("id") Long id) {
+    public String addRentCllectionListView(Model model,Flat flat) {
 
-       model.addAttribute("list",this.repo.findAllByFlat(id));
+       model.addAttribute("list",this.repo.findAllByFlat(flat));
 
         return "user/rent/collectionlist";
 
