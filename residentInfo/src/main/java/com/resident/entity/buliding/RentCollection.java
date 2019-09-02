@@ -15,7 +15,7 @@ public class RentCollection {
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date rentdate;
+    private Date rentdate = new Date();
 
     private String  rantmonth;
     private Double  rentAmount;

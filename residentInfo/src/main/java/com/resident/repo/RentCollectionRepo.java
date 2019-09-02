@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RentCollectionRepo extends JpaRepository<RentCollection, Long> {
-     RentCollection findById(long id);
+//     RentCollection findAllBy(long id);
+   Iterable <RentCollection> findAllByFlat(long id);
 
 }

@@ -426,7 +426,7 @@ CREATE TABLE `house_owner` (
 
 /*!40000 ALTER TABLE `house_owner` DISABLE KEYS */;
 INSERT INTO `house_owner` (`id`,`contract_no`,`date_of_birth`,`education`,`gender`,`income`,`name`,`nid_no`,`photo`,`tin_no`,`thana_id`,`user_id`) VALUES 
- (1,'01612345601','1985-08-26','Graduate','Male',60000,'Owner1','985623','/images/new-owner1.jfif','895623',1,1),
+ (1,'01612345601','1985-08-26','Graduate','Male',60000,'Owner1','985623','/images/new-myphoto.jpg','895623',1,1),
  (2,'01612345602','1985-08-26','Graduate','Male',60000,'Owner2','985623','/images/new-owner2.jfif','895623',2,2),
  (3,'01612345603','1985-08-26','Graduate','Male',60000,'Owner3','985623','/images/new-owner3.jfif','895623',3,3),
  (4,'01612345604','1985-08-26','Graduate','Male',60000,'Owner4','985623','/images/new-owner4.jfif','895623',4,4),
@@ -524,13 +524,15 @@ CREATE TABLE `rent_collection` (
   KEY `FKc0hjqytat18rr0uadgmcr0cpq` (`flat_id`),
   KEY `FKqm5mihfn9ql6ty92fhpym6f6v` (`house_owner_id`),
   KEY `FKsbrcxkemln56p43r0cagrushg` (`tenant_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rent_collection`
 --
 
 /*!40000 ALTER TABLE `rent_collection` DISABLE KEYS */;
+INSERT INTO `rent_collection` (`id`,`rantmonth`,`rent_amount`,`rentdate`,`building_id`,`flat_id`,`house_owner_id`,`tenant_id`) VALUES
+ (1,'May',5000,'2019-09-01',1,1,1,1);
 /*!40000 ALTER TABLE `rent_collection` ENABLE KEYS */;
 
 

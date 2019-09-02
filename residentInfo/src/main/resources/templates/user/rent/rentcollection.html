@@ -13,8 +13,8 @@
             <div class="card">
                 <div class="header">
                     <h2>Rent Collection
-                        <a class="btn btn-primary pull-right" th:href="@{/rent/list}" type="submit">Rent
-                            List</a>
+                        <!--<a class="btn btn-primary pull-right" th:href="@{/collection/list}+${id}" type="submit">Rent-->
+                           <!--Collection List</a>-->
                     </h2>
                     <span th:text="${existMsg}"></span>
                     <span th:text="${successMsg}"></span>
@@ -27,7 +27,7 @@
                                 <b>Tenant Name</b>
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input class="form-control" th:text="${rent.get().tenant.name}" th:field="*{tenant}">
+                                        <input class="form-control" th:text="${rent?.get()?.tenant?.name}" th:field="*{tenant}">
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                 <b>Owner Name</b>
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input class="form-control" th:text="${rent.get().houseOwner.name}"
+                                        <input class="form-control" th:text="${rent?.get()?.houseOwner?.name}"
                                                th:field="*{houseOwner}">
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                 <b>Building</b>
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input class="form-control" th:text="${rent.get().building.name}"
+                                        <input class="form-control" th:text="${rent?.get()?.building?.name}"
                                                th:field="*{building}">
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                 <b>Falt</b>
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input class="form-control" th:text="${rent.get().flat.name}"
+                                        <input class="form-control" th:text="${rent?.get()?.flat?.name}"
                                                th:field="*{flat}">
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <b>Rent Amount</b>
                                 <div class="form-group form-float">
                                     <div class="form-line focused success">
-                                        <input class="form-control"th:text="${rent.get().rentAmount}"
+                                        <input class="form-control"th:text="${rent?.get()?.rentAmount}"
                                                th:field="*{rentAmount}">
                                     </div>
                                 </div>

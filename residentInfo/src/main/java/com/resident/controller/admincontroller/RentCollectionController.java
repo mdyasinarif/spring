@@ -4,6 +4,7 @@ package com.resident.controller.admincontroller;
 import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
 import com.resident.entity.buliding.Building;
+import com.resident.entity.buliding.Flat;
 import com.resident.entity.buliding.Rent;
 import com.resident.entity.buliding.RentCollection;
 import com.resident.entity.user.Police;
@@ -41,8 +42,8 @@ public class RentCollectionController {
 
 
     @GetMapping(value = "add/{id}")
-    public String addRentView(Model model,@PathVariable("id") Long id) {
-       Optional <Rent> rent = this.rentRepo.findById(id);
+    public String addRentView(Model model, @PathVariable("id") Long id) {
+        Optional<Rent> rent = this.rentRepo.findById(id);
         model.addAttribute("rent", rent);
         model.addAttribute("rentCollection", new RentCollection());
         return "user/rent/rentcollection";
@@ -50,18 +51,24 @@ public class RentCollectionController {
     }
 
     @PostMapping(value = "add/{id}")
-    public String addRent(@Valid RentCollection rentCollection, Model model,BindingResult result,@PathVariable("id") Long id) {
+    public String addRent(@Valid RentCollection rentCollection, Model model, BindingResult result, @PathVariable("id") Long id) {
         if (result.hasErrors()) {
             return "user/rent/rentcollection";
 
         } else {
 //            if (rentCollection != null) {
 //               Optional<RentCollection> rentCollection1 = this.repo.findById(id);
-
-                    this.repo.save(rentCollection);
-                    model.addAttribute("rentCollection", new RentCollection());
-                    model.addAttribute("successMsg", "Rent save Successfully");
-                }
+            Optional<Rent> rent = this.rentRepo.findById(id);
+            rentCollection.setTenant(rent.get().getTenant());
+            rentCollection.setHouseOwner(rent.get().getHouseOwner());
+            rentCollection.setBuilding(rent.get().getBuilding());
+            rentCollection.setFlat(rent.get().getFlat());
+            rentCollection.setRentAmount(rent.get().getRentAmount());
+            rentCollection.setRentdate(rent.get().getRentdate());
+            this.repo.save(rentCollection);
+            model.addAttribute("rentCollection", new RentCollection());
+            model.addAttribute("successMsg", "Rent save Successfully");
+        }
 //            }
 
 
@@ -71,7 +78,8 @@ public class RentCollectionController {
     @GetMapping(value = "list/{id}")
     public String addRentCllectionListView(Model model,@PathVariable("id") Long id) {
 
-        model.addAttribute("rentCollectionlist", this.repo.findById(id));
+       model.addAttribute("list",this.repo.findAllByFlat(id));
+
         return "user/rent/collectionlist";
 
     }

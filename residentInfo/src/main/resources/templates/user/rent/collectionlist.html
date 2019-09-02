@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="header">
                     <h2>Rent Collection List
-                        <a class="btn btn-primary pull-right" th:href="@{/rent/add}" type="submit">ADD Rent</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/collection/add/}+${id}" type="submit">Collect Rent </a>
                     </h2>
                 </div>
                 <div class="body">
@@ -20,33 +20,31 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Date</th>
-                                <th>Building Name</th>
-                                <th>House OwnerName</th>
+                                <!--<th>Building Name</th>-->
+                                <!--<th>House OwnerName</th>-->
                                 <th>Flat Name</th>
-                                <th>Tenant Name</th>
+                                <!--<th>Tenant Name</th>-->
                                 <th>Rant Amount</th>
                                 <th>Month</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
-                            <tr th:each="rent : ${rentCollectionlist}">
+                            <tr th:each="rent : ${list}">
                                 <td th:text="${rent.id}"></td>
-                                <td th:text="${rent.currentdate}"></td>
-                                <td th:text="${rent.building.name}"></td>
+                                <td th:text="${rent.rentdate}"></td>
+                                <!--<td th:text="${rent.building.name}"></td>-->
 
-                                <td>
-                                    <span  th:each="owner : ${rent.houseOwner}" th:text="${owner.name}+' '"></span>
-                                </td>
+                                <!--<td>-->
+                                    <!--<span  th:each="owner : ${rent.houseOwner}" th:text="${owner.name}+' '"></span>-->
+                                <!--</td>-->
                                 <td>
                                     <span  th:each="flat : ${rent.flat}" th:text="${flat.name}+' '"></span>
                                 </td>
-                                <td>
-                                    <span  th:each="tenant : ${rent.tenant}" th:text="${tenant.name}+' '"></span>
-                                </td>
+                                <!--<td>-->
+                                    <!--<span  th:each="tenant : ${rent.tenant}" th:text="${tenant.name}+' '"></span>-->
+                                <!--</td>-->
                                 <td th:text="${rent.rentAmount}"></td>
-                                <td th:text="${rent.month}"></td>
+                                <td th:text="${rent.rantmonth}"></td>
 
-                                <td><a th:href="@{'/collection/add/' + ${rent.id}}"><button type="button" class="btn btn-round btn-success">Collection</button></a></td>
+
 
                             </tr>
                         </table>
