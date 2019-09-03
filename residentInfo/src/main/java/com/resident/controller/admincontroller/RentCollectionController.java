@@ -83,5 +83,13 @@ public class RentCollectionController {
         return "user/rent/collectionlist";
 
     }
+    @GetMapping(value = "payrent/{id}")
+    public String addRentCllectionListViewTenant(Model model,Tenant tenant) {
+
+        model.addAttribute("list",this.repo.findAllByTenant(tenant));
+
+        return "user/rent/payrent";
+
+    }
 
 }
