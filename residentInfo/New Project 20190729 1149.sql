@@ -524,15 +524,17 @@ CREATE TABLE `rent_collection` (
   KEY `FKc0hjqytat18rr0uadgmcr0cpq` (`flat_id`),
   KEY `FKqm5mihfn9ql6ty92fhpym6f6v` (`house_owner_id`),
   KEY `FKsbrcxkemln56p43r0cagrushg` (`tenant_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rent_collection`
 --
 
 /*!40000 ALTER TABLE `rent_collection` DISABLE KEYS */;
-INSERT INTO `rent_collection` (`id`,`rantmonth`,`rent_amount`,`rentdate`,`building_id`,`flat_id`,`house_owner_id`,`tenant_id`) VALUES
- (1,'May',5000,'2019-09-01',1,1,1,1);
+INSERT INTO `rent_collection` (`id`,`rantmonth`,`rent_amount`,`rentdate`,`building_id`,`flat_id`,`house_owner_id`,`tenant_id`) VALUES 
+ (1,'May',5000,'2019-09-01',1,1,1,1),
+ (10,'October',6000,'2019-09-01',1,2,1,2),
+ (11,'August',5000,'2019-09-01',1,1,1,1);
 /*!40000 ALTER TABLE `rent_collection` ENABLE KEYS */;
 
 
