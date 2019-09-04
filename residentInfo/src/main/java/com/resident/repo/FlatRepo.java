@@ -16,6 +16,7 @@ public interface FlatRepo extends JpaRepository<Flat,Long> {
  List <Flat> findAllByBuildingAndStatus(Building building,boolean status);
  Iterable<Flat> findAllByStatus(boolean status);
  Iterable<Flat> findAllByBuilding(Building building);
+ Iterable<Flat> findAllByHouseOwner(HouseOwner houseOwner);
 
 
 }

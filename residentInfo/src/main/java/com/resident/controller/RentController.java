@@ -1,9 +1,10 @@
-package com.resident.controller.admincontroller;
+package com.resident.controller;
 
 
 import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
 import com.resident.entity.buliding.Building;
+import com.resident.entity.buliding.Flat;
 import com.resident.entity.buliding.Rent;
 import com.resident.entity.user.HouseOwner;
 import com.resident.entity.user.Police;
@@ -49,8 +50,12 @@ public class RentController {
         if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
             blist = this.buildingRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
         }
+        Iterable<Flat> flist = null;
+        if (rolename.equalsIgnoreCase("HOUSEOWNER")) {
+            flist = this.flatRepo.findAllByHouseOwner(this.houseOwnerRepo.findByUser(this.userRepo.findByUserName(auth.getName())));
+        }
         model.addAttribute("buildinglist", blist);
-        model.addAttribute("flatlist", this.flatRepo.findAll());
+        model.addAttribute("flatlist", flist);
         return "user/rent/add";
 
     }

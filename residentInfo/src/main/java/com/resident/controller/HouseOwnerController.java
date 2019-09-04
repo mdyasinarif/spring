@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller;
+package com.resident.controller;
 
 import com.resident.entity.admin.Role;
 import com.resident.entity.admin.User;
@@ -118,5 +118,6 @@ public class HouseOwnerController {
         return "redirect:/houseowner/list";
 
     }
+
 
 }

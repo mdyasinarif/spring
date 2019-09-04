@@ -7,13 +7,16 @@ import com.resident.entity.buliding.Building;
 import com.resident.entity.buliding.Flat;
 import com.resident.entity.user.Employee;
 import com.resident.entity.user.FamilyMamber;
+import com.resident.entity.user.HouseOwner;
 import com.resident.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -94,11 +97,19 @@ public class HomeController {
     public String addrow() {
         return "addrow";
     }
+
     @GetMapping(value = "/owner")
     public String addrviewow() {
 
         return "user/houseOwner";
     }
+
+    @GetMapping(value = "/cs")
+    public String currentUser(Model model) {
+
+        return "test";
+    }
+
 
 
 }

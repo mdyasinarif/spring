@@ -1,4 +1,4 @@
-package com.resident.controller.addresscontroller;
+package com.resident.controller;
 
 
 import com.resident.entity.address.Thana;

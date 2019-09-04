@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller;
+package com.resident.controller;
 
 
 import com.resident.repo.RoleRepo;

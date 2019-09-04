@@ -1,4 +1,4 @@
-package com.resident.controller.admincontroller;
+package com.resident.controller;
 
 import com.resident.entity.admin.User;
 import com.resident.entity.user.Police;
